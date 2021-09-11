@@ -5,6 +5,8 @@ import Discord from "discord.js";
 
 import init from "./init.js";
 import { commands } from "./commands/index.js";
+import { initDB } from "./database/initialize.js";
+import chalk from "chalk";
 
 const client = new Discord.Client({ intents: ["GUILDS", "GUILD_MESSAGES"] });
 const prefix = process.env.PREFIX;
@@ -15,7 +17,10 @@ client.once("ready", async () => {
 	// 	const guild = await client.guilds.fetch(oldGuild.id);
 	// 	init(guild);
 	// });
-	console.log(`🤖 bot ${client.user.username}#${client.user.tag} successfully started 🚀`);
+	console.log(
+		chalk.magenta(new Date(Date.now()).toLocaleString()),
+		`🤖 bot ${client.user.username}#${client.user.tag} successfully started 🚀`
+	);
 });
 
 client.on("messageCreate", async (message) => {
@@ -28,4 +33,6 @@ client.on("messageCreate", async (message) => {
 	command(client, message);
 });
 
-client.login(process.env.BOT_TOKEN);
+initDB().then(() => {
+	client.login(process.env.BOT_TOKEN);
+});
