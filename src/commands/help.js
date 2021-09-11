@@ -14,6 +14,9 @@ export default async function (client, message) {
 			{
 				title: "Voila mes commandes",
 				author: client.user.username,
+				thumbnail: {
+					url: client.user.avatarURL(),
+				},
 				fields: [
 					{
 						name: "```-help```",
