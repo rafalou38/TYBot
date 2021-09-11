@@ -1,0 +1,24 @@
+{
+	"name": "yt-team-bot",
+	"version": "1.0.0",
+	"description": "bot discord de la communauté YT - Team",
+	"main": "src/index.js",
+	"repository": "none",
+	"author": "rafalou38",
+	"license": "MIT",
+	"scripts": {
+		"start": "node ./src/index.js"
+	},
+	"type": "module",
+	"devDependencies": {
+		"eslint": "^7.32.0"
+	},
+	"dependencies": {
+		"chalk": "^4.1.2",
+		"discord.js": "^13.0.1",
+		"dotenv": "^10.0.0"
+	},
+	"engines": {
+		"node": "16.x"
+	}
+}
