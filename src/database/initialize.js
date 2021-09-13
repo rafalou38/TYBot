@@ -1,20 +1,15 @@
 import chalk from "chalk";
 import mongoose from "mongoose";
+import { log } from "../utils/prettyLog.js";
 
 export async function initDB() {
 	return new Promise((resolve, reject) => {
 		mongoose.connect(process.env.MONGO_URI, (err) => {
 			if (err) {
-				console.log(
-					chalk.magenta(new Date(Date.now()).toLocaleString()),
-					"failed to connect to mongoDB ❌"
-				);
+				log("failed to connect to mongoDB ❌");
 				reject(err);
 			} else {
-				console.log(
-					chalk.magenta(new Date(Date.now()).toLocaleString()),
-					"successfully connected to mongoDB ✅"
-				);
+				log("successfully connected to mongoDB ✅");
 				resolve(err);
 			}
 		});

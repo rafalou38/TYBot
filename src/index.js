@@ -9,9 +9,15 @@ import { initDB } from "./database/initialize.js";
 import chalk from "chalk";
 import { userJoin } from "./events/userJoin.js";
 import { userLeave } from "./events/userLeave.js";
-import { config } from "./config.js";
+import { config, context } from "./context.js";
+import { log } from "./utils/prettyLog.js";
 
-const client = new Discord.Client({ intents: ["GUILDS", "GUILD_MESSAGES"] });
+/** @type {Discord.IntentsString[]} */
+const intents = ["GUILDS", "GUILD_MESSAGES", "GUILD_MEMBERS"];
+const client = new Discord.Client({
+	intents: intents,
+	ws: { intents: intents },
+});
 
 client.once("ready", async () => {
 	// const guilds = await client.guilds.fetch();
@@ -19,10 +25,7 @@ client.once("ready", async () => {
 	// 	const guild = await client.guilds.fetch(oldGuild.id);
 	// 	init(guild);
 	// });
-	console.log(
-		chalk.magenta(new Date(Date.now()).toLocaleString()),
-		`🤖 bot ${client.user.username}#${client.user.tag} successfully started 🚀`
-	);
+	log(`🤖 bot ${client.user.username}#${client.user.tag} successfully started 🚀`);
 });
 
 client.on("messageCreate", async (message) => {
@@ -38,6 +41,7 @@ client.on("messageCreate", async (message) => {
 client.on("guildMemberAdd", userJoin);
 client.on("guildMemberRemove", userLeave);
 
-initDB().then(() => {
-	client.login(process.env.BOT_TOKEN);
+initDB().then(async () => {
+	await client.login(process.env.BOT_TOKEN);
+	context.client = client;
 });
