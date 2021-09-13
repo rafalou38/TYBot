@@ -11,9 +11,10 @@ import { userJoin } from "./events/userJoin.js";
 import { userLeave } from "./events/userLeave.js";
 import { config, context } from "./context.js";
 import { log } from "./utils/prettyLog.js";
+import { setup as setupInvites } from "./utils/invites.js";
 
 /** @type {Discord.IntentsString[]} */
-const intents = ["GUILDS", "GUILD_MESSAGES", "GUILD_MEMBERS"];
+const intents = ["GUILDS", "GUILD_MESSAGES", "GUILD_MEMBERS", "GUILD_INVITES"];
 const client = new Discord.Client({
 	intents: intents,
 	ws: { intents: intents },
@@ -44,4 +45,5 @@ client.on("guildMemberRemove", userLeave);
 initDB().then(async () => {
 	await client.login(process.env.BOT_TOKEN);
 	context.client = client;
+	setupInvites(client);
 });

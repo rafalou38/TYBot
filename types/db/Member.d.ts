@@ -1,6 +1,7 @@
 interface IMember {
 	guildID: string;
 	invites: number;
-	invitedBy: String;
+	invitedBy: string;
+	userID: string;
 	xp: number;
 }

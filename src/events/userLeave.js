@@ -1,5 +1,6 @@
 import Discord from "discord.js";
 import { config } from "../context.js";
+import { Member } from "../database/schemas/Member.js";
 import { getChanelById } from "../utils/channels.js";
 
 /**
@@ -8,8 +9,24 @@ import { getChanelById } from "../utils/channels.js";
  */
 export async function userLeave(member) {
 	const channel = await getChanelById(config.userJoinChannelID);
-	console.log(channel);
 	if (!channel || !channel.isText()) return;
+
+	/** @type {IMember} */
+	const DBMemberLeave = await Member.findOne({
+		guildID: member.guild.id,
+		userID: member.id,
+	});
+
+	const DBMemberInviter = await Member.findOneAndUpdate(
+		{
+			guildID: member.guild.id,
+			userID: DBMemberLeave.invitedBy,
+		},
+		{ $inc: { invites: -1 } },
+		{
+			new: true,
+		}
+	);
 
 	channel.send({
 		embeds: [
@@ -19,6 +36,16 @@ export async function userLeave(member) {
 				thumbnail: {
 					url: member.user.avatarURL(),
 				},
+				fields: [
+					{
+						name: "Il avait été invité par",
+						value: `<@${DBMemberInviter.userID}>`,
+					},
+					{
+						name: "Qui à désormais:",
+						value: `${DBMemberInviter.invites} invites`,
+					},
+				],
 			},
 		],
 	});
