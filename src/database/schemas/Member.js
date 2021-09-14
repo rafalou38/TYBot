@@ -5,9 +5,10 @@ const { Schema } = mongoose;
 const memberSchema = new Schema({
 	guildID: String,
 	userID: String,
-	invites: Number,
 	invitedBy: String,
-	xp: Number,
+	invites: { type: Number, default: 0 },
+	xp: { type: Number, default: 0 },
+	level: { type: Number, default: 0 },
 });
 
 /**@type {mongoose.Model<IMember>} */

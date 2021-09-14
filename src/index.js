@@ -12,6 +12,7 @@ import { userLeave } from "./events/userLeave.js";
 import { config, context } from "./context.js";
 import { log } from "./utils/prettyLog.js";
 import { setup as setupInvites } from "./utils/invites.js";
+import { countXP } from "./events/message.js";
 
 /** @type {Discord.IntentsString[]} */
 const intents = ["GUILDS", "GUILD_MESSAGES", "GUILD_MEMBERS", "GUILD_INVITES"];
@@ -30,7 +31,7 @@ client.once("ready", async () => {
 });
 
 client.on("messageCreate", async (message) => {
-	if (!message.content.startsWith(config.prefix)) return;
+	if (!message.content.startsWith(config.prefix)) return countXP(message);
 	const commandName = message.content.replace(config.prefix, "").split(" ")[0];
 
 	const command = commands[commandName];

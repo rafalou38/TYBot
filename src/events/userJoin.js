@@ -31,8 +31,6 @@ export async function userJoin(member) {
 			guildID: member.guild.id,
 			userID: member.id,
 			invitedBy: invite.inviter.id,
-			invites: 0,
-			xp: 0,
 		}).save();
 		log(member.user.tag, "joined, account created");
 	} else {
@@ -54,8 +52,6 @@ export async function userJoin(member) {
 		DBInviter = await new Member({
 			guildID: member.guild.id,
 			userID: invite.inviter.id,
-			invites: 1,
-			xp: 0,
 		}).save();
 		log(invite.inviter.tag, "new inviter account created");
 	} else {
