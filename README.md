@@ -9,7 +9,8 @@
 - [ ] Profile de l'utilisateur
 - [ ] Système de sondage / suggestions
 - [ ] Système d'anniversaire
-- [ ] Nombres de membres actuels sur le serv
+- [+] Nombres de membres actuels sur le serv
+  - [ ] _plus de details_
 - [x] prefixes : -
 
 ajouter sur le bot que tout les 5 Niveau ils donnent un role au joueur qui a eu les levels

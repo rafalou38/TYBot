@@ -22,6 +22,15 @@ export default async function (client, message) {
 						name: "```-help```",
 						value: "Permet d'afficher ce message",
 					},
+					{
+						name: "```-invite (@user)```",
+						value:
+							"Affiche le nombre d'invitations de l'utilisateur, si aucun utilisateur n'est donné vérifie les invitations de la personne executant la commande",
+					},
+					{
+						name: "```-members```",
+						value: "Affiche le nombre de personnes",
+					},
 				],
 			},
 		],
