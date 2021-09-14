@@ -1,7 +1,7 @@
 - [ ] Système de niveaux / addxp / remove etc.. leaderboard
-  - [+] auto add on message
+  - [x] auto add on message
   - [ ] add xp command
-  - [+] xp command
+  - [x] xp command
 - [ ] Système de ticket
 - [x] Système de message d'arrivée / de personne qui quitte
 - [ ] Système de notification tiktok insta twitter youtube Twitch
@@ -12,7 +12,7 @@
 - [ ] Profile de l'utilisateur
 - [ ] Système de sondage / suggestions
 - [ ] Système d'anniversaire
-- [+] Nombres de membres actuels sur le serv
+- [x] Nombres de membres actuels sur le serv
   - [ ] _plus de details_
 - [x] prefixes : -
 
