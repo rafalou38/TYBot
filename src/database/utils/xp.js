@@ -31,6 +31,6 @@ export async function addXP(member) {
 	await DBMember.save();
 }
 
-function calcRequiredXPForLevel(level = 0) {
+export function calcRequiredXPForLevel(level = 0) {
 	return 20 + level * config.xpRequiredIncrease;
 }

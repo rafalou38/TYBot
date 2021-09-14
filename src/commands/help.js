@@ -31,6 +31,11 @@ export default async function (client, message) {
 						name: "```-members```",
 						value: "Affiche le nombre de personnes",
 					},
+					{
+						name: "```-xp (@user)```",
+						value:
+							"Affiche l'experience, le niveau et le rang de l'utilisateur, si aucun utilisateur n'est donné vérifie pour la personne executant la commande",
+					},
 				],
 			},
 		],

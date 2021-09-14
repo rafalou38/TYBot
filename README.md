@@ -1,7 +1,7 @@
 - [ ] Système de niveaux / addxp / remove etc.. leaderboard
   - [+] auto add on message
   - [ ] add xp command
-  - [ ] xp command
+  - [+] xp command
 - [ ] Système de ticket
 - [x] Système de message d'arrivée / de personne qui quitte
 - [ ] Système de notification tiktok insta twitter youtube Twitch
