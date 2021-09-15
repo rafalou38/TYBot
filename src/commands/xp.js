@@ -25,6 +25,17 @@ export default async function (client, message) {
 		userID: target.id,
 	});
 
+	if (!foundTarget) {
+		return message.reply({
+			embeds: [
+				{
+					title: "Erreur",
+					description: "cet utilisateur ne fait pas partie de la base de données",
+					color: "RED",
+				},
+			],
+		});
+	}
 	// CALCULATE RANK
 
 	/**@type {import("../../types/db/Member.js").IMember} */
