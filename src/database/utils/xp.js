@@ -7,7 +7,7 @@ import { Member } from "../schemas/Member.js";
  * @param {Discord.GuildMember} member
  * @returns {Promise<Number | void>}
  */
-export async function addXP(member) {
+export async function addXP(member, count = null) {
 	/** @type {import("../../../types/db/Member.js").IMember} */
 	let DBMember = await Member.findOne({
 		guildID: member.guild.id,
@@ -20,7 +20,7 @@ export async function addXP(member) {
 			userID: member.id,
 		});
 	}
-	DBMember.xp += config.xpIncrement;
+	DBMember.xp += count || config.xpIncrement;
 	const requiredXPForLevel = calcRequiredXPForLevel(DBMember.level);
 	if (DBMember.xp >= requiredXPForLevel) {
 		DBMember.xp = 0;
