@@ -36,6 +36,10 @@ export default async function (client, message) {
 						value:
 							"Affiche l'experience, le niveau et le rang de l'utilisateur, si aucun utilisateur n'est donné vérifie pour la personne executant la commande",
 					},
+					{
+						name: "```-add-xp @utilisateur <nombre>```",
+						value: "Ajoute de l'xp a un utilisateur",
+					},
 				],
 			},
 		],

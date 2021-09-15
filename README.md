@@ -1,6 +1,6 @@
-- [ ] Système de niveaux / addxp / remove etc.. leaderboard
+- [x] Système de niveaux / addxp / remove etc.. leaderboard
   - [x] auto add on message
-  - [ ] add xp command
+  - [x] add xp command
   - [x] xp command
 - [ ] Système de ticket
 - [x] Système de message d'arrivée / de personne qui quitte
