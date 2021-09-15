@@ -16,6 +16,6 @@
   - [ ] _plus de details_
 - [x] prefixes : -
 
-ajouter sur le bot que tout les 5 Niveau ils donnent un role au joueur qui a eu les levels
+- [x] ajouter sur le bot que tout les 5 Niveau ils donnent un role au joueur qui a eu les levels
 
-- [ ] ajouter un classement
+- [?] ajouter un classement

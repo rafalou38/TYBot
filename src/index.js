@@ -22,11 +22,11 @@ const client = new Discord.Client({
 });
 
 client.once("ready", async () => {
-	// const guilds = await client.guilds.fetch();
-	// guilds.forEach(async (oldGuild) => {
-	// 	const guild = await client.guilds.fetch(oldGuild.id);
-	// 	init(guild);
-	// });
+	const guilds = await client.guilds.fetch();
+	guilds.forEach(async (oldGuild) => {
+		const guild = await client.guilds.fetch(oldGuild.id);
+		init(guild);
+	});
 	log(`🤖 bot ${client.user.username}#${client.user.tag} successfully started 🚀`);
 });
 
