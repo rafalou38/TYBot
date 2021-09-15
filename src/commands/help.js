@@ -40,6 +40,11 @@ export default async function (client, message) {
 						name: "```-add-xp @utilisateur <nombre>```",
 						value: "Ajoute de l'xp a un utilisateur",
 					},
+					{
+						name: "```-ticket```",
+						value:
+							"Crée un ticket pour parler avec les administrateurs, un seul ticket a la fois sauf pour les administrateurs",
+					},
 				],
 			},
 		],

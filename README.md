@@ -2,7 +2,7 @@
   - [x] auto add on message
   - [x] add xp command
   - [x] xp command
-- [ ] Système de ticket
+- [x] Système de ticket
 - [x] Système de message d'arrivée / de personne qui quitte
 - [ ] Système de notification tiktok insta twitter youtube Twitch
 - [ ] Giveaway

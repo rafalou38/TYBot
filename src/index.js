@@ -13,6 +13,7 @@ import { config, context } from "./context.js";
 import { log } from "./utils/prettyLog.js";
 import { setup as setupInvites } from "./utils/invites.js";
 import { countXP } from "./events/message.js";
+import { handleInteraction } from "./events/interaction.js";
 
 /** @type {Discord.IntentsString[]} */
 const intents = ["GUILDS", "GUILD_MESSAGES", "GUILD_MEMBERS", "GUILD_INVITES"];
@@ -40,6 +41,7 @@ client.on("messageCreate", async (message) => {
 	command(client, message);
 });
 
+client.on("interactionCreate", handleInteraction);
 client.on("guildMemberAdd", userJoin);
 client.on("guildMemberRemove", userLeave);
 
