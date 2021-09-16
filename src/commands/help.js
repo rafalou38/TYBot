@@ -45,6 +45,10 @@ export default async function (client, message) {
 						value:
 							"Crée un ticket pour parler avec les administrateurs, un seul ticket a la fois sauf pour les administrateurs",
 					},
+					{
+						name: "```-suggestion <texte de la suggestion>```",
+						value: "Crée une suggestion",
+					},
 				],
 			},
 		],

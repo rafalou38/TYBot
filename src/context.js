@@ -1,6 +1,7 @@
 export const config = {
 	prefix: "-",
 	userJoinChannelID: "887010085484757025",
+	suggestionsChannelID: "888025058252029992",
 	ticketCategoryID: "887010006703169596",
 	xpIncrement: 2,
 	xpAddDelaySeconds: 10,

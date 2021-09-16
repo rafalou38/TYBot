@@ -10,7 +10,8 @@
   - [ ] Système de logs
 - [ ] Système de présentation de serveur ( profil du serveur stats etc )
 - [ ] Profile de l'utilisateur
-- [ ] Système de sondage / suggestions
+- [ ] Système de sondage
+- [+] Système de suggestions
 - [ ] Système d'anniversaire
 - [x] Nombres de membres actuels sur le serv
   - [ ] _plus de details_

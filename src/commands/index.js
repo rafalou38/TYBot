@@ -4,6 +4,7 @@ import members from "./members.js";
 import xp from "./xp.js";
 import addXp from "./add-xp.js";
 import ticket from "./ticket.js";
+import suggestion from "./suggestion.js";
 
 export const commands = {
 	help,
@@ -12,4 +13,5 @@ export const commands = {
 	xp,
 	"add-xp": addXp,
 	ticket,
+	suggestion,
 };
