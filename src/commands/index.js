@@ -3,9 +3,9 @@ import invites from "./invites.js";
 import members from "./members.js";
 import xp from "./xp.js";
 import addXp from "./add-xp.js";
-import ticket from "./ticket.js";
 import suggestion from "./suggestion.js";
 import sondage from "./sondage.js";
+import ticketHere from "./ticket-here.js";
 
 export const commands = {
 	help,
@@ -13,7 +13,7 @@ export const commands = {
 	members,
 	xp,
 	"add-xp": addXp,
-	ticket,
 	suggestion,
 	sondage,
+	"ticket-here": ticketHere,
 };

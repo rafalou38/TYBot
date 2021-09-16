@@ -41,9 +41,8 @@ export default async function (client, message) {
 						value: "Ajoute de l'xp a un utilisateur",
 					},
 					{
-						name: "```-ticket```",
-						value:
-							"Crée un ticket pour parler avec les administrateurs, un seul ticket a la fois sauf pour les administrateurs",
+						name: "```-ticket-here```",
+						value: "Crée un bouton créer des tickets pour parler aux administrateurs",
 					},
 					{
 						name: "```-suggestion <texte de la suggestion>```",
