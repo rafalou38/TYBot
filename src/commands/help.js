@@ -49,6 +49,10 @@ export default async function (client, message) {
 						name: "```-suggestion <texte de la suggestion>```",
 						value: "Crée une suggestion",
 					},
+					{
+						name: "```-sondage <texte du sondage>```",
+						value: "Crée un sondage",
+					},
 				],
 			},
 		],

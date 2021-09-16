@@ -5,6 +5,7 @@ import xp from "./xp.js";
 import addXp from "./add-xp.js";
 import ticket from "./ticket.js";
 import suggestion from "./suggestion.js";
+import sondage from "./sondage.js";
 
 export const commands = {
 	help,
@@ -14,4 +15,5 @@ export const commands = {
 	"add-xp": addXp,
 	ticket,
 	suggestion,
+	sondage,
 };
