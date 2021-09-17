@@ -52,6 +52,10 @@ export default async function (client, message) {
 						name: "```-sondage <texte du sondage>```",
 						value: "Crée un sondage",
 					},
+					{
+						name: "```-giveaway <temps (secondes)> <prix>```",
+						value: "Crée un giveaway avec une réaction pour participer",
+					},
 				],
 			},
 		],

@@ -4,14 +4,14 @@
   - [x] xp command
 - [x] Système de ticket
 - [x] Système de message d'arrivée / de personne qui quitte
-- [ ] Système de notification tiktok insta twitter youtube Twitch
-- [ ] Giveaway
+- [?] Système de notification tiktok insta twitter youtube Twitch
+- [x] Giveaway
 - [x] Track Invite / nombre d'invites par qui à été invité qui etc
-  - [ ] Système de logs
+- [ ] Système de logs
 - [ ] Système de présentation de serveur ( profil du serveur stats etc )
 - [ ] Profile de l'utilisateur
-- [ ] Système de sondage
-- [+] Système de suggestions
+- [x] Système de sondage
+- [x] Système de suggestions
 - [ ] Système d'anniversaire
 - [x] Nombres de membres actuels sur le serv
   - [ ] _plus de details_
