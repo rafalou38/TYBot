@@ -17,6 +17,8 @@ export async function userLeave(member) {
 		userID: member.id,
 	});
 
+	if (!DBMemberLeave) return;
+
 	const DBMemberInviter = await Member.findOneAndUpdate(
 		{
 			guildID: member.guild.id,
