@@ -11,43 +11,47 @@ export async function userLeave(member) {
 	const channel = await getChanelById(config.userJoinChannelID);
 	if (!channel || !channel.isText()) return;
 
-	/** @type {IMember} */
+	/** @type {import("../../types/db/Member.js").IMember} */
 	const DBMemberLeave = await Member.findOne({
 		guildID: member.guild.id,
 		userID: member.id,
 	});
-
-	if (!DBMemberLeave) return;
-
-	const DBMemberInviter = await Member.findOneAndUpdate(
-		{
-			guildID: member.guild.id,
-			userID: DBMemberLeave.invitedBy,
-		},
-		{ $inc: { invites: -1 } },
-		{
-			new: true,
-		}
-	);
+	/** @type {import("../../types/db/Member.js").IMember} */
+	let DBMemberInviter;
+	if (DBMemberLeave) {
+		DBMemberInviter = await Member.findOneAndUpdate(
+			{
+				guildID: member.guild.id,
+				userID: DBMemberLeave.invitedBy,
+			},
+			{ $inc: { invites: -1 } },
+			{
+				new: true,
+			}
+		);
+	}
 
 	channel.send({
 		embeds: [
 			{
 				title: `Bye ${member.user.tag}`,
 				description: `<@${member.id}> nous a quittées`,
+				color: "RED",
 				thumbnail: {
 					url: member.user.avatarURL(),
 				},
-				fields: [
-					{
-						name: "Il avait été invité par",
-						value: `<@${DBMemberInviter.userID}>`,
-					},
-					{
-						name: "Qui à désormais:",
-						value: `${DBMemberInviter.invites} invites`,
-					},
-				],
+				fields: DBMemberInviter
+					? [
+						{
+							name: "Il avait été invité par",
+							value: `<@${DBMemberInviter.userID}>`,
+						},
+						{
+							name: "Qui à désormais:",
+							value: `${DBMemberInviter.invites} invites`,
+						},
+					]
+					: [],
 			},
 		],
 	});

@@ -27,7 +27,7 @@ export async function userJoin(member) {
 		}
 	);
 	if (!existed) {
-		new Member({
+		await new Member({
 			guildID: member.guild.id,
 			userID: member.id,
 			invitedBy: invite.inviter.id,
@@ -62,6 +62,7 @@ export async function userJoin(member) {
 			{
 				title: `bienvenue ${member.user.tag}`,
 				description: `<@${member.id}> nous a rejoints`,
+				color: "GREEN",
 				thumbnail: {
 					url: member.user.avatarURL(),
 				},
