@@ -5,6 +5,7 @@ declare interface IMember extends Document {
 	invites: number;
 	invitedBy: string;
 	userID: string;
+	birthday: string;
 	xp: number;
 	level: Number;
 }

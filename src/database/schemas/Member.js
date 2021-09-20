@@ -6,6 +6,7 @@ const memberSchema = new Schema({
 	guildID: String,
 	userID: String,
 	invitedBy: String,
+	birthday: { type: String, required: false },
 	invites: { type: Number, default: 0 },
 	xp: { type: Number, default: 0 },
 	level: { type: Number, default: 0 },

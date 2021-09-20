@@ -53,6 +53,10 @@ export default async function (client, message) {
 						name: "```-giveaway <temps (secondes)> <prix>```",
 						value: "Crée un giveaway avec une réaction pour participer",
 					},
+					{
+						name: "```-aniv jour/mois``` exemple: ```-aniv 03/01``` -> 3 janvier",
+						value: "Définit votre anniversaire pour qu'il soit annoncé le jour venu par le bot.",
+					},
 				],
 			},
 		],

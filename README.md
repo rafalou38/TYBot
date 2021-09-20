@@ -12,7 +12,7 @@
 - [ ] Profile de l'utilisateur
 - [x] Système de sondage
 - [x] Système de suggestions
-- [ ] Système d'anniversaire
+- [x] Système d'anniversaire
 - [x] Nombres de membres actuels sur le serv
   - [ ] _plus de details_
 - [x] prefixes : -

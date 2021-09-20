@@ -7,6 +7,7 @@ import suggestion from "./suggestion.js";
 import sondage from "./sondage.js";
 import ticketHere from "./ticket-here.js";
 import giveaway from "./giveaway.js";
+import aniv from "./aniv.js";
 
 export const commands = {
 	help,
@@ -18,4 +19,5 @@ export const commands = {
 	sondage,
 	"ticket-here": ticketHere,
 	giveaway,
+	aniv,
 };

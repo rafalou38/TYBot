@@ -14,6 +14,7 @@ import { log } from "./utils/prettyLog.js";
 import { setup as setupInvites } from "./utils/invites.js";
 import { countXP } from "./events/message.js";
 import { handleInteraction } from "./events/interaction.js";
+import { checkBirthday } from "./tasks/birthday.js";
 
 /** @type {Discord.IntentsString[]} */
 const intents = ["GUILDS", "GUILD_MESSAGES", "GUILD_MEMBERS", "GUILD_INVITES"];
@@ -26,6 +27,7 @@ client.once("ready", async () => {
 	const guilds = await client.guilds.fetch();
 	guilds.forEach(async (oldGuild) => {
 		const guild = await client.guilds.fetch(oldGuild.id);
+		checkBirthday(guild);
 		init(guild);
 	});
 	log(`🤖 bot ${client.user.username}#${client.user.tag} successfully started 🚀`);
