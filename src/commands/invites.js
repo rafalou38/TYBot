@@ -3,9 +3,6 @@ import { Member } from "../database/schemas/Member.js";
 import { parseInput, getMemberFromText } from "../utils/commands.js";
 
 /**
- * ban a user
- *
- * !ban @utilisateur raison
  *
  * @param {Discord.Client<boolean>} client
  * @param {Discord.Message} message

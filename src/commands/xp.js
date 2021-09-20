@@ -4,9 +4,6 @@ import { calcRequiredXPForLevel } from "../database/utils/xp.js";
 import { parseInput, getMemberFromText } from "../utils/commands.js";
 
 /**
- * ban a user
- *
- * !ban @utilisateur raison
  *
  * @param {Discord.Client<boolean>} client
  * @param {Discord.Message} message

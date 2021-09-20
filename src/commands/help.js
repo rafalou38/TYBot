@@ -1,9 +1,6 @@
 import Discord from "discord.js";
 
 /**
- * ban a user
- *
- * !ban @utilisateur raison
  *
  * @param {Discord.Client<boolean>} client
  * @param {Discord.Message} message

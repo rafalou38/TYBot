@@ -8,9 +8,6 @@ import ShowRank from "./xp.js";
 /**@type {Discord.EmbedField[] | Discord.EmbedFieldData[]} */
 
 /**
- * ban a user
- *
- * !ban @utilisateur raison
  *
  * @param {Discord.Client<boolean>} client
  * @param {Discord.Message} message

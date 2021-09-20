@@ -13,9 +13,6 @@ const syntax = [
 ];
 
 /**
- * ban a user
- *
- * !ban @utilisateur raison
  *
  * @param {Discord.Client<boolean>} client
  * @param {Discord.Message} message
