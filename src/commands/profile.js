@@ -1,0 +1,73 @@
+import Discord from "discord.js";
+import { Member } from "../database/schemas/Member.js";
+import { parseInput, getMemberFromText } from "../utils/commands.js";
+
+/**
+ *
+ * @param {Discord.Client<boolean>} client
+ * @param {Discord.Message} message
+ */
+export default async function (client, message) {
+	const [targetMention] = parseInput(message.content);
+	const target = targetMention
+		? await getMemberFromText(message.guild, targetMention)
+		: message.member;
+
+	/** @type {import("../../types/db/Member.js").IMember | null} */
+	const foundTarget = await Member.findOne({
+		guildID: message.guild.id,
+		userID: target.id,
+	});
+
+	/**@type {Discord.EmbedFieldData[]} */
+	let DBfields = [];
+	if (foundTarget) {
+		DBfields = [
+			{
+				name: "Invitations",
+				value: foundTarget.invites.toString() || 0,
+				inline: true,
+			},
+			{
+				name: "Invité par",
+				value: "<@" + (foundTarget.invitedBy || "inconnu") + ">",
+				inline: true,
+			},
+			{
+				name: "Anniversaire",
+				value: foundTarget.birthday || "inconnu",
+				inline: true,
+			},
+			{
+				name: "Niveau",
+				value: foundTarget.level.toString() || 0,
+				inline: true,
+			},
+		];
+	}
+	DBfields.push({
+		name: "Roles",
+		value: target.roles.cache.map((r) => `<@&${r.id}>`).join(" ") || "aucuns",
+	});
+
+	const status = target.presence.activities.find((act) => act.type === "CUSTOM");
+	if (status) {
+		DBfields.push({
+			name: "Status:",
+			value: "```" + status.state + "```",
+		});
+	}
+
+	message.reply({
+		embeds: [
+			{
+				title: `profile de ${target.user.username}`,
+				thumbnail: {
+					url: target.user.avatarURL(),
+				},
+				description: `Profile de <@${target.id}>`,
+				fields: DBfields,
+			},
+		],
+	});
+}

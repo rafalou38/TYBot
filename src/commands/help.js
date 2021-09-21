@@ -57,6 +57,10 @@ export default async function (client, message) {
 						name: "```-aniv jour/mois``` exemple: ```-aniv 03/01``` -> 3 janvier",
 						value: "Définit votre anniversaire pour qu'il soit annoncé le jour venu par le bot.",
 					},
+					{
+						name: "```-profile (@user)",
+						value: "Affiche le profile de l'utilisateur",
+					},
 				],
 			},
 		],

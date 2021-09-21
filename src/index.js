@@ -17,7 +17,7 @@ import { handleInteraction } from "./events/interaction.js";
 import { checkBirthday } from "./tasks/birthday.js";
 
 /** @type {Discord.IntentsString[]} */
-const intents = ["GUILDS", "GUILD_MESSAGES", "GUILD_MEMBERS", "GUILD_INVITES"];
+const intents = ["GUILDS", "GUILD_MESSAGES", "GUILD_MEMBERS", "GUILD_INVITES", "GUILD_PRESENCES"];
 const client = new Discord.Client({
 	intents: intents,
 	ws: { intents: intents },

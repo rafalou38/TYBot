@@ -9,7 +9,7 @@
 - [x] Track Invite / nombre d'invites par qui à été invité qui etc
 - [ ] Système de logs
 - [ ] Système de présentation de serveur ( profil du serveur stats etc )
-- [ ] Profile de l'utilisateur
+- [x] Profile de l'utilisateur
 - [x] Système de sondage
 - [x] Système de suggestions
 - [x] Système d'anniversaire
