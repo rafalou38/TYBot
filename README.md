@@ -20,3 +20,5 @@
 - [x] ajouter sur le bot que tout les 5 Niveau ils donnent un role au joueur qui a eu les levels
 
 - [?] ajouter un classement
+- [ ] Ajouter un système d'annonce
+- [ ] mettre comme quoi on gagne de l'exp en voc pour les niveaux
