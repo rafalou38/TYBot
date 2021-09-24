@@ -60,7 +60,7 @@ export async function userJoin(member) {
 	channel.send({
 		embeds: [
 			{
-				title: `bienvenue ${member.user.tag}`,
+				title: `Bienvenue ${member.user.tag}`,
 				description: `<@${member.id}> nous a rejoints`,
 				color: "GREEN",
 				thumbnail: {
@@ -68,11 +68,11 @@ export async function userJoin(member) {
 				},
 				fields: [
 					{
-						name: "invited by:",
+						name: "Invité par:",
 						value: `<@${invite.inviter.id}>`,
 					},
 					{
-						name: "who now has:",
+						name: "Qui à désormais:",
 						value: `${DBInviter.invites} invites`,
 					},
 				],

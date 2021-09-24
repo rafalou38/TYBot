@@ -35,7 +35,7 @@ export async function checkBirthday(guild) {
 			embeds: [
 				{
 					title: "🎊   anniversaire   🎁",
-					description: `c'est l'anniversaire de <@${user.userID}>!`,
+					description: `C'est l'anniversaire de <@${user.userID}>!`,
 					color: "PURPLE",
 				},
 			],

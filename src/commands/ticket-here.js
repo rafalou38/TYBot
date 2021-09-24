@@ -14,7 +14,7 @@ import ShowRank from "./xp.js";
  */
 export default async function (client, message) {
 	await message.channel.send({
-		content: "cliquez ci-dessous pour créer un ticket",
+		content: "Cliquez ci-dessous pour créer un ticket",
 		components: [
 			{
 				type: "ACTION_ROW",

@@ -61,7 +61,7 @@ export default async function (client, message) {
 	message.reply({
 		embeds: [
 			{
-				title: `profile de ${target.user.username}`,
+				title: `Profile de ${target.user.username}`,
 				thumbnail: {
 					url: target.user.avatarURL(),
 				},

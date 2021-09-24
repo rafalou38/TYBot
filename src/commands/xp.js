@@ -14,7 +14,7 @@ export default async function (client, message) {
 		? await getMemberFromText(message.guild, targetMention)
 		: message.member;
 
-	if (!target) return await message.reply("user not found");
+	if (!target) return await message.reply("Cet utilisateur n'existe pas");
 
 	/** @type {import("../../types/db/Member.js").IMember} */
 	const foundTarget = await Member.findOne({
@@ -27,7 +27,7 @@ export default async function (client, message) {
 			embeds: [
 				{
 					title: "Erreur",
-					description: "cet utilisateur ne fait pas partie de la base de données",
+					description: "Cet utilisateur ne fait pas partie de la base de données",
 					color: "RED",
 				},
 			],
@@ -59,11 +59,11 @@ export default async function (client, message) {
 						value: `\`\`\`${foundTarget.xp}/${calcRequiredXPForLevel(foundTarget.level)}\`\`\``,
 					},
 					{
-						name: "level    🏆",
+						name: "Level    🏆",
 						value: `\`\`\`${foundTarget.level}\`\`\``,
 					},
 					{
-						name: "rank    🥇",
+						name: "Rank    🥇",
 						value: `\`\`\`${rank}\`\`\``,
 					},
 				],

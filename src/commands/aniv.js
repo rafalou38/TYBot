@@ -22,7 +22,7 @@ export default async function (client, message) {
 			embeds: [
 				{
 					title: "Erreur",
-					description: "mauvaise date",
+					description: "Mauvaise date",
 					color: "RED",
 					fields: syntax,
 				},

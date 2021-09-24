@@ -13,7 +13,7 @@ export default async function (client, message) {
 		? await getMemberFromText(message.guild, targetMention)
 		: message.member;
 
-	if (!target) return await message.reply("user not found");
+	if (!target) return await message.reply("Cet utilisateur n'existe pas");
 	/** @type {IMember} */
 	const foundTarget = await Member.findOne({
 		guildID: message.guild.id,
