@@ -62,7 +62,7 @@ export default async function (client, message) {
 						value: "Affiche le profile de l'utilisateur",
 					},
 					{
-						name: "```-server",
+						name: "```-server```",
 						value: "Affiche les informations du server",
 					},
 				],
