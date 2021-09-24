@@ -4,6 +4,7 @@ export const config = {
 	suggestionsChannelID: "888025058252029992",
 	anivChannelID: "889552659302977558",
 	sondageChannelID: "888028368396775494",
+	logsChannelID: "890861584304463923",
 	ticketCategoryID: "887010006703169596",
 	xpIncrement: 2,
 	xpAddDelaySeconds: 10,

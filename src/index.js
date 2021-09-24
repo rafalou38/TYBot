@@ -15,6 +15,8 @@ import { setup as setupInvites } from "./utils/invites.js";
 import { countXP } from "./events/message.js";
 import { handleInteraction } from "./events/interaction.js";
 import { checkBirthday } from "./tasks/birthday.js";
+import { logDelete } from "./events/log/delete.js";
+import { logEdit } from "./events/log/edit.js";
 
 /** @type {Discord.IntentsString[]} */
 const intents = ["GUILDS", "GUILD_MESSAGES", "GUILD_MEMBERS", "GUILD_INVITES", "GUILD_PRESENCES"];
@@ -46,6 +48,9 @@ client.on("messageCreate", async (message) => {
 client.on("interactionCreate", handleInteraction);
 client.on("guildMemberAdd", userJoin);
 client.on("guildMemberRemove", userLeave);
+
+client.on("messageDelete", logDelete);
+client.on("messageUpdate", logEdit);
 
 initDB().then(async () => {
 	await client.login(process.env.BOT_TOKEN);
