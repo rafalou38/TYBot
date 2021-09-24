@@ -7,8 +7,8 @@
 - [?] Système de notification tiktok insta twitter youtube Twitch
 - [x] Giveaway
 - [x] Track Invite / nombre d'invites par qui à été invité qui etc
-- [ ] Système de logs
-- [ ] Système de présentation de serveur ( profil du serveur stats etc )
+- [x] Système de logs
+- [x] Système de présentation de serveur ( profil du serveur stats etc )
 - [x] Profile de l'utilisateur
 - [x] Système de sondage
 - [x] Système de suggestions

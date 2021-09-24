@@ -17,7 +17,7 @@ export default async function (client, message) {
 				fields: [
 					{
 						name: "```-help```",
-						value: "Permet d'afficher ce message",
+						value: "Afficher ce message",
 					},
 					{
 						name: "```-invite (@user)```",
@@ -26,7 +26,7 @@ export default async function (client, message) {
 					},
 					{
 						name: "```-members```",
-						value: "Affiche le nombre de personnes",
+						value: "Affiche le nombre de personnes sur le server",
 					},
 					{
 						name: "```-xp (@user)```",
@@ -60,6 +60,10 @@ export default async function (client, message) {
 					{
 						name: "```-profile (@user)",
 						value: "Affiche le profile de l'utilisateur",
+					},
+					{
+						name: "```-server",
+						value: "Affiche les informations du server",
 					},
 				],
 			},

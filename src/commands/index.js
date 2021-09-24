@@ -9,6 +9,7 @@ import ticketHere from "./ticket-here.js";
 import giveaway from "./giveaway.js";
 import aniv from "./aniv.js";
 import profile from "./profile.js";
+import server from "./server.js";
 
 export const commands = {
 	help,
@@ -22,4 +23,5 @@ export const commands = {
 	giveaway,
 	aniv,
 	profile,
+	server,
 };
