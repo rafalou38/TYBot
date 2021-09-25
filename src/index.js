@@ -30,7 +30,6 @@ client.once("ready", async () => {
 	guilds.forEach(async (oldGuild) => {
 		const guild = await client.guilds.fetch(oldGuild.id);
 		checkBirthday(guild);
-		init(guild);
 	});
 	log(`🤖 bot ${client.user.username}#${client.user.tag} successfully started 🚀`);
 });
@@ -51,6 +50,14 @@ client.on("guildMemberRemove", userLeave);
 
 client.on("messageDelete", logDelete);
 client.on("messageUpdate", logEdit);
+
+setTimeout(async () => {
+	const guilds = await client.guilds.fetch();
+	guilds.forEach(async (oldGuild) => {
+		const guild = await client.guilds.fetch(oldGuild.id);
+		checkBirthday(guild);
+	});
+}, 86400000); // everyday
 
 initDB().then(async () => {
 	await client.login(process.env.BOT_TOKEN);
