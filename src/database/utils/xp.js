@@ -25,9 +25,9 @@ export async function addXP(member, count = null) {
 	if (DBMember.xp >= requiredXPForLevel) {
 		DBMember.xp = 0;
 		DBMember.level += 1;
-		if (DBMember.level && DBMember.level % 5 === 0) {
-			let roles = await member.guild.roles.cache;
-			member.roles.add(roles.find((v) => v.name === "level " + DBMember.level));
+		if (DBMember.level && config.xpRolesIDS[DBMember.level]) {
+			let role = await member.guild.roles.fetch(config.xpRolesIDS[DBMember.level]);
+			member.roles.add(role);
 		}
 		await DBMember.save();
 		return DBMember.level;
