@@ -8,7 +8,7 @@ import { getChanelById } from "../utils/channels.js";
  * @param {Discord.GuildMember} member
  */
 export async function userLeave(member) {
-	const channel = await getChanelById(config.userJoinChannelID);
+	const channel = await getChanelById(config.guilds[member.id].userJoinChannelID);
 	if (!channel || !channel.isText()) return;
 
 	/** @type {import("../../types/db/Member.js").IMember} */
@@ -42,15 +42,15 @@ export async function userLeave(member) {
 				},
 				fields: DBMemberInviter
 					? [
-						{
-							name: "Il avait été invité par",
-							value: `<@${DBMemberInviter.userID}>`,
-						},
-						{
-							name: "Qui à désormais:",
-							value: `${DBMemberInviter.invites} invites`,
-						},
-					]
+							{
+								name: "Il avait été invité par",
+								value: `<@${DBMemberInviter.userID}>`,
+							},
+							{
+								name: "Qui à désormais:",
+								value: `${DBMemberInviter.invites} invites`,
+							},
+					  ]
 					: [],
 			},
 		],

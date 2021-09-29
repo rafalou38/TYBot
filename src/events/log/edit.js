@@ -9,7 +9,9 @@ import { config } from "../../context.js";
 export async function logEdit(oldMessage, newMessage) {
 	if (newMessage.author.bot) return;
 	/** @type {Discord.TextChannel} */
-	const channel = await newMessage.guild.channels.fetch(config.logsChannelID);
+	const channel = await newMessage.guild.channels.fetch(
+		config.guilds[newMessage.guildId].logsChannelID
+	);
 
 	channel.send({
 		embeds: [

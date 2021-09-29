@@ -17,7 +17,7 @@ export default async function ticket(interaction) {
 	const channel = await interaction.guild.channels.create(
 		`Ticket de ${interaction.user.username}`,
 		{
-			parent: config.ticketCategoryID,
+			parent: config.guilds[interaction.guildId].ticketCategoryID,
 			type: "GUILD_TEXT",
 			permissionOverwrites: [
 				{

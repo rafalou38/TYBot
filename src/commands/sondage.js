@@ -48,7 +48,7 @@ export default async function (client, message) {
 	}
 
 	/** @type {Discord.TextChannel} */
-	const channel = message.guild.channels.cache.get(config.sondageChannelID);
+	const channel = message.guild.channels.cache.get(config.guilds[message.guildId].sondageChannelID);
 	const sentMessage = await channel.send({
 		embeds: [
 			{

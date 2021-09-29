@@ -1,14 +1,51 @@
+/** @type {import("../types/context").IConfig} */
 export const config = {
 	prefix: "-",
-	userJoinChannelID: "888032043454324767",
-	suggestionsChannelID: "888025058252029992",
-	anivChannelID: "889552659302977558",
-	sondageChannelID: "888028368396775494",
-	logsChannelID: "890861584304463923",
-	ticketCategoryID: "887010006703169596",
 	xpIncrement: 2,
 	xpAddDelaySeconds: 10,
 	xpRequiredIncrease: 5,
+	guilds: {
+		// Ty serveur
+		"655531439571599380": {
+			userJoinChannelID: "655536203407556669",
+			suggestionsChannelID: "656841905690116106",
+			anivChannelID: "884408418402725898",
+			sondageChannelID: "656841905690116106",
+			logsChannelID: "655861612644925500",
+			ticketCategoryID: "738824482676015214",
+			xpRolesIDS: {
+				10: "812286357157314570",
+				15: "766021359641559070",
+				20: "812286802924142612",
+				25: "766021364044791829",
+				30: "812287139467362345",
+				35: "766021368721571852",
+				40: "766021367413604382",
+				45: "812287356446441472",
+				50: "766021375201771520",
+			},
+		},
+		// ty test
+		"884681737668550666": {
+			userJoinChannelID: "892739299798319144",
+			suggestionsChannelID: "892739467906011136",
+			anivChannelID: "892739506732666941",
+			sondageChannelID: "892739467906011136",
+			logsChannelID: "892739546100404264",
+			ticketCategoryID: "892739584914501652",
+			xpRolesIDS: {
+				10: "892739634042404875",
+				15: "892739655945060404",
+				20: "892739672755822642",
+				25: "892739691621810247",
+				30: "892739709535666177",
+				35: "892739719761371136",
+				40: "892739742423212042",
+				45: "892739754695749663",
+				50: "892739774803230721",
+			},
+		},
+	},
 };
 
 /**@type {import("../types/context").context} */

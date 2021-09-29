@@ -35,7 +35,9 @@ export default async function (client, message) {
 	}
 
 	/** @type {Discord.TextChannel} */
-	const channel = message.guild.channels.cache.get(config.suggestionsChannelID);
+	const channel = message.guild.channels.cache.get(
+		config.guilds[message.guildId].suggestionsChannelID
+	);
 	const sentMessage = await channel.send({
 		embeds: [
 			{

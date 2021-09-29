@@ -28,7 +28,7 @@ export async function checkBirthday(guild) {
 	});
 
 	/** @type {Discord.TextChannel}*/
-	const chanel = guild.channels.cache.get(config.anivChannelID);
+	const chanel = guild.channels.cache.get(config.guilds[guild.id].anivChannelID);
 
 	users.forEach((user) => {
 		chanel.send({

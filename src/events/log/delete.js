@@ -3,13 +3,12 @@ import { config } from "../../context.js";
 
 /**
  *
- * @param {Discord.Message} oldMessage
- * @param {Discord.Message} newMessage
+ * @param {Discord.Message} message
  */
 export async function logDelete(message) {
 	if (message.author.bot) return;
 	/** @type {Discord.TextChannel} */
-	const channel = await message.guild.channels.fetch(config.logsChannelID);
+	const channel = await message.guild.channels.fetch(config.guilds[message.guildId].logsChannelID);
 
 	channel.send({
 		embeds: [

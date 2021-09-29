@@ -10,7 +10,7 @@ import { log } from "../utils/prettyLog.js";
  * @param {Discord.GuildMember} member
  */
 export async function userJoin(member) {
-	const channel = await getChanelById(config.userJoinChannelID);
+	const channel = await getChanelById(config.guilds[member.guild.id].userJoinChannelID);
 
 	if (!channel || !channel.isText()) return;
 
