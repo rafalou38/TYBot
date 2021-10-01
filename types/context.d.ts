@@ -30,6 +30,7 @@ export interface IConfig {
 				45: string;
 				50: string;
 			};
+			membersRolesIds: string[];
 		};
 	};
 }

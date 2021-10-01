@@ -1,4 +1,5 @@
 import Discord from "discord.js";
+import { config } from "../context.js";
 import { Member } from "../database/schemas/Member.js";
 import { parseInput, getMemberFromText } from "../utils/commands.js";
 
@@ -8,7 +9,12 @@ import { parseInput, getMemberFromText } from "../utils/commands.js";
  * @param {Discord.Message} message
  */
 export default async function (client, message) {
-	// TODO: more detailed: bots, connected...
+	const roles = await Promise.all(
+		config.guilds[message.guildId].membersRolesIds.map(
+			async (roleID) => await message.guild.roles.fetch(roleID)
+		)
+	);
+
 	message.reply({
 		embeds: [
 			{
@@ -16,7 +22,9 @@ export default async function (client, message) {
 				thumbnail: {
 					url: client.user.avatarURL(),
 				},
-				description: `${message.guild.memberCount}`,
+				description:
+					`membres: **${message.guild.memberCount}**\n\n` +
+					roles.map((role, i) => `${role}:    **${role.members.size}**`).join("\n\n"),
 			},
 		],
 	});
