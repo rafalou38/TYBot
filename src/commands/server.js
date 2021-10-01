@@ -7,23 +7,54 @@ import { description } from "../context.js";
  * @param {Discord.Message} message
  */
 export default async function (client, message) {
-	const date = message.guild.createdAt;
-	const creation = date.getMonth() + 1 + "/" + date.getDate() + "/" + date.getFullYear();
 	message.reply({
-		content: description,
-		embeds: [
+		content: "** **",
+		components: [
 			{
-				title: message.guild.name,
-				description: message.guild.description,
-				thumbnail: {
-					url: message.guild.iconURL(),
-				},
-				fields: [
+				type: "ACTION_ROW",
+				components: [
 					{
-						name: "Crée le:",
-						value: creation,
+						style: "LINK",
+						label: "Twitter",
+						url: "https://twitter.com/tyteamoff/status/1332001166188752901?s=21",
+						type: "BUTTON",
+					},
+					{
+						style: "LINK",
+						label: "YouTube",
+						url: "https://www.youtube.com/channel/UCy6cCoqCoRiUbIgHQcuk33g",
+						type: "BUTTON",
+					},
+					{
+						style: "LINK",
+						label: "TikTok",
+						url: "https://vm.tiktok.com/ZMeVMfcFq/",
+						type: "BUTTON",
+					},
+					{
+						style: "LINK",
+						label: "Instagram",
+						url: "https://www.instagram.com/ty_team_off/?hl=fr",
+						type: "BUTTON",
 					},
 				],
+			},
+		],
+		embeds: [
+			{
+				title: "[TY-TEAM]",
+				description: "Communauté Européenne Multigaming",
+				color: 0x00ffa6,
+				fields: [
+					{
+						name: "Projet",
+						value:
+							"Nous aimerions créer notre propre jeux vidéo ! ce qui est actuellement en cour ! ",
+					},
+				],
+				image: {
+					url: "https://cdn.discordapp.com/attachments/884681984587214870/892759913070198854/logo.png",
+				},
 			},
 		],
 	});
