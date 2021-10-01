@@ -10,6 +10,7 @@ import giveaway from "./giveaway.js";
 import aniv from "./aniv.js";
 import profile from "./profile.js";
 import server from "./server.js";
+import ranks from "./ranks.js";
 
 export const commands = {
 	help,
@@ -24,4 +25,5 @@ export const commands = {
 	aniv,
 	profile,
 	server,
+	ranks,
 };
