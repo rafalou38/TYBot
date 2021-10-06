@@ -21,6 +21,12 @@ export default async function (client, message) {
 
 	/**@type {Discord.EmbedFieldData[]} */
 	let DBfields = [];
+	const createdAt =
+		target.user.createdAt.getDate() +
+		"/" +
+		(target.user.createdAt.getMonth() - 1) +
+		"/" +
+		target.user.createdAt.getFullYear();
 	if (foundTarget) {
 		DBfields = [
 			{
@@ -41,6 +47,11 @@ export default async function (client, message) {
 			{
 				name: "Niveau",
 				value: foundTarget.level.toString() || 0,
+				inline: true,
+			},
+			{
+				name: "Compte crée le",
+				value: createdAt,
 				inline: true,
 			},
 		];
