@@ -74,7 +74,7 @@ export async function logRoleCreate(role) {
 		embeds: [
 			{
 				title: `Role crée`,
-				description: `nouveau role: ${role}`,
+				description: `Nouveau role: ${role}`,
 				color: "RED",
 				timestamp: new Date(),
 			},
@@ -93,7 +93,7 @@ export async function logRoleDelete(role) {
 		embeds: [
 			{
 				title: `Role crée`,
-				description: `role supprimé: @${role.name}`,
+				description: `Role supprimé: @${role.name}`,
 				color: "RED",
 				timestamp: new Date(),
 			},

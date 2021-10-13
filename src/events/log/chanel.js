@@ -14,7 +14,7 @@ export async function logChannelDelete(channel) {
 		embeds: [
 			{
 				title: `Salon supprimé`,
-				description: `ancien nom: ${channel.name}`,
+				description: `Ancien nom: ${channel.name}`,
 				color: "RED",
 				timestamp: new Date(),
 			},
