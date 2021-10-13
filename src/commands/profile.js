@@ -24,7 +24,7 @@ export default async function (client, message) {
 	const createdAt =
 		target.user.createdAt.getDate() +
 		"/" +
-		(target.user.createdAt.getMonth() - 1) +
+		(target.user.createdAt.getMonth() + 1) +
 		"/" +
 		target.user.createdAt.getFullYear();
 	if (foundTarget) {
