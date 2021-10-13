@@ -16,6 +16,10 @@ export async function userJoin(member) {
 
 	const invite = await getInvite(member);
 
+	if (!invite) {
+		invite = { inviter: context.client.user };
+	}
+
 	// CONFIG USER ACCOUNT
 	const existed = await Member.findOneAndUpdate(
 		{
