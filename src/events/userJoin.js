@@ -56,6 +56,7 @@ export async function userJoin(member) {
 		DBInviter = await new Member({
 			guildID: member.guild.id,
 			userID: invite.inviter.id,
+			invites: 1,
 		}).save();
 		log(invite.inviter.tag, "new inviter account created");
 	} else {
