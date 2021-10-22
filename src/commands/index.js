@@ -11,6 +11,7 @@ import aniv from "./aniv.js";
 import profile from "./profile.js";
 import server from "./server.js";
 import ranks from "./ranks.js";
+import addLevel from "./add-level.js";
 
 export const commands = {
 	help,
@@ -18,6 +19,7 @@ export const commands = {
 	members,
 	xp,
 	"add-xp": addXp,
+	"add-level": addLevel,
 	suggestion,
 	sondage,
 	"ticket-here": ticketHere,

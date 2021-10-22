@@ -36,7 +36,26 @@ export async function addXP(member, count = null) {
 	}
 	await DBMember.save();
 }
+/**
+ * @param {Discord.GuildMember} member
+ * @returns {Promise<Number | void>}
+ */
+export async function addLvl(member, count = null) {
+	/** @type {import("../../../types/db/Member.js").IMember} */
+	let DBMember = await Member.findOne({
+		guildID: member.guild.id,
+		userID: member.id,
+	});
 
+	if (!DBMember) {
+		DBMember = new Member({
+			guildID: member.guild.id,
+			userID: member.id,
+		});
+	}
+	DBMember.level += count || 1;
+	await DBMember.save();
+}
 export function calcRequiredXPForLevel(level = 0) {
 	return 20 + level * config.xpRequiredIncrease;
 }
