@@ -11,6 +11,7 @@ export const config = {
 			suggestionsChannelID: "656841905690116106",
 			anivChannelID: "884408418402725898",
 			sondageChannelID: "656841905690116106",
+			levelUpChannelID: "792830986253369364",
 			logsChannelID: "655861612644925500",
 			ticketCategoryID: "738824482676015214",
 			xpRolesIDS: {
@@ -33,6 +34,7 @@ export const config = {
 			anivChannelID: "892739506732666941",
 			sondageChannelID: "892739467906011136",
 			logsChannelID: "892739546100404264",
+			levelUpChannelID: "792830986253369364",
 			ticketCategoryID: "892739584914501652",
 			xpRolesIDS: {
 				10: "892739634042404875",

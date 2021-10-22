@@ -18,6 +18,7 @@ export interface IConfig {
 			anivChannelID: string;
 			sondageChannelID: string;
 			logsChannelID: string;
+			levelUpChannelID: string;
 			ticketCategoryID: string;
 			xpRolesIDS: {
 				10: string;
