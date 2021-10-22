@@ -13,7 +13,7 @@ export const config = {
 			sondageChannelID: "656841905690116106",
 			levelUpChannelID: "792830986253369364",
 			logsChannelID: "655861612644925500",
-			ticketCategoryID: "738824482676015214",
+			ticketCategoryID: "655538940459352065",
 			xpRolesIDS: {
 				10: "812286357157314570",
 				15: "766021359641559070",
