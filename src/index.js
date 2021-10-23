@@ -1,6 +1,8 @@
 import dotenv from "dotenv";
 dotenv.config(); // load discord token from .env
 
+import "./sentry.js";
+
 import Discord from "discord.js";
 
 import init from "./init.js";
