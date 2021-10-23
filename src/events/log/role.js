@@ -73,7 +73,7 @@ export async function logRoleCreate(role) {
 	channel.send({
 		embeds: [
 			{
-				title: `Role crée`,
+				title: "Role crée",
 				description: `Nouveau role: ${role}`,
 				color: "RED",
 				timestamp: new Date(),
@@ -92,7 +92,7 @@ export async function logRoleDelete(role) {
 	channel.send({
 		embeds: [
 			{
-				title: `Role crée`,
+				title: "Role crée",
 				description: `Role supprimé: @${role.name}`,
 				color: "RED",
 				timestamp: new Date(),

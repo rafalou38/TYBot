@@ -1,6 +1,6 @@
 import Discord from "discord.js";
 import { Member } from "../database/schemas/Member.js";
-import { addXP, calcRequiredXPForLevel } from "../database/utils/xp.js";
+import { addLvl, addXP, calcRequiredXPForLevel } from "../database/utils/xp.js";
 import { parseInput, getMemberFromText } from "../utils/commands.js";
 import ShowRank from "./xp.js";
 
@@ -19,6 +19,7 @@ const syntax = [
  */
 export default async function (client, message) {
 	const admin = message.member.permissions.has("ADMINISTRATOR");
+	// const admin = true;
 	if (!admin)
 		return message.reply({
 			embeds: [

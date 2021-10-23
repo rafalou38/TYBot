@@ -11,9 +11,8 @@
 	"rules": {
 		"no-unused-vars": "off",
 		"indent": ["error", "tab", { "SwitchCase": 1 }],
-		"linebreak-style": ["error", "windows"],
 		"quotes": ["error", "double"],
 		"semi": ["error", "always"],
-		"no-empty":"off"
+		"no-empty": "off"
 	}
 }

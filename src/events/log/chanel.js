@@ -13,7 +13,7 @@ export async function logChannelDelete(channel) {
 	logChannel.send({
 		embeds: [
 			{
-				title: `Salon supprimé`,
+				title: "Salon supprimé",
 				description: `Ancien nom: ${channel.name}`,
 				color: "RED",
 				timestamp: new Date(),
@@ -34,7 +34,7 @@ export async function logChannelCreate(channel) {
 	logChannel.send({
 		embeds: [
 			{
-				title: `Salon crée`,
+				title: "Salon crée",
 				description: `Nouveau salon: ${channel}`,
 				color: "GREEN",
 				timestamp: new Date(),

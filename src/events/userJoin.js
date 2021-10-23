@@ -1,5 +1,5 @@
 import Discord from "discord.js";
-import { config } from "../context.js";
+import { config, context } from "../context.js";
 import { Member } from "../database/schemas/Member.js";
 import { getChanelById } from "../utils/channels.js";
 import { getInvite } from "../utils/invites.js";
@@ -14,7 +14,7 @@ export async function userJoin(member) {
 
 	if (!channel || !channel.isText()) return;
 
-	const invite = await getInvite(member);
+	let invite = await getInvite(member);
 
 	if (!invite) {
 		invite = { inviter: context.client.user };
