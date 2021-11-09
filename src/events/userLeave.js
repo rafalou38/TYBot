@@ -29,6 +29,7 @@ export async function userLeave(member) {
 				new: true,
 			}
 		);
+		await DBMemberLeave.deleteOne();
 	}
 
 	channel.send({
@@ -42,14 +43,14 @@ export async function userLeave(member) {
 				},
 				fields: DBMemberInviter
 					? [
-						{
-							name: "Il avait été invité par",
-							value: `<@${DBMemberInviter.userID}>`,
-						},
-						{
-							name: "Qui à désormais:",
-							value: `${DBMemberInviter.invites} invites`,
-						},
+							{
+								name: "Il avait été invité par",
+								value: `<@${DBMemberInviter.userID}>`,
+							},
+							{
+								name: "Qui à désormais:",
+								value: `${DBMemberInviter.invites} invites`,
+							},
 					  ]
 					: [],
 			},
