@@ -79,14 +79,14 @@ export default async function (client, message) {
 			text: message.author.tag,
 		},
 	};
-	function updateTime(totSeconds) {
+	function setEmbedTime(totSeconds) {
 		const hours = Math.floor(totSeconds / 3600);
 		const minutes = Math.floor((totSeconds % 3600) / 60);
 		const seconds = totSeconds % 60;
 		giveawayEmbed.fields[1].value = `**${hours}h ${minutes}m ${seconds}s**`;
 	}
 
-	updateTime(temps);
+	setEmbedTime(temps);
 	/** @type {Discord.Message} */
 	let sentMessage = await message.channel.send({
 		embeds: [giveawayEmbed],
@@ -99,7 +99,7 @@ export default async function (client, message) {
 		const diff = now - start;
 		const remaining = temps - Math.round(diff / 1000);
 		if (remaining > 0) {
-			updateTime(remaining);
+			setEmbedTime(remaining);
 		} else {
 			clearInterval(interval);
 			giveawayEmbed.fields[1].name = "Gagnant";
