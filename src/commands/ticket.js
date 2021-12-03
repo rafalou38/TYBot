@@ -28,6 +28,10 @@ export default async function ticket(interaction) {
 					id: interaction.user.id,
 					allow: "VIEW_CHANNEL",
 				},
+				{
+					id: config.guilds[interaction.guildId].staffRoleID,
+					allow: "VIEW_CHANNEL",
+				},
 			],
 		}
 	);

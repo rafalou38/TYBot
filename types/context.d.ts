@@ -21,7 +21,7 @@ export interface IConfig {
 			logsChannelID: string;
 			levelUpChannelID: string;
 			ticketCategoryID: string;
-			techRoleID: string;
+			staffRoleID: string;
 			xpRolesIDS: {
 				5: string;
 				10: string;

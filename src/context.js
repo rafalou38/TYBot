@@ -15,7 +15,7 @@ export const config = {
 			levelUpChannelID: "792830986253369364",
 			logsChannelID: "655861612644925500",
 			ticketCategoryID: "655538940459352065",
-			techRoleID: "656581605892161566",
+			staffRoleID: "663763852680364044",
 			xpRolesIDS: {
 				5: "766021353522200608",
 				10: "812286357157314570",
