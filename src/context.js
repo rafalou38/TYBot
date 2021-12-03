@@ -4,6 +4,7 @@ export const config = {
 	xpIncrement: 2,
 	xpAddDelaySeconds: 10,
 	xpRequiredIncrease: 5,
+	myID: "623790476713263124",
 	guilds: {
 		// Ty serveur
 		"655531439571599380": {
@@ -14,6 +15,7 @@ export const config = {
 			levelUpChannelID: "792830986253369364",
 			logsChannelID: "655861612644925500",
 			ticketCategoryID: "655538940459352065",
+			techRoleID: "656581605892161566",
 			xpRolesIDS: {
 				10: "812286357157314570",
 				15: "766021359641559070",

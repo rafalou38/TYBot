@@ -11,6 +11,7 @@ export interface IConfig {
 	xpIncrement: number;
 	xpAddDelaySeconds: number;
 	xpRequiredIncrease: number;
+	myID: string;
 	guilds: {
 		[key: string]: {
 			userJoinChannelID: string;
@@ -20,6 +21,7 @@ export interface IConfig {
 			logsChannelID: string;
 			levelUpChannelID: string;
 			ticketCategoryID: string;
+			techRoleID: string;
 			xpRolesIDS: {
 				10: string;
 				15: string;
