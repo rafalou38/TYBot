@@ -9,7 +9,7 @@ import ticketHere from "./ticket-here.js";
 import giveaway from "./giveaway.js";
 import aniv from "./aniv.js";
 import profile from "./profile.js";
-import server from "./serveur.js";
+import serveur from "./serveur.js";
 import ranks from "./ranks.js";
 import addLevel from "./add-level.js";
 
@@ -26,6 +26,6 @@ export const commands = {
 	giveaway,
 	aniv,
 	profile,
-	server,
+	serveur,
 	ranks,
 };
