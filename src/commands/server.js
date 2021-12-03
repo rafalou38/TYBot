@@ -22,7 +22,7 @@ export default async function (client, message) {
 					{
 						style: "LINK",
 						label: "YouTube",
-						url: "https://www.youtube.com/channel/UCy6cCoqCoRiUbIgHQcuk33g",
+						url: "https://www.youtube.com/channel/UCPFJSJaidomQyLuvjFWFD_g",
 						type: "BUTTON",
 					},
 					{
