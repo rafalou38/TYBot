@@ -19,7 +19,8 @@ const syntax = [
  * @param {Discord.Message} message
  */
 export default async function (client, message) {
-	const admin = message.member.permissions.has("ADMINISTRATOR") || message.member.id === config.myID;
+	const admin =
+		message.member.permissions.has("ADMINISTRATOR") || message.member.id === config.myID;
 	if (!admin)
 		return message.reply({
 			embeds: [
@@ -78,7 +79,14 @@ export default async function (client, message) {
 			text: message.author.tag,
 		},
 	};
+	function updateTime(totSeconds) {
+		const hours = Math.floor(totSeconds / 3600);
+		const minutes = Math.floor((totSeconds % 3600) / 60);
+		const seconds = totSeconds % 60;
+		giveawayEmbed.fields[1].value = `**${hours}h ${minutes}m ${seconds}s**`;
+	}
 
+	updateTime(temps);
 	/** @type {Discord.Message} */
 	let sentMessage = await message.channel.send({
 		embeds: [giveawayEmbed],
@@ -91,12 +99,7 @@ export default async function (client, message) {
 		const diff = now - start;
 		const remaining = temps - Math.round(diff / 1000);
 		if (remaining > 0) {
-			// convert remaining (in seconds) to hours, minutes and seconds in the format hh:MM:SS
-			const hours = Math.floor(remaining / 3600);
-			const minutes = Math.floor((remaining % 3600) / 60);
-			const seconds = remaining % 60;
-			giveawayEmbed.fields[1].value = `**${hours}:${minutes}:${seconds}**`;
-
+			updateTime(remaining);
 		} else {
 			clearInterval(interval);
 			giveawayEmbed.fields[1].name = "Gagnant";
