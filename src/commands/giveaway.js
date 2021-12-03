@@ -91,7 +91,12 @@ export default async function (client, message) {
 		const diff = now - start;
 		const remaining = temps - Math.round(diff / 1000);
 		if (remaining > 0) {
-			giveawayEmbed.fields[1].value = "**" + remaining + "**s";
+			// convert remaining (in seconds) to hours, minutes and seconds in the format hh:MM:SS
+			const hours = Math.floor(remaining / 3600);
+			const minutes = Math.floor((remaining % 3600) / 60);
+			const seconds = remaining % 60;
+			giveawayEmbed.fields[1].value = `**${hours}:${minutes}:${seconds}**`;
+
 		} else {
 			clearInterval(interval);
 			giveawayEmbed.fields[1].name = "Gagnant";
@@ -113,5 +118,5 @@ export default async function (client, message) {
 			await sentMessage.edit({ embeds: [giveawayEmbed] });
 		}
 	}
-	interval = setInterval(updateTime, 1000 * 15);
+	interval = setInterval(updateTime, 1000 * 10);
 }
