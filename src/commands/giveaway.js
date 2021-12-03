@@ -107,5 +107,5 @@ export default async function (client, message) {
 		}
 		await sentMessage.edit({ embeds: [giveawayEmbed] });
 	}
-	interval = setInterval(updateTime, 1000);
+	interval = setInterval(updateTime, 1000 * 60);
 }
