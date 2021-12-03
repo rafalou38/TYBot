@@ -30,7 +30,7 @@ export default async function (client, message) {
 		},
 		"xp level userID",
 		{
-			limit: 10,
+			limit: 9,
 		}
 	).sort("-level -xp");
 	message.reply({
