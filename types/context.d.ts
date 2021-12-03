@@ -23,6 +23,7 @@ export interface IConfig {
 			ticketCategoryID: string;
 			techRoleID: string;
 			xpRolesIDS: {
+				5: string;
 				10: string;
 				15: string;
 				20: string;
