@@ -80,7 +80,7 @@ export default async function (client, message) {
 	};
 
 	/** @type {Discord.Message} */
-	const sentMessage = await message.channel.send({
+	let sentMessage = await message.channel.send({
 		embeds: [giveawayEmbed],
 	});
 	await sentMessage.react("🎁");
@@ -96,6 +96,7 @@ export default async function (client, message) {
 			clearInterval(interval);
 			giveawayEmbed.fields[1].name = "Gagnant";
 
+			sentMessage = await sentMessage.fetch();
 			const reaction = sentMessage.reactions.cache.get("🎁");
 
 			let participants = await reaction.users.fetch();
@@ -105,7 +106,12 @@ export default async function (client, message) {
 			const winner = [...participants.values()][winnerIndex];
 			giveawayEmbed.fields[1].value = `<@${winner.id}>`;
 		}
-		await sentMessage.edit({ embeds: [giveawayEmbed] });
+		try {
+			await sentMessage.edit({ embeds: [giveawayEmbed] });
+		} catch (e) {
+			sentMessage = await sentMessage.fetch();
+			await sentMessage.edit({ embeds: [giveawayEmbed] });
+		}
 	}
 	interval = setInterval(updateTime, 1000 * 60);
 }
