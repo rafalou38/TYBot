@@ -5,6 +5,7 @@ export const config = {
 	xpAddDelaySeconds: 10,
 	xpRequiredIncrease: 5,
 	myID: "623790476713263124",
+	tyGuildID: "655531439571599380",
 	guilds: {
 		// Ty serveur
 		"655531439571599380": {

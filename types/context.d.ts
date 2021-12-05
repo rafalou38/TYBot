@@ -12,6 +12,7 @@ export interface IConfig {
 	xpAddDelaySeconds: number;
 	xpRequiredIncrease: number;
 	myID: string;
+	tyGuildID: string;
 	guilds: {
 		[key: string]: {
 			userJoinChannelID: string;

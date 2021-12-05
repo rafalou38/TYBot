@@ -24,6 +24,7 @@ import { logLeave } from "./events/log/leave.js";
 import { logRoleCreate, logRoleDelete } from "./events/log/role.js";
 import { logChannelCreate, logChannelDelete } from "./events/log/chanel.js";
 import { logGuildBanAdd, logGuildBanRemove } from "./events/log/ban.js";
+import { updateStatus } from "./tasks/updateStatus.js";
 
 /** @type {Discord.IntentsString[]} */
 const intents = [
@@ -45,6 +46,8 @@ client.once("ready", async () => {
 		const guild = await client.guilds.fetch(oldGuild.id);
 		checkBirthday(guild);
 	});
+	updateStatus(client);
+	setInterval(updateStatus.bind(null, client), 1000 * 60 * 60);
 	log(`🤖 bot ${client.user.username}#${client.user.tag} successfully started 🚀`);
 });
 
