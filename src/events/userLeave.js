@@ -1,6 +1,7 @@
 import Discord from "discord.js";
-import { config } from "../context.js";
+import { config, context } from "../context.js";
 import { Member } from "../database/schemas/Member.js";
+import { updateStatus } from "../tasks/updateStatus.js";
 import { getChanelById } from "../utils/channels.js";
 
 /**
