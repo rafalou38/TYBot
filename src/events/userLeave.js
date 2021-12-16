@@ -56,4 +56,5 @@ export async function userLeave(member) {
 			},
 		],
 	});
+	updateStatus(context.client);
 }

@@ -1,6 +1,7 @@
 import Discord from "discord.js";
 import { config, context } from "../context.js";
 import { Member } from "../database/schemas/Member.js";
+import { updateStatus } from "../tasks/updateStatus.js";
 import { getChanelById } from "../utils/channels.js";
 import { getInvite } from "../utils/invites.js";
 import { log } from "../utils/prettyLog.js";
@@ -84,4 +85,5 @@ export async function userJoin(member) {
 			},
 		],
 	});
+	updateStatus(context.client);
 }
