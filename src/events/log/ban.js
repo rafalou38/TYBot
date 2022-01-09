@@ -8,10 +8,8 @@ import { config } from "../../context.js";
  * @param {string} reason
  */
 export async function logGuildBanAdd(ban, by, reason = "inconnue") {
-	/** @type {Discord.TextChannel} */
-	const channel = await ban.guild.channels.fetch(config.guilds[ban.guild.id].logsChannelID);
-
-	channel.send({
+	/** @type {Discord.MessageOptions} */
+	const msg = {
 		embeds: [
 			{
 				title: `${ban.user.tag} à été ban.`,
@@ -40,7 +38,16 @@ export async function logGuildBanAdd(ban, by, reason = "inconnue") {
 				timestamp: new Date(),
 			},
 		],
-	});
+	};
+
+	/** @type {Discord.TextChannel} */
+	let channel = await ban.guild.channels.fetch(config.guilds[ban.guild.id].logsChannelID);
+
+	channel.send(msg);
+
+	channel = await ban.guild.channels.fetch(config.guilds[ban.guild.id].userJoinChannelID);
+
+	channel.send(msg);
 }
 
 /**
