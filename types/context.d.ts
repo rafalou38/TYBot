@@ -23,6 +23,8 @@ export interface IConfig {
 			levelUpChannelID: string;
 			ticketCategoryID: string;
 			staffRoleID: string;
+			ancestorRoleID: string;
+			ancestor2RoleID: string;
 			xpRolesIDS: {
 				5: string;
 				10: string;
@@ -34,6 +36,10 @@ export interface IConfig {
 				40: string;
 				45: string;
 				50: string;
+				55: string;
+				60: string;
+				65: string;
+				70: string;
 			};
 			membersRolesIds: string[];
 		};

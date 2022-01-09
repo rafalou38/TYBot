@@ -17,6 +17,8 @@ export const config = {
 			logsChannelID: "655861612644925500",
 			ticketCategoryID: "655538940459352065",
 			staffRoleID: "663763852680364044",
+			ancestorRoleID: "733111531704811542",
+			ancestor2RoleID: "899625427461615626",
 			xpRolesIDS: {
 				5: "766021353522200608",
 				10: "812286357157314570",

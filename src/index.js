@@ -25,6 +25,7 @@ import { logRoleCreate, logRoleDelete } from "./events/log/role.js";
 import { logChannelCreate, logChannelDelete } from "./events/log/chanel.js";
 import { logGuildBanAdd, logGuildBanRemove } from "./events/log/ban.js";
 import { updateStatus } from "./tasks/updateStatus.js";
+import { checkAncestor } from "./tasks/ancestors.js";
 
 /** @type {Discord.IntentsString[]} */
 const intents = [
@@ -81,6 +82,7 @@ setTimeout(async () => {
 	guilds.forEach(async (oldGuild) => {
 		const guild = await client.guilds.fetch(oldGuild.id);
 		checkBirthday(guild);
+		checkAncestor(guild);
 	});
 }, 86400000); // everyday
 
