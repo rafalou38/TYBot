@@ -1,7 +1,7 @@
 import Discord from "discord.js";
 import { Member } from "../database/schemas/Member.js";
 import { parseInput, getMemberFromText } from "../utils/commands.js";
-
+import { formatDate, timeDiff } from "../utils/time.js";
 /**
  *
  * @param {Discord.Client<boolean>} client
@@ -21,12 +21,6 @@ export default async function (client, message) {
 
 	/**@type {Discord.EmbedFieldData[]} */
 	let DBfields = [];
-	const createdAt =
-		target.user.createdAt.getDate() +
-		"/" +
-		(target.user.createdAt.getMonth() + 1) +
-		"/" +
-		target.user.createdAt.getFullYear();
 	if (foundTarget) {
 		DBfields = [
 			{
@@ -51,7 +45,12 @@ export default async function (client, message) {
 			},
 			{
 				name: "Compte crée le",
-				value: createdAt,
+				value: formatDate(target.user.createdAt),
+				inline: true,
+			},
+			{
+				name: "A rejoint le",
+				value: formatDate(target.joinedAt) + "\n" + timeDiff(target.joinedAt, new Date()),
 				inline: true,
 			},
 		];
@@ -60,13 +59,14 @@ export default async function (client, message) {
 		name: "Roles",
 		value: target.roles.cache.map((r) => `<@&${r.id}>`).join(" ") || "aucuns",
 	});
-
-	const status = target.presence.activities.find((act) => act.type === "CUSTOM");
-	if (status) {
-		DBfields.push({
-			name: "Status:",
-			value: "```" + status.state + "```",
-		});
+	if (target.presence) {
+		const status = target.presence.activities.find((act) => act.type === "CUSTOM");
+		if (status) {
+			DBfields.push({
+				name: "Status:",
+				value: "```" + status.state + "```",
+			});
+		}
 	}
 
 	message.reply({
