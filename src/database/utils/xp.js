@@ -59,5 +59,6 @@ export async function addLvl(member, count = null) {
 	await DBMember.save();
 }
 export function calcRequiredXPForLevel(level = 0) {
+	if (level >= 100) return Infinity;
 	return 20 + level * config.xpRequiredIncrease;
 }
