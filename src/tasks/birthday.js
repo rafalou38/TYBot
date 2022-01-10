@@ -8,6 +8,9 @@ import { parseInput, getMemberFromText } from "../utils/commands.js";
  * @param {Discord.Guild} guild
  */
 export async function checkBirthday(guild) {
+	const birthRole = await guild.roles.fetch(config.guilds[guild.id].birthdayRoleID);
+	birthRole.members.forEach(async (member) => member.roles.remove(birthRole));
+
 	const today = new Date();
 	let month = today.getMonth() + 1;
 	let day = today.getDate();
@@ -40,5 +43,6 @@ export async function checkBirthday(guild) {
 				},
 			],
 		});
+		guild.members.cache.get(user.userID).roles.add(birthRole);
 	});
 }
