@@ -4,7 +4,7 @@ import { gmodServerInfo } from "./lib/gmodApi.js";
 import { log } from "./utils/prettyLog.js";
 
 function requestTimeout() {
-	return (Math.random() / 2 + 0.5) * 1000 * 60 * 10;
+	return (Math.random() / 3 + 0.75) * 1000 * 60 * 10;
 }
 
 async function update(client, ip) {
@@ -28,7 +28,6 @@ for (const [TOKEN, IP] of config.gmodServers.entries()) {
 	});
 
 	client.login(TOKEN).then(() => {
-		setTimeout(update.bind(null, client, IP), requestTimeout());
 		update(client, IP);
 	});
 }
