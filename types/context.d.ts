@@ -13,6 +13,7 @@ export interface IConfig {
 	xpRequiredIncrease: number;
 	myID: string;
 	tyGuildID: string;
+	gmodServers: Map<string, string>;
 	guilds: {
 		[key: string]: {
 			userJoinChannelID: string;

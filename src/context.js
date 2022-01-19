@@ -1,3 +1,6 @@
+import dotenv from "dotenv";
+dotenv.config(); // load discord token from .env
+
 /** @type {import("../types/context").IConfig} */
 export const config = {
 	prefix: "-",
@@ -6,6 +9,10 @@ export const config = {
 	xpRequiredIncrease: 5,
 	myID: "623790476713263124",
 	tyGuildID: "655531439571599380",
+	gmodServers: new Map([
+		[process.env.SCPRP_TOKEN, "149.202.88.77:27033"],
+		[process.env.DARKRP_TOKEN, "51.255.212.173:27018"],
+	]),
 	guilds: {
 		// Ty serveur
 		"655531439571599380": {
