@@ -7,18 +7,28 @@ function requestTimeout() {
 	return (Math.random() / 3 + 0.75) * 1000 * 60 * 10;
 }
 
-async function update(client, ip) {
-	/** @type {import("./lib/gmodApi.js").GmodServerInfo} */
-	const data = await gmodServerInfo(ip);
-	const { maxPlayers, name, players } = data.data[0].attributes;
-	client.user.setActivity(`${players}/${maxPlayers} membres sur le serveur ${name}`);
+/**
+ * @param {Discord.Client} client
+ * @param {string} action
+ */
+async function update(client, action) {
+	if (action.startsWith("GMOD")) {
+		action = action.substring(5);
+		/** @type {import("./lib/gmodApi.js").GmodServerInfo} */
+		const data = await gmodServerInfo(action);
+		const { maxPlayers, name, players } = data.data[0].attributes;
+		client.user.setActivity(`${players}/${maxPlayers} membres sur le serveur ${name}`);
 
-	setTimeout(update.bind(null, client, ip), requestTimeout());
+		setTimeout(update.bind(null, client, action), requestTimeout());
 
-	log(`🔁 mise à jour des données du serveur ${name} 💽`);
+		log(`🔁 mise à jour des données du serveur ${name} 💽`);
+	} else if (action.startsWith("TEXT")) {
+		action = action.substring(5);
+		client.user.setActivity(action);
+	}
 }
 
-for (const [TOKEN, IP] of config.gmodServers.entries()) {
+for (const [TOKEN, action] of config.gmodServers.entries()) {
 	const client = new Discord.Client({
 		intents: [],
 	});
@@ -28,6 +38,6 @@ for (const [TOKEN, IP] of config.gmodServers.entries()) {
 	});
 
 	client.login(TOKEN).then(() => {
-		update(client, IP);
+		update(client, action);
 	});
 }
