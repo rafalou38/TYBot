@@ -13,13 +13,13 @@ function requestTimeout() {
  */
 async function update(client, action) {
 	if (action.startsWith("GMOD")) {
+		setTimeout(update.bind(null, client, action), requestTimeout());
+
 		action = action.substring(5);
 		/** @type {import("./lib/gmodApi.js").GmodServerInfo} */
 		const data = await gmodServerInfo(action);
 		const { maxPlayers, name, players } = data.data[0].attributes;
 		client.user.setActivity(`${players}/${maxPlayers} membres sur le serveur ${name}`);
-
-		setTimeout(update.bind(null, client, action), requestTimeout());
 
 		log(`🔁 mise à jour des données du serveur ${name} 💽`);
 	} else if (action.startsWith("TEXT")) {
