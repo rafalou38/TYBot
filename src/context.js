@@ -10,7 +10,7 @@ export const config = {
 	myID: "623790476713263124",
 	tyGuildID: "655531439571599380",
 	gmodServers: new Map([
-		[process.env.SCPRP_TOKEN, "GMOD:149.202.88.77:27033"],
+		[process.env.SCPRP_TOKEN, "TEXT:🟠 En maintenance"],
 		[process.env.DARKRP_TOKEN, "TEXT:🟠 En maintenance"],
 		// [process.env.DARKRP_TOKEN, "51.255.212.173:27018"],
 	]),
