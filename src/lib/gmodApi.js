@@ -25,9 +25,9 @@ export async function gmodServerInfo(ip) {
 		};
 	} catch{
 		return {
-			name: "ERROR",
+			name: "Hors ligne",
 			maxPlayers: 0,
-			players: 1
+			players: 0
 		};
 	}
 }
