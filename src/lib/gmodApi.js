@@ -1,15 +1,5 @@
-import axios from "axios";
+import Gamedig from "gamedig";
 
-const options = (ip) => ({
-	method: "GET",
-	url: "https://api.battlemetrics.com/servers",
-	params: {
-		"fields[server]": "name,players,maxPlayers",
-		"filter[game]": "gmod",
-		"filter[search]": `"${ip}"`,
-		"relations[server]": "",
-	},
-});
 
 /**
  *
@@ -17,6 +7,27 @@ const options = (ip) => ({
  * @returns {import("./gmodApi").GmodServerInfo}
  */
 export async function gmodServerInfo(ip) {
-	const response = await axios.request(options(ip));
-	return response.data;
+	const options = {
+		requestRules: false,
+		type: "garrysmod",
+		host: ip.split(":").at(0),
+		port: ip.split(":").at(1),
+	};
+
+	try{
+		const gamedig = new Gamedig(options);
+		const status = await gamedig.query(options);
+
+		return {
+			name: status.name,
+			maxPlayers: status.maxplayers,
+			players: status.players.length
+		};
+	} catch{
+		return {
+			name: "ERROR",
+			maxPlayers: 0,
+			players: 1
+		};
+	}
 }

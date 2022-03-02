@@ -4,7 +4,7 @@ import { gmodServerInfo } from "./lib/gmodApi.js";
 import { log } from "./utils/prettyLog.js";
 
 function requestTimeout() {
-	return (Math.random() / 3 + 0.75) * 1000 * 60 * 10;
+	return 1000 * 60;
 }
 
 /**
@@ -18,10 +18,10 @@ async function update(client, action) {
 		action = action.substring(5);
 		/** @type {import("./lib/gmodApi.js").GmodServerInfo} */
 		const data = await gmodServerInfo(action);
-		const { maxPlayers, name, players } = data.data[0].attributes;
+		const { maxPlayers, name, players } = data;
 		client.user.setActivity(`${players}/${maxPlayers} membres sur le serveur ${name}`);
 
-		log(`🔁 mise à jour des données du serveur ${name} 💽`);
+		log(`🔁 mise à jour des données du serveur ${name}: ${players}/${maxPlayers} 💽`);
 	} else if (action.startsWith("TEXT")) {
 		action = action.substring(5);
 		client.user.setActivity(action);
