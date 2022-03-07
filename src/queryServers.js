@@ -1,6 +1,7 @@
 import Discord from "discord.js";
 import { config, context } from "./context.js";
-import { gmodServerInfo } from "./lib/gmodApi.js";
+import { mcServerInfo } from "./lib/queryApi.js";
+import { gmodServerInfo } from "./lib/queryApi.js";
 import { log } from "./utils/prettyLog.js";
 
 function requestTimeout() {
@@ -12,19 +13,31 @@ function requestTimeout() {
  * @param {string} action
  */
 async function update(client, action) {
-	if (action.startsWith("GMOD")) {
-		setTimeout(update.bind(null, client, action), requestTimeout());
+	setTimeout(update.bind(null, client, action), requestTimeout());
 
+	if (action.startsWith("TEXT")) {
 		action = action.substring(5);
+		client.user.setActivity(action);
+		return;
+	}
+	/** @type {import("./lib/queryApi.js").queryServerInfo} */
+	let data;
+	if (action.startsWith("GMOD")) {
+		action = action.substring(5);
+		data = await gmodServerInfo(action);
+	} else if (action.startsWith("MC")) {
+		action = action.substring(3);
+		data = await mcServerInfo(action);
 		/** @type {import("./lib/gmodApi.js").GmodServerInfo} */
-		const data = await gmodServerInfo(action);
+	}
+	if (data) {
 		const { maxPlayers, name, players } = data;
 		client.user.setActivity(`${players}/${maxPlayers} membres sur le serveur ${name}`);
 
 		log(`🔁 mise à jour des données du serveur ${name}: ${players}/${maxPlayers} 💽`);
-	} else if (action.startsWith("TEXT")) {
-		action = action.substring(5);
-		client.user.setActivity(action);
+	} else {
+		client.user.setActivity("🔴 Offline");
+		log(`🔁 mise à jour des données du serveur ${action}: 🔴 Offline`);
 	}
 }
 

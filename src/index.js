@@ -26,7 +26,7 @@ import { logChannelCreate, logChannelDelete } from "./events/log/chanel.js";
 import { logGuildBanAdd, logGuildBanRemove } from "./events/log/ban.js";
 import { updateStatus } from "./tasks/updateStatus.js";
 import { checkAncestor } from "./tasks/ancestors.js";
-import "./gmodServers.js";
+import "./queryServers.js";
 /** @type {Discord.IntentsString[]} */
 const intents = [
 	"GUILDS",

@@ -1,4 +1,4 @@
-export interface GmodServerInfo {
+export interface queryServerInfo {
 	maxPlayers: number;
 	name: string;
 	players: number;
