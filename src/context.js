@@ -11,6 +11,7 @@ export const config = {
 	tyGuildID: "655531439571599380",
 	gmodServers: new Map([
 		[process.env.SCPRP_TOKEN, "TEXT:🛠️ En développement"],
+		[process.env.TY_GAME_TOKEN, "TEXT:🛠️ En développement"],
 		[process.env.DARKRP_TOKEN, "GMOD:54.37.165.231:27021"],
 		[process.env.MC_TOKEN, "MC:ty-team.servegame.com:17777"],
 		// [process.env.DARKRP_TOKEN, "51.255.212.173:27018"],
