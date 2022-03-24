@@ -7,6 +7,7 @@ export const config = {
 	xpIncrement: 2,
 	xpAddDelaySeconds: 10,
 	xpRequiredIncrease: 5,
+	maxLevel: 75,
 	myID: "623790476713263124",
 	tyGuildID: "655531439571599380",
 	gmodServers: new Map([
