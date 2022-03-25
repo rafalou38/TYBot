@@ -77,8 +77,8 @@ module.exports = function (SQ, gms_extra, client, api_port) {
 	 * Assigns roles to a user by ID. Responds with a list of the IDs of the roles the user previously had.
 	 */
 	app.post("/api/users/:discordid/roles/sync", authMiddleware, async (req, res) => {
-		dg = await client.guilds.fetch(req.guild.guild_id);
-		mb = await dg.members.fetch(req.params.discordid).catch((e) => null);
+		const dg = await client.guilds.fetch(req.guild.guild_id);
+		const mb = await dg.members.fetch(req.params.discordid).catch((e) => null);
 		if (mb == null) return res.json({ status: "failure" });
 
 		let initialRoles = [];
@@ -91,7 +91,7 @@ module.exports = function (SQ, gms_extra, client, api_port) {
 
 		if (req.body.roles) {
 			req.body.roles.map((id) => {
-				role = dg.roles.cache.find((r) => r.id === id);
+				const role = dg.roles.cache.find((r) => r.id === id);
 				mb.roles.add(role).catch(console.error);
 			});
 		}
@@ -104,10 +104,10 @@ module.exports = function (SQ, gms_extra, client, api_port) {
 	 */
 	app.post("/api/users/:discordid/roles", authMiddleware, async (req, res) => {
 		try {
-			dg = await client.guilds.fetch(req.guild.guild_id);
-			mb = await dg.members.fetch(req.params.discordid);
+			const dg = await client.guilds.fetch(req.guild.guild_id);
+			const mb = await dg.members.fetch(req.params.discordid);
 
-			role = dg.roles.cache.find((r) => r.id === req.body.id);
+			const role = dg.roles.cache.find((r) => r.id === req.body.id);
 			if (role != null) mb.roles.add(role).catch(console.error);
 
 			res.json({ status: "success", roles: mb.roles });
@@ -120,10 +120,10 @@ module.exports = function (SQ, gms_extra, client, api_port) {
 	 * Delete role from user
 	 */
 	app.delete("/api/users/:discordid/roles/:id", authMiddleware, async (req, res) => {
-		dg = await client.guilds.fetch(req.guild.guild_id);
-		mb = await dg.members.fetch(req.params.discordid);
+		const dg = await client.guilds.fetch(req.guild.guild_id);
+		const mb = await dg.members.fetch(req.params.discordid);
 
-		role = dg.roles.cache.find((r) => r.id === req.params.id);
+		const role = dg.roles.cache.find((r) => r.id === req.params.id);
 		if (role != null) mb.roles.remove(role).catch(console.error);
 
 		res.json({ status: "success" });
@@ -136,7 +136,7 @@ module.exports = function (SQ, gms_extra, client, api_port) {
 	 * Used for the settings page.
 	 */
 	app.get("/api/roles", authMiddleware, async (req, res) => {
-		dg = await client.guilds.fetch(req.guild.guild_id);
+		const dg = await client.guilds.fetch(req.guild.guild_id);
 		let roles = {};
 		dg.roles.cache.map((r) => {
 			if (r.name != "@everyone") roles[r.id] = r.name;
@@ -148,7 +148,7 @@ module.exports = function (SQ, gms_extra, client, api_port) {
 	 * Create a role
 	 */
 	app.post("/api/roles", authMiddleware, async (req, res) => {
-		dg = await client.guilds.fetch(req.guild.guild_id);
+		const dg = await client.guilds.fetch(req.guild.guild_id);
 
 		let name = req.body.name;
 		let color = parseInt(req.body.color.replace("#", ""), 16);
@@ -168,7 +168,7 @@ module.exports = function (SQ, gms_extra, client, api_port) {
 	 * Update a role
 	 */
 	app.post("/api/roles/:id", authMiddleware, async (req, res) => {
-		dg = await client.guilds.fetch(req.guild.guild_id);
+		const dg = await client.guilds.fetch(req.guild.guild_id);
 
 		let name = req.body.name;
 		let color = parseInt(req.body.color.replace("#", ""), 16);
