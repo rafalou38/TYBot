@@ -1,10 +1,8 @@
 module.exports = {
-	name: 'ready',
+	name: "ready",
 	once: true,
 	execute(client) {
-		console.log('Discord.js ready.');
-		client.guilds.cache.forEach((guild) =>
-			guild.members.fetch().catch(console.error)
-		);
+		console.log("Discord.js ready.");
+		client.guilds.cache.forEach((guild) => guild.members.fetch().catch(console.error));
 	},
 };

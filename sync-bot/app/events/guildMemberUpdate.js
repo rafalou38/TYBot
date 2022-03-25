@@ -1,8 +1,8 @@
-const request = require('request');
-const SQ = require('sequelize');
+const request = require("request");
+const SQ = require("sequelize");
 
 module.exports = {
-	name: 'guildMemberUpdate',
+	name: "guildMemberUpdate",
 	execute(oldMember, member, client) {
 		let addedRole = member._roles.filter(function (val) {
 			return oldMember._roles.indexOf(val) < 0;
@@ -16,7 +16,7 @@ module.exports = {
 
 		let callback = (err) => {
 			if (err) {
-				return console.error('Request failed', err);
+				return console.error("Request failed", err);
 			}
 		};
 
@@ -28,19 +28,12 @@ module.exports = {
 			client.statistics.requestsPerInterval++;
 
 			let role = member.guild.roles.cache.get(addedRole || revokedRole);
-			let apiurl =
-				guild.url + 'api/discord/users/' + member.user.id + '/roles/' + role.id;
+			let apiurl = guild.url + "api/discord/users/" + member.user.id + "/roles/" + role.id;
 
 			if (addedRole) {
-				request.post(
-					{ url: apiurl, auth: { bearer: guild.sync_token } },
-					callback
-				);
+				request.post({ url: apiurl, auth: { bearer: guild.sync_token } }, callback);
 			} else {
-				request.delete(
-					{ url: apiurl, auth: { bearer: guild.sync_token } },
-					callback
-				);
+				request.delete({ url: apiurl, auth: { bearer: guild.sync_token } }, callback);
 			}
 		});
 	},

@@ -1,7 +1,7 @@
-const { Permissions } = require('discord.js');
+const { Permissions } = require("discord.js");
 
 module.exports = {
-	name: 'interactionCreate',
+	name: "interactionCreate",
 	async execute(interaction) {
 		if (!interaction.isCommand()) return;
 
@@ -11,16 +11,13 @@ module.exports = {
 
 		if (command.guildOnly && !interaction.guild)
 			return interaction.reply({
-				content: 'This command cannot be run in direct messages.',
+				content: "This command cannot be run in direct messages.",
 				ephemeral: true,
 			});
 
-		if (
-			command.adminOnly &&
-			!interaction.member.permissions.has(Permissions.FLAGS.ADMINISTRATOR)
-		)
+		if (command.adminOnly && !interaction.member.permissions.has(Permissions.FLAGS.ADMINISTRATOR))
 			return interaction.reply({
-				content: 'Only administrators can run that command.',
+				content: "Only administrators can run that command.",
 				ephemeral: true,
 			});
 
@@ -31,7 +28,7 @@ module.exports = {
 		} catch (error) {
 			console.error(error);
 			await interaction.reply({
-				content: 'There was an error trying to execute that command.',
+				content: "There was an error trying to execute that command.",
 				ephemeral: true,
 			});
 		}

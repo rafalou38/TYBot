@@ -1,7 +1,7 @@
 module.exports = function (config) {
-    const Sentry = require('@sentry/node');
+	const Sentry = require("@sentry/node");
 
-    Sentry.init({
-        dsn: config.dsn
-    });
+	Sentry.init({
+		dsn: config.dsn,
+	});
 };

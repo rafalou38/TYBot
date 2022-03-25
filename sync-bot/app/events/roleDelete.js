@@ -1,8 +1,8 @@
-const request = require('request');
-const SQ = require('sequelize');
+const request = require("request");
+const SQ = require("sequelize");
 
 module.exports = {
-	name: 'roleDelete',
+	name: "roleDelete",
 	execute(role, client) {
 		client.database.Guild.findOne({
 			where: { guild_id: role.guild.id, url: { [SQ.Op.not]: null } },
@@ -18,7 +18,7 @@ module.exports = {
 				},
 				(err) => {
 					if (err) {
-						return console.error('Request failed', err);
+						return console.error("Request failed", err);
 					}
 				}
 			);

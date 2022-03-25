@@ -1,5 +1,5 @@
 module.exports = {
-	name: 'guildCreate',
+	name: "guildCreate",
 	execute(guild) {
 		guild.members.fetch().catch(console.error);
 	},

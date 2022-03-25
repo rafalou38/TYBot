@@ -1,10 +1,10 @@
-const request = require('request');
-const SQ = require('sequelize');
+const request = require("request");
+const SQ = require("sequelize");
 
 module.exports = {
-	name: 'roleUpdate',
+	name: "roleUpdate",
 	execute(oldRole, role, client) {
-		if (oldRole.name == '@everyone' || role.name == 'new role') return;
+		if (oldRole.name == "@everyone" || role.name == "new role") return;
 
 		if (oldRole.name == role.name && oldRole.color == role.color) return;
 
@@ -17,17 +17,17 @@ module.exports = {
 
 			request(
 				{
-					url: guild.url + 'api/discord/roles/' + role.id,
-					method: 'PUT',
+					url: guild.url + "api/discord/roles/" + role.id,
+					method: "PUT",
 					auth: { bearer: guild.sync_token },
 					json: {
 						name: role.name,
-						color: role.color.toString(16).padStart(6, '0'),
+						color: role.color.toString(16).padStart(6, "0"),
 					},
 				},
 				(err) => {
 					if (err) {
-						return console.error('Request failed', err);
+						return console.error("Request failed", err);
 					}
 				}
 			);
