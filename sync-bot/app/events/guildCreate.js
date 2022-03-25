@@ -1,6 +1,4 @@
-module.exports = {
-	name: "guildCreate",
-	execute(guild) {
-		guild.members.fetch().catch(console.error);
-	},
-};
+export const name = "guildCreate";
+export function execute(guild) {
+	guild.members.fetch().catch(console.error);
+}

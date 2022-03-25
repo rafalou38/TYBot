@@ -1,8 +1,9 @@
-module.exports = function (config) {
+import Sequelize, { Op, STRING } from "sequelize";
+
+export default function (config) {
 	if (config == null) config = {};
 	var SQ = {};
 
-	const Sequelize = require("sequelize");
 	const sequelize = new Sequelize(
 		config.database || process.env.DB_DATABASE || "",
 		config.username || process.env.DB_USERNAME || "",
@@ -22,20 +23,20 @@ module.exports = function (config) {
 		}
 	);
 
-	SQ.Op = Sequelize.Op;
+	SQ.Op = Op;
 
 	SQ.Customer = sequelize.define("customer", {
-		steamid: Sequelize.STRING,
-		sync_token: Sequelize.STRING,
+		steamid: STRING,
+		sync_token: STRING,
 	});
 
 	SQ.Guild = sequelize.define("guild", {
-		guild_id: Sequelize.STRING,
-		sync_token: Sequelize.STRING,
-		url: Sequelize.STRING,
+		guild_id: STRING,
+		sync_token: STRING,
+		url: STRING,
 	});
 
 	sequelize.sync({ force: false }).then(console.log("Database initialized."));
 
 	return SQ;
-};
+}

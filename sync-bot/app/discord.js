@@ -1,9 +1,15 @@
-const { Client, Collection, Intents } = require("discord.js");
-const { REST } = require("@discordjs/rest");
-const { Routes } = require("discord-api-types/v9");
-const fs = require("fs");
+import { Client, Collection, Intents } from "discord.js";
+import { REST } from "@discordjs/rest";
+import { Routes } from "discord-api-types/v9";
+import { readdirSync } from "fs";
 
-module.exports = function (SQ, discord_bot_token) {
+import path from "path";
+import { fileURLToPath } from "url";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+export default async function (SQ, discord_bot_token) {
 	const client = new Client({
 		intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MEMBERS],
 	});
@@ -17,17 +23,19 @@ module.exports = function (SQ, discord_bot_token) {
 
 	client.commands = new Collection();
 
-	fs.readdirSync(`${__dirname}/commands`)
+	readdirSync(`${__dirname}/commands`)
 		.filter((file) => file.endsWith(".js"))
-		.forEach((file) => {
-			const command = require(`./commands/${file}`);
+		.forEach(async (file) => {
+			const command = await import(`./commands/${file}`);
+			// console.log(`Loaded command ${command.data.name}`);
 			client.commands.set(command.data.name, command);
 		});
 
-	fs.readdirSync(`${__dirname}/events`)
+	readdirSync(`${__dirname}/events`)
 		.filter((file) => file.endsWith(".js"))
-		.forEach((file) => {
-			const event = require(`./events/${file}`);
+		.forEach(async (file) => {
+			const event = await import(`./events/${file}`);
+			// console.log(`Loaded event ${event.name}`);
 			client[event.once ? "once" : "on"](event.name, (...args) => event.execute(...args, client));
 		});
 
@@ -59,4 +67,4 @@ module.exports = function (SQ, discord_bot_token) {
 	});
 
 	return client;
-};
+}

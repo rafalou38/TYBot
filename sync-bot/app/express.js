@@ -1,8 +1,8 @@
-module.exports = function (SQ, gms_extra, client, api_port) {
-	const crypto = require("crypto");
-	const express = require("express");
+import { createHmac, randomBytes } from "crypto";
+import express, { urlencoded } from "express";
+export default function (SQ, gms_extra, client, api_port) {
 	const app = express();
-	app.use(express.urlencoded({ extended: true }));
+	app.use(urlencoded({ extended: true }));
 	var syncTokenCache = [];
 
 	const authMiddleware = function (req, res, next) {
@@ -32,9 +32,7 @@ module.exports = function (SQ, gms_extra, client, api_port) {
 			if (req.body.steamid in syncTokenCache) {
 				return res.send(syncTokenCache[req.body.steamid]);
 			}
-			var newSyncToken = crypto
-				.createHmac("sha256", crypto.randomBytes(20).toString("hex"))
-				.digest("hex"); // 116251082
+			var newSyncToken = createHmac("sha256", randomBytes(20).toString("hex")).digest("hex"); // 116251082
 			syncTokenCache[req.body.steamid] = newSyncToken;
 			setTimeout(() => {
 				delete syncTokenCache[req.body.steamid];
@@ -187,4 +185,4 @@ module.exports = function (SQ, gms_extra, client, api_port) {
 	});
 
 	app.listen(api_port, () => console.log(`API listening on port ${api_port}.`));
-};
+}
