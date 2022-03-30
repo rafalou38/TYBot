@@ -11,7 +11,6 @@ export async function logGuildBanAdd(ban) {
 	const auditBan = await ban.guild
 		.fetchAuditLogs({
 			type: "MEMBER_BAN_ADD",
-			user: ban.user,
 		})
 		.then((auditLogs) => auditLogs.entries.first());
 
@@ -27,7 +26,7 @@ export async function logGuildBanAdd(ban) {
 					},
 					{
 						name: "Raison",
-						value: ban.reason || "Aucune raison",
+						value: auditBan.reason || "Aucune raison",
 					},
 					{
 						name: "Ban par",
