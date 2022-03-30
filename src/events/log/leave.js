@@ -13,7 +13,7 @@ export async function logLeave(member) {
 			limit: 1,
 		})
 		.then((audit) =>
-			audit.entries.first().target.id === member.id
+			audit.entries.first()?.target?.id === member.id
 				? {
 						reason: audit.entries.first().reason,
 						executor: audit.entries.first().executor,
