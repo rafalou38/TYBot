@@ -7,7 +7,14 @@ import { config } from "../../context.js";
  * @param {Discord.GuildMember} by
  * @param {string} reason
  */
-export async function logGuildBanAdd(ban, by, reason = "inconnue") {
+export async function logGuildBanAdd(ban) {
+	const auditBan = await ban.guild
+		.fetchAuditLogs({
+			type: "MEMBER_BAN_ADD",
+			user: ban.user,
+		})
+		.then((auditLogs) => auditLogs.entries.first());
+
 	/** @type {Discord.MessageOptions} */
 	const msg = {
 		embeds: [
@@ -20,11 +27,11 @@ export async function logGuildBanAdd(ban, by, reason = "inconnue") {
 					},
 					{
 						name: "Raison",
-						value: ban.reason || reason,
+						value: ban.reason || "Aucune raison",
 					},
 					{
-						name: "Banni par:",
-						value: `${by || "inconnu"}`,
+						name: "Ban par",
+						value: auditBan.executor.tag,
 					},
 				],
 				color: "RED",
@@ -48,6 +55,8 @@ export async function logGuildBanAdd(ban, by, reason = "inconnue") {
 	channel = await ban.guild.channels.fetch(config.guilds[ban.guild.id].userJoinChannelID);
 
 	channel.send(msg);
+
+	ban.user.send(msg);
 }
 
 /**
@@ -80,4 +89,6 @@ export async function logGuildBanRemove(ban) {
 			},
 		],
 	});
+
+	ban.user.send("Vous avez été dé-banni de TY-TEAM.");
 }
