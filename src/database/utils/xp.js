@@ -21,7 +21,7 @@ export async function addXP(member, count = null) {
 		});
 	}
 
-	if (DBMember.level >= config.xp.maxLevel) return;
+	if (DBMember.level >= config.maxLevel) return;
 
 	DBMember.xp += count || config.xpIncrement;
 	const requiredXPForLevel = calcRequiredXPForLevel(DBMember.level);
