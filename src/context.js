@@ -11,11 +11,9 @@ export const config = {
 	myID: "623790476713263124",
 	tyGuildID: "655531439571599380",
 	gmodServers: new Map([
-		[process.env.SCPRP_TOKEN, "TEXT:🛠️ En développement"],
-		[process.env.TY_GAME_TOKEN, "TEXT:🛠️ En développement"],
-		// [process.env.DARKRP_TOKEN, "GMOD:54.37.165.231:27021"], // WW2RP
-		[process.env.DARKRP_TOKEN, "GMOD:142.132.159.166:27023"], // WW2RP / militaryRp
-		// [process.env.MC_TOKEN, "MC:ty-team.servegame.com:17777"],
+		[process.env.SCPRP_TOKEN, "GMOD:142.132.159.166:27015"],
+		[process.env.TY_GAME_TOKEN, "TEXT:tyteam.fr"],
+		[process.env.WW2_TOKEN, "GMOD:142.132.159.166:27015"],
 		[process.env.MC_TOKEN, "TEXT:🛠️ En développement"],
 	]),
 	guilds: {

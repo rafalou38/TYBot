@@ -2,12 +2,14 @@ import Discord from "discord.js";
 import { config } from "../context.js";
 import { Member } from "../database/schemas/Member.js";
 import { parseInput, getMemberFromText } from "../utils/commands.js";
+import { log } from "../utils/prettylog.js";
 
 /**
  *
  * @param {Discord.Guild} guild
  */
 export async function checkBirthday(guild) {
+	log(`Checking birthday for ${guild.name}`);
 	const birthRole = await guild.roles.fetch(config.guilds[guild.id].birthdayRoleID);
 	birthRole.members.forEach(async (member) => member.roles.remove(birthRole));
 
