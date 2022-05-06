@@ -10,6 +10,7 @@ import giveaway from "./giveaway.js";
 import aniv from "./aniv.js";
 import profile from "./profile.js";
 import serveur from "./serveur.js";
+import embed from "./embed.js";
 import ranks from "./ranks.js";
 import addLevel from "./add-level.js";
 
@@ -28,4 +29,5 @@ export const commands = {
 	profile,
 	serveur,
 	ranks,
+	embed,
 };

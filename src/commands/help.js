@@ -69,6 +69,10 @@ export default async function (client, message) {
 						name: "```-serveur```",
 						value: "Affiche les informations du server",
 					},
+					{
+						name: "```-embed```",
+						value: "Affiche un embed par le bot",
+					},
 				],
 			},
 		],
