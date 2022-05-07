@@ -34,7 +34,7 @@ footer_icon:https://picsum.photos/200
 `;
 
 	const title = message.content.match(/title:"(.+?)"/im)?.[1];
-	const content = message.content.match(/content:"(.+?)"/im)?.[1];
+	const content = message.content.match(/content:"([^"]+?)"/im)?.[1];
 	const footer_text = message.content.match(/footer_text:"(.+?)"/im)?.[1];
 	const color = message.content.match(/color:(\S+?)( |$)/im)?.[1];
 	const thumbnail = message.content.match(/thumbnail:(\S+?)( |$)/im)?.[1];
