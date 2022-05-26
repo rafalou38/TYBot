@@ -20,7 +20,7 @@ export const config = {
 		// Ty serveur
 		"655531439571599380": {
 			userJoinChannelID: "655536203407556669",
-			suggestionsChannelID: "656841905690116106",
+			suggestionsChannelID: "978983515330854912",
 			anivChannelID: "784012586521591809",
 			sondageChannelID: "656841905690116106",
 			levelUpChannelID: "792830986253369364",
