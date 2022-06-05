@@ -56,7 +56,8 @@ footer_icon:https://picsum.photos/200
 		});
 	}
 
-	message.reply({
+	message.delete();
+	message.channel.send({
 		embeds: [
 			{
 				title: title,
