@@ -13,7 +13,7 @@ export const config = {
 	gmodServers: new Map([
 		// [process.env.SCPRP_TOKEN, "GMOD:142.132.159.166:27015"],
 		[process.env.TY_GAME_TOKEN, "TEXT:tyteam.fr"],
-		[process.env.WW2_TOKEN, "GMOD:149.202.88.77:27030"],
+		[process.env.WW2_TOKEN, "TEXT:🛠️ En développement"],
 		[process.env.MC_TOKEN, "TEXT:🛠️ En développement"],
 	]),
 	guilds: {
