@@ -73,6 +73,10 @@ export default async function (client, message) {
 						name: "```-embed```",
 						value: "Affiche un embed par le bot",
 					},
+					{
+						name: "```-react-roles <emoji>:<nom>:<ping role>,<emoji>:<nom>:<ping role> (...) ```",
+						value: "Affiche un embed pour obtenir des roles avec reaction.",
+					},
 				],
 			},
 		],

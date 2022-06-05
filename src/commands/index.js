@@ -13,6 +13,7 @@ import serveur from "./serveur.js";
 import embed from "./embed.js";
 import ranks from "./ranks.js";
 import addLevel from "./add-level.js";
+import reactRoles from "./react-roles.js";
 
 export const commands = {
 	help,
@@ -30,4 +31,5 @@ export const commands = {
 	serveur,
 	ranks,
 	embed,
+	"react-roles": reactRoles,
 };

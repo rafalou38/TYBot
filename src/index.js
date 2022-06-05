@@ -27,6 +27,7 @@ import { logGuildBanAdd, logGuildBanRemove } from "./events/log/ban.js";
 import { updateStatus } from "./tasks/updateStatus.js";
 import { checkAncestor } from "./tasks/ancestors.js";
 import "./queryServers.js";
+import { handleRaw } from "./events/raw.js";
 /** @type {Discord.IntentsString[]} */
 const intents = [
 	"GUILDS",
@@ -35,6 +36,7 @@ const intents = [
 	"GUILD_INVITES",
 	"GUILD_PRESENCES",
 	"GUILD_BANS",
+	"GUILD_MESSAGE_REACTIONS",
 ];
 const client = new Discord.Client({
 	intents: intents,
@@ -76,6 +78,8 @@ client.on("channelCreate", logChannelCreate);
 client.on("channelDelete", logChannelDelete);
 client.on("guildBanAdd", logGuildBanAdd);
 client.on("guildBanRemove", logGuildBanRemove);
+
+client.on("raw", handleRaw);
 
 setTimeout(async () => {
 	const guilds = await client.guilds.fetch();
