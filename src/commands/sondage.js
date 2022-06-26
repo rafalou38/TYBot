@@ -53,7 +53,7 @@ export default async function (client, message) {
 		embeds: [
 			{
 				title: `Sondage de ${message.author.tag}`,
-				description: "```" + sondage + "```",
+				description: sondage,
 				footer: {
 					iconURL: message.author.avatarURL(),
 					text: message.author.tag,
