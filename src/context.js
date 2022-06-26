@@ -13,10 +13,12 @@ export const config = {
 	gmodServers: new Map([
 		// [process.env.SCPRP_TOKEN, "GMOD:142.132.159.166:27015"],
 		[process.env.TY_GAME_TOKEN, "TEXT:tyteam.fr"],
-		[process.env.WW2_TOKEN, "TEXT:🛠️ En développement"],
+		[process.env.METEOR_TOKEN, "TEXT:👷 En Maintenance"],
 		[process.env.MC_TOKEN, "TEXT:🛠️ En développement"],
+		[process.env.WOLFSTEIN_TOKEN, "TEXT:🛠️ En développement"],
 	]),
 	guilds: {
+		// 'pour recup l'id: lv1<@&766021341949329459>    player: <@&678244426941988904>  (desole du ping)'
 		// Ty serveur
 		"655531439571599380": {
 			userJoinChannelID: "655536203407556669",
@@ -30,7 +32,9 @@ export const config = {
 			ancestorRoleID: "733111531704811542",
 			ancestor2RoleID: "899625427461615626",
 			birthdayRoleID: "884409241983664158",
+			baseRoleID: "766021341949329459",
 			xpRolesIDS: {
+				1: "766021341949329459",
 				5: "766021353522200608",
 				10: "812286357157314570",
 				15: "766021359641559070",
