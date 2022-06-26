@@ -19,13 +19,15 @@ const syntax = [
  * @param {Discord.Message} message
  */
 export default async function (client, message) {
-	const admin = message.member.permissions.has("ADMINISTRATOR");
+	const admin =
+		message.member.permissions.has("ADMINISTRATOR") ||
+		message.member.roles.cache.has(config.guilds[message.guildId].communityRoleID);
 	if (!admin)
 		return message.reply({
 			embeds: [
 				{
 					title: "Erreur",
-					description: "Tu n'est pas administrateur",
+					description: "Tu n'as pas la permission d'utiliser cette commande",
 					color: "RED",
 					fields: syntax,
 				},
