@@ -7,7 +7,11 @@ import { config } from "../context.js";
  * @param {Discord.Message} message
  */
 export default async function (client, message) {
-	if (!message.member.permissions.has("ADMINISTRATOR") && message.author.id !== config.myID) {
+	if (
+		!message.member.permissions.has("ADMINISTRATOR") &&
+		message.author.id !== config.myID &&
+		!message.member.roles.cache.has(config.guilds[message.guildId].communityRoleID)
+	) {
 		return message.reply({
 			embeds: [
 				{
