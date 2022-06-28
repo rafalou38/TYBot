@@ -15,7 +15,7 @@ export const config = {
 		[process.env.TY_GAME_TOKEN, "TEXT:tyteam.fr"],
 		[process.env.METEOR_TOKEN, "TEXT:👷 En Maintenance"],
 		[process.env.MC_TOKEN, "TEXT:🛠️ En développement"],
-		[process.env.WOLFSTEIN_TOKEN, "TEXT:🛠️ En développement"],
+		[process.env.WOLFSTEIN_TOKEN, "GMOD:ty-team.servegame.com:27018"],
 	]),
 	guilds: {
 		// 'pour recup l'id: lv1<@&766021341949329459>    player: <@&678244426941988904>  (desole du ping)'
