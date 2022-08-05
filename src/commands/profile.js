@@ -50,7 +50,7 @@ export default async function (client, message) {
 			},
 			{
 				name: "A rejoint le",
-				value: formatDate(target.joinedAt) + "\n" + timeDiff(target.joinedAt, new Date()),
+				value: formatDate(target.joinedAt),
 				inline: true,
 			},
 		];
