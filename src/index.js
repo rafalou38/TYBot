@@ -88,7 +88,7 @@ setTimeout(async () => {
 		checkBirthday(guild);
 		checkAncestor(guild);
 	});
-}, 86400000); // everyday
+}, 1000 * 60 * 60); // every hour
 
 initDB().then(async () => {
 	await client.login(process.env.BOT_TOKEN);
