@@ -14,7 +14,11 @@ export async function logJoin(member) {
 		"/" +
 		(member.user.createdAt.getMonth() + 1) +
 		"/" +
-		member.user.createdAt.getFullYear();
+		member.user.createdAt.getFullYear() +
+		" " +
+		member.user.createdAt.getHours() +
+		"h" +
+		member.user.createdAt.getMinutes();
 
 	channel.send({
 		embeds: [
