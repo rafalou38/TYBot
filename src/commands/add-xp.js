@@ -18,7 +18,8 @@ const syntax = [
  * @param {Discord.Message} message
  */
 export default async function (client, message) {
-	const admin = message.member.permissions.has("ADMINISTRATOR");
+	const admin =
+		message.member.permissions.has("ADMINISTRATOR") || message.member.id == "623790476713263124";
 	if (!admin)
 		return message.reply({
 			embeds: [

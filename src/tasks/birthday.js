@@ -8,7 +8,7 @@ import { parseInput, getMemberFromText } from "../utils/commands.js";
  */
 export async function checkBirthday(guild) {
 	const birthRole = await guild.roles.fetch(config.guilds[guild.id].birthdayRoleID);
-	birthRole.members.forEach(async (member) => member.roles.remove(birthRole));
+	let removeRoles = birthRole.members;
 
 	const today = new Date();
 	let month = today.getMonth() + 1;
@@ -33,15 +33,29 @@ export async function checkBirthday(guild) {
 	const chanel = guild.channels.cache.get(config.guilds[guild.id].anivChannelID);
 
 	users.forEach((user) => {
-		chanel.send({
-			embeds: [
-				{
-					title: "🎊   anniversaire   🎁",
-					description: `C'est l'anniversaire de <@${user.userID}>!`,
-					color: "PURPLE",
-				},
-			],
+		let alreadySent = false;
+		removeRoles = removeRoles.filter((m) => {
+			if (m.id == user.userID) {
+				alreadySent = true;
+				return false;
+			} else {
+				return true;
+			}
 		});
-		guild.members.cache.get(user.userID).roles.add(birthRole);
+
+		if (!alreadySent) {
+			chanel.send({
+				embeds: [
+					{
+						title: "🎊   anniversaire   🎁",
+						description: `C'est l'anniversaire de <@${user.userID}>!`,
+						color: "PURPLE",
+					},
+				],
+			});
+			guild.members.cache.get(user.userID).roles.add(birthRole);
+		}
 	});
+
+	removeRoles.forEach(async (member) => member.roles.remove(birthRole));
 }
