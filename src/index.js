@@ -28,6 +28,8 @@ import { updateStatus } from "./tasks/updateStatus.js";
 import { checkAncestor } from "./tasks/ancestors.js";
 import "./queryServers.js";
 import { handleRaw } from "./events/raw.js";
+import { handleBan } from "./events/ban.js";
+import { handleUnBan } from "./events/unBan.js";
 /** @type {Discord.IntentsString[]} */
 const intents = [
 	"GUILDS",
@@ -77,7 +79,9 @@ client.on("roleDelete", logRoleDelete);
 client.on("channelCreate", logChannelCreate);
 client.on("channelDelete", logChannelDelete);
 client.on("guildBanAdd", logGuildBanAdd);
+client.on("guildBanAdd", handleBan);
 client.on("guildBanRemove", logGuildBanRemove);
+client.on("guildBanRemove", handleUnBan);
 
 client.on("raw", handleRaw);
 

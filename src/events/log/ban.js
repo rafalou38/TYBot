@@ -1,4 +1,3 @@
-import Discord from "discord.js";
 import { config } from "../../context.js";
 
 /**
