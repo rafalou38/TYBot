@@ -1,15 +1,28 @@
 import Discord from "discord.js";
 import { config, context } from "../context.js";
 
+/** @type {Map<Snowflake, Date>} */
+const timeouts = new Map();
+
 /**
  *
  * @param {Discord.ButtonInteraction} interaction
  */
 export default async function ticket(interaction) {
-	const old_ticket = context.tickets.get(interaction.user.id);
-	if (old_ticket && !interaction.member.permissions.has("ADMINISTRATOR")) {
-		interaction.reply({ content: `❌ tu as déjà un ticket: <#${old_ticket}>`, ephemeral: true });
-		return "NO_DUPLICATE_TICKETS";
+	const lastTicket = timeouts.get(interaction.user.id);
+	// If the user has already created a ticket in the last 5 minutes, don't allow another one
+	if (lastTicket && new Date().getTime() - lastTicket.getTime() < 5 * 60 * 1000) {
+		interaction.reply({
+			embeds: [
+				{
+					title: "Erreur",
+					description: "Attends un peu avant de créer un nouveau ticket.",
+					color: "RED",
+				},
+			],
+			ephemeral: true,
+		});
+		return "SPAM";
 	}
 
 	interaction.deferReply({ ephemeral: true });
@@ -53,11 +66,12 @@ export default async function ticket(interaction) {
 		],
 	});
 
-	context.tickets.set(interaction.user.id, channel.id);
 	interaction.editReply({
 		content: `:white_check_mark:  Ton ticket a été crée: <#${channel.id}>`,
 		ephemeral: true,
 	});
+
+	timeouts.set(interaction.user.id, new Date());
 
 	return "OK";
 }
