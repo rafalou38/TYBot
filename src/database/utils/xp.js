@@ -34,7 +34,7 @@ export async function addXP(member, count = null) {
 				config.guilds[member.guild.id].xpRolesIDS[DBMember.level]
 			);
 			member.roles.add(role);
-			if (xpRoles[DBMember.level - 5]) member.roles.remove();
+			if (xpRoles[DBMember.level - 5]) member.roles.remove(xpRoles[DBMember.level - 5]);
 		}
 		await DBMember.save();
 		return DBMember.level;
