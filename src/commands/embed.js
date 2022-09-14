@@ -4,68 +4,151 @@ import evalSafe from "safe-eval";
 
 /**
  *
+ * @param {Discord.Message} baseMessage
+ * @param {string} question
+ */
+async function waitText(baseMessage, question) {
+	const sent = await baseMessage.channel.send(question);
+	return baseMessage.channel
+		.awaitMessages({
+			max: 1,
+			time: 1000 * 60 * 60 * 5,
+			filter: (msg) => msg.author.id == baseMessage.author.id,
+		})
+		.then((msg) => {
+			sent.delete();
+			msg.first().delete();
+			return msg.first().content;
+		});
+}
+/**
+ *
+ * @param {Discord.Message} baseMessage
+ * @param {string} question
+ */
+async function waitAttachement(baseMessage, question) {
+	const sent = await baseMessage.channel.send(question);
+	return baseMessage.channel
+		.awaitMessages({
+			max: 1,
+			time: 1000 * 60 * 60 * 5,
+			filter: (msg) =>
+				msg.author.id == baseMessage.author.id &&
+				((msg.attachments && msg.attachments.size > 0) || msg.content.match(/https?:\/\//)),
+		})
+		.then((msg) => {
+			sent.delete();
+			msg.first().delete();
+			if (msg.first().attachments && msg.first().attachments.size > 0)
+				return msg.first().attachments.first().url;
+			else return msg.first().content;
+		});
+}
+/**
+ *
+ * @param {Discord.Message} baseMessage
+ * @param {string} question
+ */
+async function ask(baseMessage, question) {
+	const sent = await baseMessage.channel.send({
+		content: question,
+		components: [
+			{
+				type: "ACTION_ROW",
+				components: [
+					{
+						type: "BUTTON",
+						label: "OUI",
+						emoji: "👍",
+						style: "SUCCESS",
+						customId: "yes",
+					},
+					{
+						type: "BUTTON",
+						label: "NON",
+						emoji: "👎",
+						style: "DANGER",
+						customId: "no",
+					},
+				],
+			},
+		],
+	});
+
+	return baseMessage.channel
+		.awaitMessageComponent({
+			max: 1,
+			time: 1000 * 60 * 60 * 5,
+			filter: (inter) => inter.user.id == baseMessage.author.id && inter.customId.match(/yes|no/),
+		})
+		.then((inter) => {
+			sent.delete();
+			return inter.customId == "yes";
+		});
+}
+
+const embeds = new Map();
+
+/**
+ *
  * @param {Discord.Client<boolean>} client
  * @param {Discord.Message} message
  */
 export default async function (client, message) {
-	if (
-		!message.member.permissions.has("ADMINISTRATOR") &&
-		message.author.id !== config.myID &&
-		!message.member.roles.cache.has(config.guilds[message.guildId].communityRoleID)
-	) {
-		return message.reply({
-			embeds: [
-				{
-					title: "Erreur",
-					color: "RED",
-					description: "Tu n'as pas le permission d'utiliser cette commande",
-				},
-			],
+	let code = message.content.match(/(?<=#)[\w\d]+/)?.[0];
+	if (code) {
+		message.delete();
+		const embed = embeds.get(code);
+		return message.channel.send({
+			embeds: [embed],
 		});
 	}
 
-	let src = message.content.match(/(?<=create\(){[\w\W]+}/)?.[0];
-	if (!src) {
-		return message.reply({
-			embeds: [
-				{
-					title: "Erreur",
-					color: "RED",
-					description: "Merci de fournir le code de l'embed",
-				},
-			],
-			components: [
-				{
-					type: "ACTION_ROW",
-					components: [
-						{
-							type: "BUTTON",
-							style: "LINK",
-							label: "Obtenir le code",
-							url: "https://autocode.com/tools/discord/embed-builder/",
-						},
-					],
-				},
-			],
-		});
+	code = Math.round(Math.random() * 10000).toString(32);
+
+	const title = await waitText(message, "Titre?");
+	const desc = await waitText(message, "Description?");
+
+	if (await ask(message, "Footer?")) {
+		var footer_text = await waitText(message, "Texte du footer?");
+		var footer_image = await waitAttachement(message, "Image du footer?");
 	}
 
-	src = src.replace(/\s+"channel_id": .+/, "");
-
-	try {
-		const data = evalSafe(src, {}, {});
-		await message.channel.send(data);
-	} catch (error) {
-		await message.reply({
-			embeds: [
-				{
-					title: "Erreur",
-					color: "RED",
-					description: error.message || "Code embed invalide",
-				},
-			],
-		});
+	if (await ask(message, "Couleur?")) {
+		var color = await waitText(message, "Couleur? (ex: #00bfff)");
 	}
+	if (await ask(message, "Thumbnail?")) {
+		var thumbnail = await waitAttachement(message, "Image de la Thumbnail?");
+	}
+	if (await ask(message, "Image?")) {
+		var image = await waitAttachement(message, "Image?");
+	}
+	if (await ask(message, "Lien?")) {
+		var link = await waitText(message, "Lien?");
+	}
+	const embed = {
+		title,
+		description: desc,
+		footer: {
+			icon_url: footer_image,
+			text: footer_text,
+		},
+		color: color,
+		thumbnail: {
+			url: thumbnail,
+		},
+		image,
+		url: link,
+	};
+	embeds.set(code, embed);
 
-	await message.delete();
+	message.channel.send({
+		content: `
+Embed réalisé, pour envoyer:
+\`\`\`
+-embed #${code}
+\`\`\`
+		`.trim(),
+		embeds: [embed],
+	});
 }
