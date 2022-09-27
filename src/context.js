@@ -25,7 +25,7 @@ export const config = {
 			suggestionsChannelID: "978983515330854912",
 			anivChannelID: "784012586521591809",
 			sondageChannelID: "656841905690116106",
-			levelUpChannelID: "792830986253369364",
+			levelUpChannelID: "854967377745936384",
 			logsChannelID: "655861612644925500",
 			ticketCategoryID: "655538940459352065",
 			staffRoleID: "663763852680364044",
