@@ -13,9 +13,9 @@ export const config = {
 	gmodServers: new Map([
 		// [process.env.SCPRP_TOKEN, "GMOD:142.132.159.166:27015"],
 		[process.env.TY_GAME_TOKEN, "TEXT:tyteam.fr"],
-		// [process.env.METEOR_TOKEN, "TEXT:🛠️ En développement"], // all games
+		[process.env.AVPRP_TOKEN, "TEXT:🛠️ En développement"],
 		[process.env.MC_TOKEN, "TEXT:🛠️ En développement"],
-		[process.env.WOLFSTEIN_TOKEN, "GMOD:game1.loicmorel.fr:27017"],
+		[process.env.WOLFSTEIN_TOKEN, "TEXT:🛠️ En développement"],
 	]),
 	guilds: {
 		// 'pour recup l'id: lv1<@&766021341949329459>    player: <@&678244426941988904>  (desole du ping)'
