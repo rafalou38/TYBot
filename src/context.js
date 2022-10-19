@@ -11,11 +11,11 @@ export const config = {
 	myID: "623790476713263124",
 	tyGuildID: "655531439571599380",
 	gmodServers: new Map([
-		// [process.env.SCPRP_TOKEN, "GMOD:142.132.159.166:27015"],
-		[process.env.TY_GAME_TOKEN, "TEXT:tyteam.fr"],
+		// [process.env.TY_GAME_TOKEN, "TEXT:tyteam.fr"],
 		[process.env.AVPRP_TOKEN, "TEXT:🛠️ En développement"],
-		[process.env.MC_TOKEN, "TEXT:🛠️ En développement"],
-		[process.env.WOLFSTEIN_TOKEN, "TEXT:🛠️ En développement"],
+		[process.env.METRORP_TOKEN, "TEXT:🛠️ En développement"],
+		[process.env.SCPRP_TOKEN, "TEXT:👷 En maintenance"],
+		// [process.env.TEST_TOKEN, "TEXT: "],
 	]),
 	guilds: {
 		// 'pour recup l'id: lv1<@&766021341949329459>    player: <@&678244426941988904>  (desole du ping)'
