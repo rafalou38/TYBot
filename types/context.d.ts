@@ -27,7 +27,8 @@ export interface IConfig {
 			ancestorRoleID: string;
 			ancestor2RoleID: string;
 			birthdayRoleID: string;
-			baseRoleID;: string;
+			baseRoleID: string;
+			waitingChannelID: string;
 			xpRolesIDS: {
 				1: string;
 				5: string;

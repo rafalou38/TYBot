@@ -35,6 +35,7 @@ export const config = {
 			ancestor3RoleID: "997659368008974336",
 			birthdayRoleID: "884409241983664158",
 			baseRoleID: "766021341949329459",
+			waitingChannelID: "703664514821914674",
 			xpRolesIDS: {
 				1: "766021341949329459",
 				5: "766021353522200608",

@@ -30,6 +30,7 @@ import "./queryServers.js";
 import { handleRaw } from "./events/raw.js";
 import { handleBan } from "./events/ban.js";
 import { handleUnBan } from "./events/unBan.js";
+import { handleVoiceStateUpdate } from "./events/voiceStateUpdate.js";
 /** @type {Discord.IntentsString[]} */
 const intents = [
 	"GUILDS",
@@ -39,6 +40,7 @@ const intents = [
 	"GUILD_PRESENCES",
 	"GUILD_BANS",
 	"GUILD_MESSAGE_REACTIONS",
+	"GUILD_VOICE_STATES"
 ];
 const client = new Discord.Client({
 	intents: intents,
@@ -82,6 +84,8 @@ client.on("guildBanAdd", logGuildBanAdd);
 client.on("guildBanAdd", handleBan);
 client.on("guildBanRemove", logGuildBanRemove);
 client.on("guildBanRemove", handleUnBan);
+
+client.on("voiceStateUpdate", handleVoiceStateUpdate);
 
 client.on("raw", handleRaw);
 
