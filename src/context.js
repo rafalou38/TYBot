@@ -29,6 +29,8 @@ export const config = {
 			logsChannelID: "655861612644925500",
 			ticketCategoryID: "655538940459352065",
 			staffRoleID: "663763852680364044",
+			modRoleID: "910878692778061874",
+			modPlusRoleID: "910879283323478016",
 			communityRoleID: "769569316097622038",
 			ancestorRoleID: "733111531704811542",
 			ancestor2RoleID: "899625427461615626",
@@ -36,6 +38,7 @@ export const config = {
 			birthdayRoleID: "884409241983664158",
 			baseRoleID: "766021341949329459",
 			waitingChannelID: "703664514821914674",
+			waitingPingChannelID: "720235259001831445",
 			xpRolesIDS: {
 				1: "766021341949329459",
 				5: "766021353522200608",
