@@ -23,12 +23,15 @@ export interface IConfig {
 			logsChannelID: string;
 			levelUpChannelID: string;
 			ticketCategoryID: string;
+			modRoleID: string;
+			modPlusRoleID: string;
 			staffRoleID: string;
 			ancestorRoleID: string;
 			ancestor2RoleID: string;
 			birthdayRoleID: string;
 			baseRoleID: string;
 			waitingChannelID: string;
+			waitingPingChannelID: string;
 			xpRolesIDS: {
 				1: string;
 				5: string;

@@ -1,12 +1,17 @@
 import Discord from "discord.js";
-import { AudioPlayerStatus, createAudioPlayer, createAudioResource, joinVoiceChannel, VoiceConnection } from "@discordjs/voice";
+import {
+	AudioPlayerStatus,
+	createAudioPlayer,
+	createAudioResource,
+	joinVoiceChannel,
+	VoiceConnection,
+} from "@discordjs/voice";
 import { config } from "../context.js";
-
+import { log } from "../utils/prettyLog.js";
 
 function resource() {
 	return createAudioResource("medias/waiting_sound.mp3");
 }
-
 
 /**  @type { VoiceConnection \ null }*/
 let conn;
@@ -18,16 +23,20 @@ player.on(AudioPlayerStatus.Idle, (old, n) => {
 	}
 });
 
+/** @type {Map<string, NodeJS.Timeout}*/
+const timeouts = new Map();
+
 /**
  *
  * @param {Discord.VoiceState} oldState
  * @param {Discord.VoiceState} newState
  */
 export async function handleVoiceStateUpdate(oldState, newState) {
-	const { guild } = newState;
-	const { waitingChannelID } = config.guilds[guild.id];
+	const { guild, member } = newState;
+	const { waitingChannelID, waitingPingChannelID, modRoleID, modPlusRoleID } =
+		config.guilds[guild.id];
 
-	if (newState.member.id === guild.client.user.id) return;
+	if (member.id === guild.client.user.id) return;
 
 	if (newState.channelId === waitingChannelID) {
 		if (!conn) {
@@ -38,11 +47,52 @@ export async function handleVoiceStateUpdate(oldState, newState) {
 			});
 			conn.subscribe(player);
 		}
-
 		player.play(resource());
+
+		log("User joined waiting room");
+		if (timeouts.has(member.id)) {
+			clearTimeout(timeouts.get(member.id));
+			timeouts.delete(member.id);
+		}
+
+		const timeout = setTimeout(async () => {
+			// Check if member is still connected
+			timeouts.delete(member.id);
+			if (!newState.channel) {
+				log("User not in waiting room anymore");
+				return;
+			}
+
+			/** @type {Discord.VoiceChannel} */
+			const newChannel = await newState.channel.fetch(true);
+			if (newChannel.members.has(member.id)) {
+				// Send ping to staff
+				log("User stayed in waiting room, pinging");
+				const channel = await guild.channels.fetch(waitingPingChannelID);
+				if (!channel.isText()) throw new Error("wrong waitingPingChannelID");
+				channel.send({
+					content: `<@&${modRoleID}> <@&${modPlusRoleID}>`,
+					embeds: [
+						{
+							title: "Utilisateur en attente de support",
+							description: `${member} est en attente dans le salon ${newChannel}`,
+							color: 0x50f450,
+							timestamp: new Date(),
+						},
+					],
+				});
+			} else {
+				log("User not in waiting room anymore");
+			}
+		}, 1000 * 60);
+
+		timeouts.set(member.id, timeout);
 	} else if (oldState.channelId == waitingChannelID) {
 		// Member left
-		const remainingMembers = oldState.channel.members.filter(m => m.id != guild.client.user.id);
+		log("Member left support channel, clearing");
+		clearTimeout(timeouts.get(member.id));
+		timeouts.delete(member.id);
+		const remainingMembers = oldState.channel.members.filter((m) => m.id != guild.client.user.id);
 		if (remainingMembers.size == 0) {
 			conn.destroy();
 			conn = null;
