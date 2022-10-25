@@ -77,6 +77,10 @@ export default async function (client, message) {
 						name: "```-react-roles <emoji>:<nom>:<ping role>,<emoji>:<nom>:<ping role> (...) ```",
 						value: "Affiche un embed pour obtenir des roles avec reaction.",
 					},
+					{
+						name: "```-ban @user raison du ban```",
+						value: "Bannis un utilisateur du serveur.",
+					},
 				],
 			},
 		],

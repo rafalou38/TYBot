@@ -81,9 +81,7 @@ client.on("roleDelete", logRoleDelete);
 client.on("channelCreate", logChannelCreate);
 client.on("channelDelete", logChannelDelete);
 client.on("guildBanAdd", logGuildBanAdd);
-client.on("guildBanAdd", handleBan);
 client.on("guildBanRemove", logGuildBanRemove);
-client.on("guildBanRemove", handleUnBan);
 
 client.on("voiceStateUpdate", handleVoiceStateUpdate);
 
