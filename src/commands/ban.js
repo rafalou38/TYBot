@@ -87,4 +87,7 @@ export default async function (client, message) {
 	await target.ban({
 		reason
 	});
+
+
+	await message.reply(`${target.tag} a été ban.`);
 }
