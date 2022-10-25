@@ -5,10 +5,8 @@ import "./sentry.js";
 
 import Discord from "discord.js";
 
-import init from "./init.js";
 import { commands } from "./commands/index.js";
 import { initDB } from "./database/initialize.js";
-import chalk from "chalk";
 import { userJoin } from "./events/userJoin.js";
 import { userLeave } from "./events/userLeave.js";
 import { config, context } from "./context.js";
@@ -17,8 +15,6 @@ import { setup as setupInvites } from "./utils/invites.js";
 import { countXP } from "./events/message.js";
 import { handleInteraction } from "./events/interaction.js";
 import { checkBirthday } from "./tasks/birthday.js";
-import { logDelete } from "./events/log/delete.js";
-import { logEdit } from "./events/log/edit.js";
 import { logJoin } from "./events/log/join.js";
 import { logLeave } from "./events/log/leave.js";
 import { logRoleCreate, logRoleDelete } from "./events/log/role.js";
@@ -28,9 +24,8 @@ import { updateStatus } from "./tasks/updateStatus.js";
 import { checkAncestor } from "./tasks/ancestors.js";
 import "./queryServers.js";
 import { handleRaw } from "./events/raw.js";
-import { handleBan } from "./events/ban.js";
-import { handleUnBan } from "./events/unBan.js";
 import { handleVoiceStateUpdate } from "./events/voiceStateUpdate.js";
+
 /** @type {Discord.IntentsString[]} */
 const intents = [
 	"GUILDS",
