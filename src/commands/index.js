@@ -14,6 +14,7 @@ import embed from "./embed.js";
 import ranks from "./ranks.js";
 import addLevel from "./add-level.js";
 import reactRoles from "./react-roles.js";
+import ban from "./ban.js";
 
 export const commands = {
 	help,
@@ -32,4 +33,5 @@ export const commands = {
 	ranks,
 	embed,
 	"react-roles": reactRoles,
+	ban
 };
