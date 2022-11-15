@@ -12,7 +12,7 @@ export const config = {
 	tyGuildID: "655531439571599380",
 	gmodServers: new Map([
 		// [process.env.TY_GAME_TOKEN, "TEXT:tyteam.fr"],
-		[process.env.AVPRP_TOKEN, "GMOD:game1.loicmorel.fr:27024"],
+		[process.env.AVPRP_TOKEN, "TEXT:Serveur évènementiel"],
 		[process.env.METRORP_TOKEN, "TEXT:🛠️ En développement"],
 		[process.env.SCPRP_TOKEN, "TEXT:👷 En maintenance"],
 		// [process.env.TEST_TOKEN, "TEXT: "],
