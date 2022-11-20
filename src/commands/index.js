@@ -7,7 +7,7 @@ import suggestion from "./suggestion.js";
 import sondage from "./sondage.js";
 import ticketHere from "./ticket-here.js";
 import giveaway from "./giveaway.js";
-import aniv from "./aniv.js";
+import anniv from "./aniv.js";
 import profile from "./profile.js";
 import serveur from "./serveur.js";
 import embed from "./embed.js";
@@ -27,7 +27,7 @@ export const commands = {
 	sondage,
 	"ticket-here": ticketHere,
 	giveaway,
-	aniv,
+	aniv: anniv,
 	profile,
 	serveur,
 	ranks,
