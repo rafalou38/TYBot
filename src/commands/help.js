@@ -58,7 +58,7 @@ export default async function (client, message) {
 						value: "Crée un giveaway avec une réaction pour participer",
 					},
 					{
-						name: "```-aniv jour/mois```",
+						name: "```-anniv jour/mois```",
 						value: "Définit votre anniversaire pour qu'il soit annoncé le jour venu par le bot.",
 					},
 					{

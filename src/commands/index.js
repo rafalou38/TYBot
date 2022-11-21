@@ -27,7 +27,7 @@ export const commands = {
 	sondage,
 	"ticket-here": ticketHere,
 	giveaway,
-	aniv: anniv,
+	anniv,
 	profile,
 	serveur,
 	ranks,
