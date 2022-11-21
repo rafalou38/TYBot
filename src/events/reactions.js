@@ -1,3 +1,4 @@
+import { GuildMember, Message } from "discord.js";
 import { context } from "../context.js";
 import { log } from "../utils/prettyLog.js";
 
@@ -23,8 +24,15 @@ function extractFromEmbed(content) {
 	return roles;
 }
 
+/**
+ * 
+ * @param {Message} message 
+ * @param {GuildMember} member 
+ * @param {string} emoji 
+ * @returns 
+ */
 export async function handleReactionAdd(message, member, emoji) {
-	if (message.author.id !== context.client.user.id) return;
+	if (member.user.id === context.client.user.id) return;
 
 	const msgContent = message.embeds[0].description || "";
 	const roles = extractFromEmbed(msgContent);
@@ -34,7 +42,22 @@ export async function handleReactionAdd(message, member, emoji) {
 		return;
 	}
 
-	await member.roles.add(role.id);
+	if (member.roles.resolve(role.id)) {
+		await member.roles.remove(role.id);
+
+		const DM = await member.createDM();
+		await DM.send(`Le role **${role.name}** t'as été retiré`);
+	} else {
+		await member.roles.add(role.id);
+
+		const DM = await member.createDM();
+		await DM.send(`Le role **${role.name}** t'as été ajouté`);
+	}
+
+	const react = message.reactions.resolve(emoji);
+	if (react) {
+		react.users.remove(member.id);
+	}
 
 	log(`Ajout du role ${role.name} sur ${member.user.tag}`);
 }

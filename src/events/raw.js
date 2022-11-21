@@ -12,8 +12,10 @@ export async function handleRaw(event) {
 	const guild = context.client.guilds.cache.get(data.guild_id);
 	const channel = guild?.channels.cache.get(data.channel_id);
 
-	const message = await channel?.messages.fetch(data.message_id);
-	const user = await guild?.members.fetch(data.user_id);
+	try {
+		var message = await channel?.messages.fetch(data.message_id);
+		var user = await guild?.members.fetch(data.user_id);
+	} catch (error) { }
 
 	const emoji = data.emoji.name;
 
@@ -24,7 +26,8 @@ export async function handleRaw(event) {
 
 	if (type === "MESSAGE_REACTION_ADD") {
 		handleReactionAdd(message, user, emoji);
-	} else if (type === "MESSAGE_REACTION_REMOVE") {
-		handleReactionRemove(message, user, emoji);
 	}
+	//  else if (type === "MESSAGE_REACTION_REMOVE") {
+	// 	handleReactionRemove(message, user, emoji);
+	// }
 }
