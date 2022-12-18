@@ -35,7 +35,7 @@ const intents = [
 	"GUILD_PRESENCES",
 	"GUILD_BANS",
 	"GUILD_MESSAGE_REACTIONS",
-	"GUILD_VOICE_STATES"
+	"GUILD_VOICE_STATES",
 ];
 const client = new Discord.Client({
 	intents: intents,
@@ -47,6 +47,7 @@ client.once("ready", async () => {
 	guilds.forEach(async (oldGuild) => {
 		const guild = await client.guilds.fetch(oldGuild.id);
 		checkBirthday(guild);
+		checkAncestor(guild);
 	});
 	updateStatus(client);
 	setInterval(updateStatus.bind(null, client), 1000 * 60 * 60);
@@ -82,7 +83,7 @@ client.on("voiceStateUpdate", handleVoiceStateUpdate);
 
 client.on("raw", handleRaw);
 
-setTimeout(async () => {
+setInterval(async () => {
 	const guilds = await client.guilds.fetch();
 	guilds.forEach(async (oldGuild) => {
 		const guild = await client.guilds.fetch(oldGuild.id);
