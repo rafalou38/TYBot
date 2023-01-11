@@ -38,11 +38,11 @@ export default async function (client, message) {
 				value: foundTarget.birthday || "inconnu",
 				inline: true,
 			},
-			{
-				name: "Niveau",
-				value: foundTarget.level.toString() || 0,
-				inline: true,
-			},
+			// {
+			// 	name: "Niveau",
+			// 	value: foundTarget.level.toString() || 0,
+			// 	inline: true,
+			// },
 			{
 				name: "Compte crée le",
 				value: formatDate(target.user.createdAt),
