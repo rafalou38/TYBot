@@ -43,7 +43,7 @@ export async function userJoin(member) {
 	}
 
 	// await member.roles.add(config.guilds[member.guild.id].xpRolesIDS[1]);
-	await member.roles.add(config.guilds[member.guild.id].baseRoleID);
+	// await member.roles.add(config.guilds[member.guild.id].baseRoleID);
 
 	// ADD INVITE TO INVITER
 	let DBInviter = await Member.findOneAndUpdate(
