@@ -32,7 +32,7 @@ function extractFromEmbed(content) {
  * @returns 
  */
 export async function handleReactionAdd(message, member, emoji) {
-	if (member.user.id === context.client.user.id) return;
+	if (message.author.id !== context.client.user.id) return;
 
 	const msgContent = message.embeds[0].description || "";
 	const roles = extractFromEmbed(msgContent);
