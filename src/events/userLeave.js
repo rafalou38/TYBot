@@ -37,22 +37,22 @@ export async function userLeave(member) {
 		embeds: [
 			{
 				title: `Bye ${member.user.tag}`,
-				description: `<@${member.id}> nous a quittées`,
+				description: `<@${member.id}> nous a quitté`,
 				color: "RED",
 				thumbnail: {
 					url: member.user.avatarURL(),
 				},
 				fields: DBMemberInviter
 					? [
-							{
-								name: "Il avait été invité par",
-								value: `<@${DBMemberInviter.userID}>`,
-							},
-							{
-								name: "Qui à désormais:",
-								value: `${DBMemberInviter.invites} invites`,
-							},
-					  ]
+						{
+							name: "Il avait été invité par",
+							value: `<@${DBMemberInviter.userID}>`,
+						},
+						{
+							name: "Qui à désormais:",
+							value: `${DBMemberInviter.invites} invites`,
+						},
+					]
 					: [],
 			},
 		],

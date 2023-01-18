@@ -70,7 +70,7 @@ export async function userJoin(member) {
 		embeds: [
 			{
 				title: `Bienvenue ${member.user.tag}`,
-				description: `<@${member.id}> nous a rejoints`,
+				description: `<@${member.id}> nous a rejoint`,
 				color: "GREEN",
 				thumbnail: {
 					url: member.user.avatarURL(),
