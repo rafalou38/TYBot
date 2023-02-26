@@ -39,7 +39,7 @@ export const config = {
 			birthdayRoleID: "884409241983664158",
 			baseRoleID: "766021341949329459",
 			waitingChannelID: "703664514821914674",
-			waitingPingChannelID: "720235259001831445",
+			waitingPingChannelID: "655861612644925500",
 			xpRolesIDS: {
 				1: "766021341949329459",
 				5: "766021353522200608",
