@@ -33,8 +33,14 @@ const timeouts = new Map();
  */
 export async function handleVoiceStateUpdate(oldState, newState) {
 	const { guild, member } = newState;
-	const { waitingChannelID, waitingPingChannelID, modRoleID, modPlusRoleID, adminRoleID } =
-		config.guilds[guild.id];
+	const {
+		waitingChannelID,
+		waitingPingChannelID,
+		modRoleID,
+		modPlusRoleID,
+		adminRoleID,
+		staffRoleID,
+	} = config.guilds[guild.id];
 
 	if (member.id === guild.client.user.id) return;
 
@@ -71,7 +77,7 @@ export async function handleVoiceStateUpdate(oldState, newState) {
 				const channel = await guild.channels.fetch(waitingPingChannelID);
 				if (!channel.isText()) throw new Error("wrong waitingPingChannelID");
 				channel.send({
-					content: `<@&${modRoleID}> <@&${modPlusRoleID}> <@&${adminRoleID}>`,
+					content: `<@&${modRoleID}> <@&${modPlusRoleID}> <@&${adminRoleID}> <@&${staffRoleID}>`,
 					embeds: [
 						{
 							title: "Utilisateur en attente de support",
