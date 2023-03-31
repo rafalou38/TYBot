@@ -10,7 +10,9 @@ export default async function (client, message) {
 		embeds: [
 			{
 				title: "Voila mes commandes",
-				author: client.user.username,
+				// author: {
+				// 	name: client.user.username
+				// },
 				thumbnail: {
 					url: client.user.avatarURL(),
 				},

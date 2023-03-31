@@ -30,6 +30,7 @@ import { handleVoiceStateUpdate } from "./events/voiceStateUpdate.js";
 const intents = [
 	GatewayIntentBits.Guilds,
 	GatewayIntentBits.GuildMessages,
+	GatewayIntentBits.MessageContent,
 	GatewayIntentBits.GuildMembers,
 	GatewayIntentBits.GuildInvites,
 	GatewayIntentBits.GuildPresences,
