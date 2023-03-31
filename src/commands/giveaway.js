@@ -1,4 +1,4 @@
-import Discord from "discord.js";
+import Discord, { Colors } from "discord.js";
 import { config } from "../context.js";
 import { Member } from "../database/schemas/Member.js";
 import { addXP, calcRequiredXPForLevel } from "../database/utils/xp.js";
@@ -27,7 +27,7 @@ export default async function (client, message) {
 				{
 					title: "Erreur",
 					description: "Tu n'est pas administrateur",
-					color: "RED",
+					color: Colors.Red,
 					fields: syntax,
 				},
 			],
@@ -41,7 +41,7 @@ export default async function (client, message) {
 				{
 					title: "Erreur",
 					description: "Veuillez entrer une duré valide",
-					color: "RED",
+					color: Colors.Red,
 					fields: syntax,
 				},
 			],
@@ -53,7 +53,7 @@ export default async function (client, message) {
 				{
 					title: "Erreur",
 					description: "Veuillez entrer prix valide",
-					color: "RED",
+					color: Colors.Red,
 					fields: syntax,
 				},
 			],

@@ -1,4 +1,4 @@
-import Discord from "discord.js";
+import Discord, { Colors } from "discord.js";
 import { config } from "../context.js";
 
 /**
@@ -12,7 +12,7 @@ export default async function (client, message) {
 			embeds: [
 				{
 					title: "Erreur",
-					color: "RED",
+					color: Colors.Red,
 					description: "Tu n'as pas le permission d'utiliser cette commande",
 				},
 			],
@@ -41,7 +41,7 @@ export default async function (client, message) {
 					rolesObject
 						.map((role) => role.emoji + " = " + role.name + " (" + role.id + ")")
 						.join("\n"),
-				color: "GREEN",
+				color: Colors.Green,
 			},
 		],
 	});

@@ -1,4 +1,4 @@
-import Discord from "discord.js";
+import Discord, { Colors } from "discord.js";
 import { Member } from "../database/schemas/Member.js";
 import { addLvl, addXP, calcRequiredXPForLevel } from "../database/utils/xp.js";
 import { parseInput, getMemberFromText } from "../utils/commands.js";
@@ -26,7 +26,7 @@ export default async function (client, message) {
 				{
 					title: "Erreur",
 					description: "Tu n'est pas administrateur",
-					color: "RED",
+					color: Colors.Red,
 					fields: syntax,
 				},
 			],
@@ -40,7 +40,7 @@ export default async function (client, message) {
 				{
 					title: "Erreur",
 					description: "Veuillez entrer un utilisateur valide",
-					color: "RED",
+					color: Colors.Red,
 					fields: syntax,
 				},
 			],
@@ -53,7 +53,7 @@ export default async function (client, message) {
 				{
 					title: "Erreur",
 					description: `La quantité \`${rawLvl}\` n'est pas valide`,
-					color: "RED",
+					color: Colors.Red,
 					fields: syntax,
 				},
 			],

@@ -1,4 +1,4 @@
-import Discord from "discord.js";
+import Discord, { ActivityType } from "discord.js";
 import { Member } from "../database/schemas/Member.js";
 import { parseInput, getMemberFromText } from "../utils/commands.js";
 import { formatDate, timeDiff } from "../utils/time.js";
@@ -60,7 +60,7 @@ export default async function (client, message) {
 		value: target.roles.cache.map((r) => `<@&${r.id}>`).join(" ") || "aucuns",
 	});
 	if (target.presence) {
-		const status = target.presence.activities.find((act) => act.type === "CUSTOM");
+		const status = target.presence.activities.find((act) => act.type === ActivityType.Custom);
 		if (status) {
 			DBfields.push({
 				name: "Status:",

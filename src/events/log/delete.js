@@ -1,4 +1,4 @@
-import Discord from "discord.js";
+import Discord, { Colors } from "discord.js";
 import { config } from "../../context.js";
 
 /**
@@ -15,7 +15,7 @@ export async function logDelete(message) {
 			{
 				title: "Message supprimé.",
 				description: `<@${message.author.id}> à supprimé un de ces messages.`,
-				color: "RED",
+				color: Colors.Red,
 				thumbnail: {
 					url: message.author.avatarURL(),
 				},

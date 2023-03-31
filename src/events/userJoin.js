@@ -1,4 +1,4 @@
-import Discord from "discord.js";
+import Discord, { Colors } from "discord.js";
 import { config, context } from "../context.js";
 import { Member } from "../database/schemas/Member.js";
 import { updateStatus } from "../tasks/updateStatus.js";
@@ -71,7 +71,7 @@ export async function userJoin(member) {
 			{
 				title: `Bienvenue ${member.user.tag}`,
 				description: `<@${member.id}> nous a rejoint`,
-				color: "GREEN",
+				color: Colors.Green,
 				thumbnail: {
 					url: member.user.avatarURL(),
 				},

@@ -1,4 +1,4 @@
-import Discord from "discord.js";
+import Discord, { ButtonStyle, Colors, ComponentType } from "discord.js";
 
 import { Member } from "../database/schemas/Member.js";
 import { parseInput, getMemberFromText } from "../utils/commands.js";
@@ -23,7 +23,7 @@ export default async function (client, message) {
 						name: message.author.username,
 						icon_url: message.author.displayAvatarURL(),
 					},
-					color: "RED",
+					color: Colors.Red,
 				},
 			],
 		});
@@ -53,7 +53,7 @@ export default async function (client, message) {
 				{
 					title: "Ban",
 					description: "Tu as été banni du serveur de la TY-TEAM",
-					color: "RED",
+					color: Colors.Red,
 					fields: [
 						{
 							name: "Date du ban",
@@ -72,11 +72,11 @@ export default async function (client, message) {
 			],
 			components: [
 				{
-					type: "ACTION_ROW",
+					type: ComponentType.ActionRow,
 					components: [
 						{
-							type: "BUTTON",
-							style: "LINK",
+							type: ComponentType.Button,
+							style: ButtonStyle.Link,
 							url: "https://docs.google.com/forms/d/e/1FAIpQLScv2FWIjBmb-iqPYyDvoegKUeH0if2fhRsO_F3JQ_920__qaQ/viewform?usp=sf_link",
 							label: "Demande de unban",
 						},

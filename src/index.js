@@ -3,7 +3,7 @@ dotenv.config(); // load discord token from .env
 
 import "./sentry.js";
 
-import Discord from "discord.js";
+import Discord, { GatewayIntentBits } from "discord.js";
 
 import { commands } from "./commands/index.js";
 import { initDB } from "./database/initialize.js";
@@ -28,14 +28,14 @@ import { handleVoiceStateUpdate } from "./events/voiceStateUpdate.js";
 
 /** @type {Discord.IntentsString[]} */
 const intents = [
-	"GUILDS",
-	"GUILD_MESSAGES",
-	"GUILD_MEMBERS",
-	"GUILD_INVITES",
-	"GUILD_PRESENCES",
-	"GUILD_BANS",
-	"GUILD_MESSAGE_REACTIONS",
-	"GUILD_VOICE_STATES",
+	GatewayIntentBits.Guilds,
+	GatewayIntentBits.GuildMessages,
+	GatewayIntentBits.GuildMembers,
+	GatewayIntentBits.GuildInvites,
+	GatewayIntentBits.GuildPresences,
+	GatewayIntentBits.GuildModeration,
+	GatewayIntentBits.GuildMessageReactions,
+	GatewayIntentBits.GuildVoiceStates,
 ];
 const client = new Discord.Client({
 	intents: intents,

@@ -1,4 +1,4 @@
-import Discord from "discord.js";
+import Discord, { Colors } from "discord.js";
 import { config } from "../../context.js";
 /**
  *
@@ -15,7 +15,7 @@ export async function logChannelDelete(channel) {
 			{
 				title: "Salon supprimé",
 				description: `Ancien nom: ${channel.name}`,
-				color: "RED",
+				color: Colors.Red,
 				timestamp: new Date(),
 			},
 		],
@@ -36,7 +36,7 @@ export async function logChannelCreate(channel) {
 			{
 				title: "Salon crée",
 				description: `Nouveau salon: ${channel}`,
-				color: "GREEN",
+				color: Colors.Green,
 				timestamp: new Date(),
 			},
 		],

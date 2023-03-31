@@ -1,4 +1,4 @@
-import Discord from "discord.js";
+import Discord, { Colors } from "discord.js";
 import { config } from "../../context.js";
 
 /**
@@ -22,7 +22,7 @@ export async function logEdit(oldMessage, newMessage) {
 					url: newMessage.author.avatarURL(),
 				},
 				description: `<@${newMessage.author.id}> à modifié un de ces messages.`,
-				color: "BLUE",
+				color: Colors.Blue,
 				fields: [
 					{
 						name: "Ancien message:",

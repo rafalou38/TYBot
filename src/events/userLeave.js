@@ -1,4 +1,6 @@
-import Discord from "discord.js";
+/* eslint-disable no-mixed-spaces-and-tabs */
+/* eslint-disable indent */
+import Discord, { Colors } from "discord.js";
 import { config, context } from "../context.js";
 import { Member } from "../database/schemas/Member.js";
 import { updateStatus } from "../tasks/updateStatus.js";
@@ -38,21 +40,21 @@ export async function userLeave(member) {
 			{
 				title: `Bye ${member.user.tag}`,
 				description: `<@${member.id}> nous a quitté`,
-				color: "RED",
+				color: Colors.Red,
 				thumbnail: {
 					url: member.user.avatarURL(),
 				},
 				fields: DBMemberInviter
 					? [
-						{
-							name: "Il avait été invité par",
-							value: `<@${DBMemberInviter.userID}>`,
-						},
-						{
-							name: "Qui à désormais:",
-							value: `${DBMemberInviter.invites} invites`,
-						},
-					]
+							{
+								name: "Il avait été invité par",
+								value: `<@${DBMemberInviter.userID}>`,
+							},
+							{
+								name: "Qui à désormais:",
+								value: `${DBMemberInviter.invites} invites`,
+							},
+					  ]
 					: [],
 			},
 		],

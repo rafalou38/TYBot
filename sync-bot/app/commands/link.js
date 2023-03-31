@@ -5,7 +5,7 @@ import { Op } from "sequelize";
 import jwtlib from "jsonwebtoken";
 
 export const data = new SlashCommandBuilder()
-	.setName("link")
+	.setName(ButtonStyle.Link)
 	.setDescription("Link your Discord account to your account on our community.");
 export const guildOnly = true;
 export async function execute(interaction) {
