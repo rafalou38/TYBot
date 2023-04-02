@@ -1,4 +1,4 @@
-import Discord, { Colors } from "discord.js";
+import Discord, { Colors, TextChannel } from "discord.js";
 import { config, context } from "../context.js";
 import { Member } from "../database/schemas/Member.js";
 import { updateStatus } from "../tasks/updateStatus.js";
@@ -13,7 +13,7 @@ import { log } from "../utils/prettyLog.js";
 export async function userJoin(member) {
 	const channel = await getChanelById(config.guilds[member.guild.id].userJoinChannelID);
 
-	if (!channel || !channel.isText()) return;
+	if (channel.type == TextChannel) return;
 
 	let invite = await getInvite(member);
 

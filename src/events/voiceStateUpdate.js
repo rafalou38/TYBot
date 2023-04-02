@@ -1,4 +1,4 @@
-import Discord from "discord.js";
+import Discord, { TextChannel } from "discord.js";
 import {
 	AudioPlayerStatus,
 	createAudioPlayer,
@@ -75,7 +75,7 @@ export async function handleVoiceStateUpdate(oldState, newState) {
 				// Send ping to staff
 				log("User stayed in waiting room, pinging");
 				const channel = await guild.channels.fetch(waitingPingChannelID);
-				if (!channel.isText()) throw new Error("wrong waitingPingChannelID");
+				if (channel.type == TextChannel) throw new Error("wrong waitingPingChannelID");
 				channel.send({
 					content: `<@&${modRoleID}> <@&${modPlusRoleID}> <@&${adminRoleID}> <@&${staffRoleID}>`,
 					embeds: [
