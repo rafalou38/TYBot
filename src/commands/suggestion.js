@@ -34,11 +34,10 @@ export default async function (client, message) {
 		});
 	}
 
-	/** @type {Discord.TextChannel} */
-	const channel = message.guild.channels.cache.get(
-		config.guilds[message.guildId].suggestionsChannelID
-	);
-	const sentMessage = await channel.send({
+	message.delete();
+
+
+	const sentMessage = await message.channel.send({
 		embeds: [
 			{
 				title: `Suggestion de ${message.author.tag}`,
