@@ -13,28 +13,28 @@ const lastMessages = {};
  * @param {Discord.Message} message
  */
 export async function countXP(message) {
-	if (message.author.bot) return;
+	// if (message.author.bot) return;
 
-	const last = lastMessages[message.author.id];
-	const now = new Date();
-	let newLevel = null;
-	if (last) {
-		const diffSec = Math.abs(last - now) / 1000;
-		if (diffSec > config.xpAddDelaySeconds) {
-			lastMessages[message.author.id] = now;
-			newLevel = await addXP(message.member);
-		}
-	} else {
-		newLevel = await addXP(message.member);
-		lastMessages[message.author.id] = now;
-	}
+	// const last = lastMessages[message.author.id];
+	// const now = new Date();
+	// let newLevel = null;
+	// if (last) {
+	// 	const diffSec = Math.abs(last - now) / 1000;
+	// 	if (diffSec > config.xpAddDelaySeconds) {
+	// 		lastMessages[message.author.id] = now;
+	// 		newLevel = await addXP(message.member);
+	// 	}
+	// } else {
+	// 	newLevel = await addXP(message.member);
+	// 	lastMessages[message.author.id] = now;
+	// }
 
-	if (newLevel) {
-		const channel = await message.guild.channels.fetch(
-			config.guilds[message.guildId].levelUpChannelID
-		);
-		await channel.send(
-			`<@${message.author.id}> à monté de niveau:\nil est désormais au niveau **${newLevel}**`
-		);
-	}
+	// if (newLevel) {
+	// 	const channel = await message.guild.channels.fetch(
+	// 		config.guilds[message.guildId].levelUpChannelID
+	// 	);
+	// 	await channel.send(
+	// 		`<@${message.author.id}> à monté de niveau:\nil est désormais au niveau **${newLevel}**`
+	// 	);
+	// }
 }
