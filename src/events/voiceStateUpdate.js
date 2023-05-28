@@ -9,17 +9,30 @@ import {
 import { config } from "../context.js";
 import { log } from "../utils/prettyLog.js";
 
-function resource() {
+function joinResource() {
 	return createAudioResource("medias/waiting_sound.mp3");
 }
+function randomSong() {
+	const options = ["Depeche_Mode_-_Corrupt_Lyrics.mp3",
+		"Depeche_Mode_-_Never_Let_Me_Down_Again_-_Lyrics.mp3",
+		"Metallica_-_Enter_Sandman_lyrics.mp3",
+		"Paint_It_Black.mp3",
+		"Personal_Jesus.mp3",
+		"Arctic_Monkeys_-_Do_I_Wanna_Know_Official_Video.mp3",
+		"DiRT_4_Official_Soundtrack__Out_Of_My_System__Youngr.mp3"
+	];
+	const choice = Math.min(Math.round(Math.random() * options.length), options.length - 1);
 
-/**  @type { VoiceConnection \ null }*/
+	return createAudioResource("medias/musiques/" + options[choice]);
+}
+
+/**  @type { VoiceConnection | null }*/
 let conn;
 const player = createAudioPlayer();
+
 player.on(AudioPlayerStatus.Idle, (old, n) => {
 	if (conn) {
-		// Still connected
-		player.play(resource());
+		player.play(randomSong());
 	}
 });
 
@@ -33,7 +46,7 @@ const timeouts = new Map();
  */
 export async function handleVoiceStateUpdate(oldState, newState) {
 	const { guild, member } = newState;
-	const { waitingChannelID, waitingPingChannelID, modRoleID, modPlusRoleID } =
+	const { waitingChannelID, waitingPingChannelID, staffRoleID } =
 		config.guilds[guild.id];
 
 	if (member.id === guild.client.user.id) return;
@@ -47,7 +60,7 @@ export async function handleVoiceStateUpdate(oldState, newState) {
 			});
 			conn.subscribe(player);
 		}
-		player.play(resource());
+		player.play(joinResource());
 
 		log("User joined waiting room");
 		if (timeouts.has(member.id)) {
@@ -66,12 +79,11 @@ export async function handleVoiceStateUpdate(oldState, newState) {
 			/** @type {Discord.VoiceChannel} */
 			const newChannel = await newState.channel.fetch(true);
 			if (newChannel.members.has(member.id)) {
-				// Send ping to staff
 				log("User stayed in waiting room, pinging");
 				const channel = await guild.channels.fetch(waitingPingChannelID);
 				if (!channel.isText()) throw new Error("wrong waitingPingChannelID");
-				channel.send({
-					content: `<@&${modRoleID}> <@&${modPlusRoleID}>`,
+				await channel.send({
+					content: `<@&${staffRoleID}>`,
 					embeds: [
 						{
 							title: "Utilisateur en attente de support",
