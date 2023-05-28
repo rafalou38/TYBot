@@ -1,4 +1,4 @@
-import Discord from "discord.js";
+import Discord, { Colors, TextChannel } from "discord.js";
 import { config, context } from "../context.js";
 import { Member } from "../database/schemas/Member.js";
 import { updateStatus } from "../tasks/updateStatus.js";
@@ -13,7 +13,7 @@ import { log } from "../utils/prettyLog.js";
 export async function userJoin(member) {
 	const channel = await getChanelById(config.guilds[member.guild.id].userJoinChannelID);
 
-	if (!channel || !channel.isText()) return;
+	if (channel.type == TextChannel) return;
 
 	let invite = await getInvite(member);
 
@@ -42,8 +42,8 @@ export async function userJoin(member) {
 		log(member.user.tag, "joined, old account used");
 	}
 
-	await member.roles.add(config.guilds[member.guild.id].xpRolesIDS[1]);
-	await member.roles.add(config.guilds[member.guild.id].baseRoleID);
+	// await member.roles.add(config.guilds[member.guild.id].xpRolesIDS[1]);
+	// await member.roles.add(config.guilds[member.guild.id].baseRoleID);
 
 	// ADD INVITE TO INVITER
 	let DBInviter = await Member.findOneAndUpdate(
@@ -70,8 +70,8 @@ export async function userJoin(member) {
 		embeds: [
 			{
 				title: `Bienvenue ${member.user.tag}`,
-				description: `<@${member.id}> nous a rejoints`,
-				color: "GREEN",
+				description: `<@${member.id}> nous a rejoint`,
+				color: Colors.Green,
 				thumbnail: {
 					url: member.user.avatarURL(),
 				},

@@ -1,4 +1,4 @@
-import Discord from "discord.js";
+import Discord, { ButtonStyle, ComponentType } from "discord.js";
 import { config } from "../context.js";
 import evalSafe from "safe-eval";
 
@@ -54,20 +54,20 @@ async function ask(baseMessage, question) {
 		content: question,
 		components: [
 			{
-				type: "ACTION_ROW",
+				type: ComponentType.ActionRow,
 				components: [
 					{
-						type: "BUTTON",
+						type: ComponentType.Button,
 						label: "OUI",
 						emoji: "👍",
-						style: "SUCCESS",
+						style: ButtonStyle.Success,
 						customId: "yes",
 					},
 					{
-						type: "BUTTON",
+						type: ComponentType.Button,
 						label: "NON",
 						emoji: "👎",
-						style: "DANGER",
+						style: ButtonStyle.Danger,
 						customId: "no",
 					},
 				],

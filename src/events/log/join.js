@@ -1,4 +1,4 @@
-import Discord from "discord.js";
+import Discord, { Colors } from "discord.js";
 import { config } from "../../context.js";
 
 /**
@@ -25,7 +25,7 @@ export async function logJoin(member) {
 			{
 				title: `${member.user.tag} à rejoint`,
 				description: `${member} vient de rejoindre le serveur.`,
-				color: "GREEN",
+				color: Colors.Green,
 				thumbnail: {
 					url: member.user.avatarURL(),
 				},

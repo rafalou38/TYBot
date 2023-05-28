@@ -1,4 +1,6 @@
-import Discord from "discord.js";
+/* eslint-disable no-mixed-spaces-and-tabs */
+/* eslint-disable indent */
+import Discord, { Colors, TextChannel } from "discord.js";
 import { config, context } from "../context.js";
 import { Member } from "../database/schemas/Member.js";
 import { updateStatus } from "../tasks/updateStatus.js";
@@ -10,7 +12,7 @@ import { getChanelById } from "../utils/channels.js";
  */
 export async function userLeave(member) {
 	const channel = await getChanelById(config.guilds[member.guild.id].userJoinChannelID);
-	if (!channel || !channel.isText()) return;
+	if (channel.type == TextChannel) return;
 
 	/** @type {import("../../types/db/Member.js").IMember} */
 	const DBMemberLeave = await Member.findOne({
@@ -37,8 +39,8 @@ export async function userLeave(member) {
 		embeds: [
 			{
 				title: `Bye ${member.user.tag}`,
-				description: `<@${member.id}> nous a quittées`,
-				color: "RED",
+				description: `<@${member.id}> nous a quitté`,
+				color: Colors.Red,
 				thumbnail: {
 					url: member.user.avatarURL(),
 				},

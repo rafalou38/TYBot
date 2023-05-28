@@ -1,4 +1,6 @@
-import Discord from "discord.js";
+/* eslint-disable no-mixed-spaces-and-tabs */
+/* eslint-disable indent */
+import Discord, { AuditLogEvent, AuditLogOptionsType, Colors } from "discord.js";
 import { config } from "../../context.js";
 
 /**
@@ -9,7 +11,7 @@ export async function logLeave(member) {
 	// check if user leaved because of kick
 	const kick = await member.guild
 		.fetchAuditLogs({
-			type: "MEMBER_KICK",
+			type: AuditLogEvent.MemberKick,
 			limit: 1,
 		})
 		.then((audit) =>
@@ -33,7 +35,7 @@ export async function logLeave(member) {
 				description: kick
 					? `pour la raison suivante: ${kick.reason}`
 					: `${member} vient de quitter le serveur.`,
-				color: kick ? "YELLOW" : "RED",
+				color: kick ? Colors.Yellow : Colors.Red,
 				thumbnail: {
 					url: member.user.avatarURL(),
 				},

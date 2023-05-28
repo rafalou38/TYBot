@@ -1,4 +1,4 @@
-import Discord from "discord.js";
+import Discord, { ButtonStyle, ComponentType } from "discord.js";
 import { description } from "../context.js";
 
 /**
@@ -11,31 +11,31 @@ export default async function (client, message) {
 		content: "** **",
 		components: [
 			{
-				type: "ACTION_ROW",
+				type: ComponentType.ActionRow,
 				components: [
 					{
-						style: "LINK",
+						style: ButtonStyle.Link,
 						label: "Twitter",
 						url: "https://twitter.com/tyteamoff/status/1332001166188752901?s=21",
-						type: "BUTTON",
+						type: ComponentType.Button,
 					},
 					{
-						style: "LINK",
+						style: ButtonStyle.Link,
 						label: "YouTube",
 						url: "https://www.youtube.com/channel/UCPFJSJaidomQyLuvjFWFD_g",
-						type: "BUTTON",
+						type: ComponentType.Button,
 					},
 					{
-						style: "LINK",
+						style: ButtonStyle.Link,
 						label: "TikTok",
 						url: "https://vm.tiktok.com/ZMeVMfcFq/",
-						type: "BUTTON",
+						type: ComponentType.Button,
 					},
 					{
-						style: "LINK",
+						style: ButtonStyle.Link,
 						label: "Instagram",
 						url: "https://www.instagram.com/ty_team_off/?hl=fr",
-						type: "BUTTON",
+						type: ComponentType.Button,
 					},
 				],
 			},

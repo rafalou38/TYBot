@@ -1,4 +1,4 @@
-import Discord from "discord.js";
+import Discord, { Colors } from "discord.js";
 import { Member } from "../database/schemas/Member.js";
 import { parseInput, getMemberFromText } from "../utils/commands.js";
 
@@ -23,7 +23,7 @@ export default async function (client, message) {
 				{
 					title: "Erreur",
 					description: "Mauvaise date",
-					color: "RED",
+					color: Colors.Red,
 					fields: syntax,
 				},
 			],

@@ -3,8 +3,9 @@
 		"es2021": true,
 		"node": true
 	},
-	"extends": "eslint:recommended",
+	"extends": ["eslint:recommended", "plugin:@typescript-eslint/recommended"],
 	"parserOptions": {
+		"project": "./tsconfig.json",
 		"ecmaVersion": 12,
 		"sourceType": "module"
 	},
@@ -13,6 +14,9 @@
 		"indent": ["error", "tab", { "SwitchCase": 1 }],
 		"quotes": ["error", "double"],
 		"semi": ["error", "always"],
-		"no-empty": "off"
-	}
+		"no-empty": "off",
+		"@typescript-eslint/no-unsafe-member-access": "warn",
+		"@typescript-eslint/no-unused-vars": "off"
+	},
+	"plugins": ["@typescript-eslint"]
 }

@@ -1,3 +1,4 @@
+import { AuditLogEvent, Colors } from "discord.js";
 import { config } from "../../context.js";
 
 /**
@@ -9,7 +10,7 @@ import { config } from "../../context.js";
 export async function logGuildBanAdd(ban) {
 	const auditBan = await ban.guild
 		.fetchAuditLogs({
-			type: "MEMBER_BAN_ADD",
+			type: AuditLogEvent.MemberBanAdd,
 		})
 		.then((auditLogs) => auditLogs.entries.first());
 
@@ -32,7 +33,7 @@ export async function logGuildBanAdd(ban) {
 						value: auditBan.executor.tag,
 					},
 				],
-				color: "RED",
+				color: Colors.Red,
 				thumbnail: {
 					url: ban.user.avatarURL(),
 				},
@@ -75,7 +76,7 @@ export async function logGuildBanRemove(ban) {
 						value: ban.user.tag,
 					},
 				],
-				color: "RED",
+				color: Colors.Red,
 				thumbnail: {
 					url: ban.user.avatarURL(),
 				},

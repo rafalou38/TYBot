@@ -3,7 +3,7 @@ dotenv.config(); // load discord token from .env
 
 import "./sentry.js";
 
-import Discord from "discord.js";
+import Discord, { GatewayIntentBits } from "discord.js";
 
 import { commands } from "./commands/index.js";
 import { initDB } from "./database/initialize.js";
@@ -28,14 +28,15 @@ import { handleVoiceStateUpdate } from "./events/voiceStateUpdate.js";
 
 /** @type {Discord.IntentsString[]} */
 const intents = [
-	"GUILDS",
-	"GUILD_MESSAGES",
-	"GUILD_MEMBERS",
-	"GUILD_INVITES",
-	"GUILD_PRESENCES",
-	"GUILD_BANS",
-	"GUILD_MESSAGE_REACTIONS",
-	"GUILD_VOICE_STATES"
+	GatewayIntentBits.Guilds,
+	GatewayIntentBits.GuildMessages,
+	GatewayIntentBits.MessageContent,
+	GatewayIntentBits.GuildMembers,
+	GatewayIntentBits.GuildInvites,
+	GatewayIntentBits.GuildPresences,
+	GatewayIntentBits.GuildModeration,
+	GatewayIntentBits.GuildMessageReactions,
+	GatewayIntentBits.GuildVoiceStates,
 ];
 const client = new Discord.Client({
 	intents: intents,
@@ -47,6 +48,7 @@ client.once("ready", async () => {
 	guilds.forEach(async (oldGuild) => {
 		const guild = await client.guilds.fetch(oldGuild.id);
 		checkBirthday(guild);
+		checkAncestor(guild);
 	});
 	updateStatus(client);
 	setInterval(updateStatus.bind(null, client), 1000 * 60 * 60);
@@ -54,7 +56,7 @@ client.once("ready", async () => {
 });
 
 client.on("messageCreate", async (message) => {
-	if (!message.content.startsWith(config.prefix)) return countXP(message);
+	// if (!message.content.startsWith(config.prefix)) return countXP(message);
 	const commandName = message.content.replace(config.prefix, "").split(" ")[0];
 
 	const command = commands[commandName];
@@ -82,7 +84,7 @@ client.on("voiceStateUpdate", handleVoiceStateUpdate);
 
 client.on("raw", handleRaw);
 
-setTimeout(async () => {
+setInterval(async () => {
 	const guilds = await client.guilds.fetch();
 	guilds.forEach(async (oldGuild) => {
 		const guild = await client.guilds.fetch(oldGuild.id);

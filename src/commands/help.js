@@ -10,7 +10,9 @@ export default async function (client, message) {
 		embeds: [
 			{
 				title: "Voila mes commandes",
-				author: client.user.username,
+				// author: {
+				// 	name: client.user.username
+				// },
 				thumbnail: {
 					url: client.user.avatarURL(),
 				},
@@ -28,19 +30,19 @@ export default async function (client, message) {
 						name: "```-members```",
 						value: "Affiche le nombre de personnes sur le server",
 					},
-					{
-						name: "```-xp (@user)```",
-						value:
-							"Affiche l'experience, le niveau et le rang de l'utilisateur, si aucun utilisateur n'est donné vérifie pour la personne executant la commande",
-					},
-					{
-						name: "```-ranks```",
-						value: "Affiche le classement du server",
-					},
-					{
-						name: "```-add-xp @utilisateur <nombre>```",
-						value: "Ajoute de l'xp a un utilisateur",
-					},
+					// {
+					// 	name: "```-xp (@user)```",
+					// 	value:
+					// 		"Affiche l'experience, le niveau et le rang de l'utilisateur, si aucun utilisateur n'est donné vérifie pour la personne executant la commande",
+					// },
+					// {
+					// 	name: "```-ranks```",
+					// 	value: "Affiche le classement du server",
+					// },
+					// {
+					// 	name: "```-add-xp @utilisateur <nombre>```",
+					// 	value: "Ajoute de l'xp a un utilisateur",
+					// },
 					{
 						name: "```-ticket-here```",
 						value: "Crée un bouton créer des tickets pour parler aux administrateurs",
@@ -58,7 +60,7 @@ export default async function (client, message) {
 						value: "Crée un giveaway avec une réaction pour participer",
 					},
 					{
-						name: "```-aniv jour/mois```",
+						name: "```-anniv jour/mois```",
 						value: "Définit votre anniversaire pour qu'il soit annoncé le jour venu par le bot.",
 					},
 					{

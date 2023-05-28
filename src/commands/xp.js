@@ -1,4 +1,4 @@
-import Discord from "discord.js";
+import Discord, { Colors } from "discord.js";
 import { Member } from "../database/schemas/Member.js";
 import { calcRequiredXPForLevel } from "../database/utils/xp.js";
 import { parseInput, getMemberFromText } from "../utils/commands.js";
@@ -28,7 +28,7 @@ export default async function (client, message) {
 				{
 					title: "Erreur",
 					description: "Cet utilisateur ne fait pas partie de la base de données",
-					color: "RED",
+					color: Colors.Red,
 				},
 			],
 		});

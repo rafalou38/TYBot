@@ -1,4 +1,4 @@
-import Discord from "discord.js";
+import Discord, { Colors } from "discord.js";
 import { config } from "../context.js";
 import { Member } from "../database/schemas/Member.js";
 import { addXP, calcRequiredXPForLevel } from "../database/utils/xp.js";
@@ -27,18 +27,17 @@ export default async function (client, message) {
 				{
 					title: "Erreur",
 					description: "Veuillez donner une suggestion",
-					color: "RED",
+					color: Colors.Red,
 					fields: syntax,
 				},
 			],
 		});
 	}
 
-	/** @type {Discord.TextChannel} */
-	const channel = message.guild.channels.cache.get(
-		config.guilds[message.guildId].suggestionsChannelID
-	);
-	const sentMessage = await channel.send({
+	message.delete();
+
+
+	const sentMessage = await message.channel.send({
 		embeds: [
 			{
 				title: `Suggestion de ${message.author.tag}`,

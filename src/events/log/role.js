@@ -1,4 +1,4 @@
-import Discord from "discord.js";
+import Discord, { Colors } from "discord.js";
 import { config } from "../../context.js";
 
 /**
@@ -15,7 +15,7 @@ export async function logRoleAdd(member, role) {
 			{
 				title: `Les roles de ${member.user.tag} ont changés.`,
 				description: `Role ajouté: ${role}`,
-				color: "GREEN",
+				color: Colors.Green,
 				thumbnail: {
 					url: member.avatarURL(),
 				},
@@ -45,7 +45,7 @@ export async function logRoleRemove(member, role) {
 			{
 				title: `Les roles de ${member.user.tag} ont changés.`,
 				description: `Role retiré: ${role}`,
-				color: "RED",
+				color: Colors.Red,
 				thumbnail: {
 					url: member.avatarURL(),
 				},
@@ -75,7 +75,7 @@ export async function logRoleCreate(role) {
 			{
 				title: "Role crée",
 				description: `Nouveau role: ${role}`,
-				color: "RED",
+				color: Colors.Red,
 				timestamp: new Date(),
 			},
 		],
@@ -94,7 +94,7 @@ export async function logRoleDelete(role) {
 			{
 				title: "Role crée",
 				description: `Role supprimé: @${role.name}`,
-				color: "RED",
+				color: Colors.Red,
 				timestamp: new Date(),
 			},
 		],

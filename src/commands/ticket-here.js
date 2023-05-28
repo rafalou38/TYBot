@@ -1,4 +1,4 @@
-import Discord from "discord.js";
+import Discord, { ButtonStyle, ComponentType } from "discord.js";
 import { context } from "../context.js";
 import { Member } from "../database/schemas/Member.js";
 import { addXP, calcRequiredXPForLevel } from "../database/utils/xp.js";
@@ -17,11 +17,11 @@ export default async function (client, message) {
 		content: "Cliquez ci-dessous pour créer un ticket",
 		components: [
 			{
-				type: "ACTION_ROW",
+				type: ComponentType.ActionRow,
 				components: [
 					{
-						type: "BUTTON",
-						style: "PRIMARY",
+						type: ComponentType.Button,
+						style: ButtonStyle.Primary,
 						label: "CRÉER UN TICKET",
 						customId: "create-ticket",
 					},

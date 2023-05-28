@@ -1,4 +1,11 @@
-import Discord from "discord.js";
+import Discord, {
+	ButtonStyle,
+	ChannelType,
+	Colors,
+	ComponentType,
+	PermissionFlagsBits,
+	PermissionOverwrites,
+} from "discord.js";
 import { config, context } from "../context.js";
 
 /** @type {Map<Snowflake, Date>} */
@@ -17,7 +24,7 @@ export default async function ticket(interaction) {
 				{
 					title: "Erreur",
 					description: "Attends un peu avant de créer un nouveau ticket.",
-					color: "RED",
+					color: Colors.Red,
 				},
 			],
 			ephemeral: true,
@@ -27,37 +34,35 @@ export default async function ticket(interaction) {
 
 	interaction.deferReply({ ephemeral: true });
 
-	const channel = await interaction.guild.channels.create(
-		`Ticket de ${interaction.user.username}`,
-		{
-			parent: config.guilds[interaction.guildId].ticketCategoryID,
-			type: "GUILD_TEXT",
-			permissionOverwrites: [
-				{
-					id: interaction.guild.id, // shortcut for @everyone role ID
-					deny: "VIEW_CHANNEL",
-				},
-				{
-					id: interaction.user.id,
-					allow: "VIEW_CHANNEL",
-				},
-				{
-					id: config.guilds[interaction.guildId].staffRoleID,
-					allow: "VIEW_CHANNEL",
-				},
-			],
-		}
-	);
+	const channel = await interaction.guild.channels.create({
+		name: `Ticket de ${interaction.user.username}`,
+		parent: config.guilds[interaction.guildId].ticketCategoryID,
+		type: ChannelType.GuildText,
+		permissionOverwrites: [
+			{
+				id: interaction.guild.id, // shortcut for @everyone role ID
+				deny: PermissionFlagsBits.ViewChannel,
+			},
+			{
+				id: interaction.user.id,
+				allow: PermissionFlagsBits.ViewChannel,
+			},
+			{
+				id: config.guilds[interaction.guildId].staffRoleID,
+				allow: PermissionFlagsBits.ViewChannel,
+			},
+		],
+	});
 
 	await channel.send({
 		content: `Ticket de ${interaction.user.username}`,
 		components: [
 			{
-				type: "ACTION_ROW",
+				type: ComponentType.ActionRow,
 				components: [
 					{
-						type: "BUTTON",
-						style: "DANGER",
+						type: ComponentType.Button,
+						style: ButtonStyle.Danger,
 						label: "SUPPRIMER CE TICKET 🗑️",
 						customId: "ticket-" + interaction.user.id,
 					},
