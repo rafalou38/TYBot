@@ -1,4 +1,4 @@
-import Discord, { ButtonStyle, Colors, ComponentType } from "discord.js";
+import Discord, { ButtonStyle, Colors, ComponentType, PermissionFlagsBits } from "discord.js";
 
 import { Member } from "../database/schemas/Member.js";
 import { parseInput, getMemberFromText } from "../utils/commands.js";
@@ -9,7 +9,7 @@ import { formatDate, timeDiff } from "../utils/time.js";
  * @param {Discord.Message} message
  */
 export default async function (client, message) {
-	if (!message.member.permissions.has("BAN_MEMBERS")) {
+	if (!message.member.permissions.has(PermissionFlagsBits.BanMembers)) {
 		return message.reply({
 			embeds: [
 				{
@@ -44,51 +44,53 @@ export default async function (client, message) {
 			content: "Merci de preciser la raison du ban.",
 		});
 
-	const dm = await target.createDM();
-	if (dm) {
-		const timestamp = Math.round(Date.now() / 1000);
+	try {
+		const dm = await target.createDM();
+		if (dm) {
+			const timestamp = Math.round(Date.now() / 1000);
 
-		await dm.send({
-			embeds: [
-				{
-					title: "Ban",
-					description: "Tu as été banni du serveur de la TY-TEAM",
-					color: Colors.Red,
-					fields: [
-						{
-							name: "Date du ban",
-							value: `<t:${timestamp}:F> (<t:${timestamp}:R>)`,
-						},
-						{
-							name: "Modérateur",
-							value: `${message.author.tag} (${message.author.id})`,
-						},
-						{
-							name: "Raison du ban",
-							value: "```\n" + reason + "\n```",
-						},
-					],
-				},
-			],
-			components: [
-				{
-					type: ComponentType.ActionRow,
-					components: [
-						{
-							type: ComponentType.Button,
-							style: ButtonStyle.Link,
-							url: "https://docs.google.com/forms/d/e/1FAIpQLScv2FWIjBmb-iqPYyDvoegKUeH0if2fhRsO_F3JQ_920__qaQ/viewform?usp=sf_link",
-							label: "Demande de unban",
-						},
-					],
-				},
-			],
-		});
-	}
+			await dm.send({
+				embeds: [
+					{
+						title: "Ban",
+						description: "Tu as été banni du serveur de la TY-TEAM",
+						color: Colors.Red,
+						fields: [
+							{
+								name: "Date du ban",
+								value: `<t:${timestamp}:F> (<t:${timestamp}:R>)`,
+							},
+							{
+								name: "Modérateur",
+								value: `${message.author.tag} (${message.author.id})`,
+							},
+							{
+								name: "Raison du ban",
+								value: "```\n" + reason + "\n```",
+							},
+						],
+					},
+				],
+				components: [
+					{
+						type: ComponentType.ActionRow,
+						components: [
+							{
+								type: ComponentType.Button,
+								style: ButtonStyle.Link,
+								url: "https://docs.google.com/forms/d/e/1FAIpQLScv2FWIjBmb-iqPYyDvoegKUeH0if2fhRsO_F3JQ_920__qaQ/viewform?usp=sf_link",
+								label: "Demande de unban",
+							},
+						],
+					},
+				],
+			});
+		}
+	} catch (e) { }
 
 	await target.ban({
 		reason,
 	});
 
-	await message.reply(`${target.tag} a été ban.`);
+	await message.reply(`${target.user.tag} a été ban.`);
 }

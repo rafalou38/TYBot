@@ -1,4 +1,4 @@
-import Discord, { Colors } from "discord.js";
+import Discord, { Colors, PermissionFlagsBits } from "discord.js";
 import { Member } from "../database/schemas/Member.js";
 import { addLvl, addXP, calcRequiredXPForLevel } from "../database/utils/xp.js";
 import { parseInput, getMemberFromText } from "../utils/commands.js";
@@ -18,7 +18,7 @@ const syntax = [
  * @param {Discord.Message} message
  */
 export default async function (client, message) {
-	const admin = message.member.permissions.has("ADMINISTRATOR");
+	const admin = message.member.permissions.has(PermissionFlagsBits.Administrator);
 	// const admin = true;
 	if (!admin)
 		return message.reply({

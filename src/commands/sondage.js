@@ -1,4 +1,4 @@
-import Discord, { Colors } from "discord.js";
+import Discord, { Colors, PermissionFlagsBits } from "discord.js";
 import { config } from "../context.js";
 import { Member } from "../database/schemas/Member.js";
 import { addXP, calcRequiredXPForLevel } from "../database/utils/xp.js";
@@ -20,7 +20,7 @@ const syntax = [
  */
 export default async function (client, message) {
 	const admin =
-		message.member.permissions.has("ADMINISTRATOR") ||
+		message.member.permissions.has(PermissionFlagsBits.Administrator) ||
 		message.member.roles.cache.has(config.guilds[message.guildId].communityRoleID);
 	if (!admin)
 		return message.reply({
