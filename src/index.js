@@ -56,7 +56,7 @@ client.once("ready", async () => {
 });
 
 client.on("messageCreate", async (message) => {
-	// if (!message.content.startsWith(config.prefix)) return countXP(message);
+	if (!message.content.startsWith(config.prefix)) return countXP(message);
 	const commandName = message.content.replace(config.prefix, "").split(" ")[0];
 
 	const command = commands[commandName];
