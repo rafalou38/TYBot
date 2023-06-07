@@ -21,21 +21,21 @@ export async function addXP(member, count = null) {
 		});
 	}
 
-	if (DBMember.level >= config.maxLevel || (count && count > 0)) return;
+	if (!count) return;
 
 	DBMember.xp += count || config.xpIncrement;
 	const requiredXPForLevel = calcRequiredXPForLevel(DBMember.level);
 	if (DBMember.xp >= requiredXPForLevel) {
 		DBMember.xp = 0;
 		DBMember.level += 1;
-		const xpRoles = config.guilds[member.guild.id].xpRolesIDS;
-		if (DBMember.level && xpRoles[DBMember.level]) {
-			let role = await member.guild.roles.fetch(
-				config.guilds[member.guild.id].xpRolesIDS[DBMember.level]
-			);
-			member.roles.add(role);
-			if (xpRoles[DBMember.level - 5]) member.roles.remove(xpRoles[DBMember.level - 5]);
-		}
+		// const xpRoles = config.guilds[member.guild.id].xpRolesIDS;
+		// if (DBMember.level && xpRoles[DBMember.level]) {
+		// 	let role = await member.guild.roles.fetch(
+		// 		config.guilds[member.guild.id].xpRolesIDS[DBMember.level]
+		// 	);
+		// 	member.roles.add(role);
+		// 	if (xpRoles[DBMember.level - 5]) member.roles.remove(xpRoles[DBMember.level - 5]);
+		// }
 		await DBMember.save();
 		return DBMember.level;
 	}

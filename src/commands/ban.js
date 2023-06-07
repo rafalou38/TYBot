@@ -78,7 +78,7 @@ export default async function (client, message) {
 							{
 								type: ComponentType.Button,
 								style: ButtonStyle.Link,
-								url: "https://docs.google.com/forms/d/e/1FAIpQLScv2FWIjBmb-iqPYyDvoegKUeH0if2fhRsO_F3JQ_920__qaQ/viewform?usp=sf_link",
+								url: "https://boutique.tyteam.fr/forums/boards/1",
 								label: "Demande de unban",
 							},
 						],
