@@ -20,8 +20,9 @@ const syntax = [
  */
 export default async function (client, message) {
 	const admin =
-		message.member.permissions.has(PermissionFlagsBits.Administrator) ||
-		message.member.roles.cache.has(config.guilds[message.guildId].communityRoleID);
+		message.member.permissions.has(PermissionFlagsBits.Administrator)
+		|| message.member.roles.cache.has(config.guilds[message.guildId].communityRoleID)
+		|| message.member.roles.cache.has(config.guilds[message.guildId].modRoleID);
 	if (!admin)
 		return message.reply({
 			embeds: [
@@ -50,8 +51,7 @@ export default async function (client, message) {
 	}
 
 	/** @type {Discord.TextChannel} */
-	const channel = message.guild.channels.cache.get(config.guilds[message.guildId].sondageChannelID);
-	const sentMessage = await channel.send({
+	const sentMessage = await message.channel.send({
 		embeds: [
 			{
 				title: `Sondage de ${message.author.tag}`,
