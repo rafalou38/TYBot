@@ -55,7 +55,8 @@ export default async function ticket(interaction) {
 	});
 
 	await channel.send({
-		content: `Ticket de ${interaction.user.username}`,
+		content: `<@&${config.guilds[interaction.guildId].staffRoleID}>
+Ticket de ${interaction.user.username}`,
 		components: [
 			{
 				type: ComponentType.ActionRow,
