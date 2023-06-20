@@ -29,7 +29,7 @@ export const config = {
 			logsChannelID: "655861612644925500",
 			ticketCategoryID: "655538940459352065",
 			staffRoleID: "663763852680364044",
-			modRoleID: "910878692778061874",
+			modRoleID: "1052705811090112552",
 			modPlusRoleID: "910879283323478016",
 			communityRoleID: "769569316097622038",
 			ancestorRoleID: "733111531704811542",
