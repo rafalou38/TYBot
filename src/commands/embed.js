@@ -1,4 +1,4 @@
-import Discord, { ButtonStyle, ComponentType } from "discord.js";
+import Discord, { ButtonStyle, Colors, ComponentType, PermissionFlagsBits } from "discord.js";
 import { config } from "../context.js";
 import evalSafe from "safe-eval";
 
@@ -95,6 +95,20 @@ const embeds = new Map();
  * @param {Discord.Message} message
  */
 export default async function (client, message) {
+	const admin =
+		message.member.permissions.has(PermissionFlagsBits.Administrator)
+		|| message.member.roles.cache.has(config.guilds[message.guildId].modRoleID);
+	if (!admin)
+		return message.reply({
+			embeds: [
+				{
+					title: "Erreur",
+					description: "Tu n'as pas la permission d'utiliser cette commande",
+					color: Colors.Red,
+				},
+			],
+		});
+
 	let code = message.content.match(/(?<=#)[\w\d]+/)?.[0];
 	if (code) {
 		message.delete();
