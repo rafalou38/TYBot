@@ -25,6 +25,7 @@ import { checkAncestor } from "./tasks/ancestors.js";
 import "./queryServers.js";
 import { handleRaw } from "./events/raw.js";
 import { handleVoiceStateUpdate } from "./events/voiceStateUpdate.js";
+import { checkAbsences } from "./tasks/abscences.js";
 
 /** @type {Discord.IntentsString[]} */
 const intents = [
@@ -48,6 +49,7 @@ client.once("ready", async () => {
 	guilds.forEach(async (oldGuild) => {
 		const guild = await client.guilds.fetch(oldGuild.id);
 		checkBirthday(guild);
+		checkAbsences(guild);
 		checkAncestor(guild);
 	});
 	updateStatus(client);
@@ -89,6 +91,7 @@ setInterval(async () => {
 	guilds.forEach(async (oldGuild) => {
 		const guild = await client.guilds.fetch(oldGuild.id);
 		checkBirthday(guild);
+		checkAbsences(guild);
 		checkAncestor(guild);
 	});
 }, 1000 * 60 * 60); // every hour

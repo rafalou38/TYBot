@@ -15,6 +15,7 @@ import ranks from "./ranks.js";
 import addLevel from "./add-level.js";
 import reactRoles from "./react-roles.js";
 import ban from "./ban.js";
+import absence from "./absence.js";
 
 export const commands = {
 	help,
@@ -25,6 +26,7 @@ export const commands = {
 	"add-level": addLevel,
 	suggestion,
 	sondage,
+	absence,
 	"ticket-here": ticketHere,
 	giveaway,
 	anniv,
