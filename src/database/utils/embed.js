@@ -11,7 +11,7 @@ export function absenceEmbed(absence) {
 		description:
 			`<@${
 				absence.userID
-			}> sera absent du **${absence.dateStart.toLocaleDateString()}** au **${absence.dateEnd.toLocaleDateString()}**\n` +
+			}> sera absent du **${absence.dateStart.toLocaleDateString("fr-FR")}** au **${absence.dateEnd.toLocaleDateString("fr-FR")}**\n` +
 			"```\n" +
 			absence.reason +
 			"\n```\n",
