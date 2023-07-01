@@ -5,7 +5,11 @@ const absenceSchema = new Schema({
 	messageID: String,
 	channelID: String,
 	guildID: String,
-	date: Date
+	userID: String,
+	thumbnail: String,
+	reason: String,
+	dateStart: Date,
+	dateEnd: Date,
 });
 
 export const Absence = mongoose.model("absence", absenceSchema);
