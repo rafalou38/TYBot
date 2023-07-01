@@ -13,7 +13,7 @@ export const config = {
 	gmodServers: new Map([
 		// [process.env.TY_GAME_TOKEN, "TEXT:tyteam.fr"],
 		[process.env.AVPRP_TOKEN, "TEXT:En développement"],
-		[process.env.METRORP_TOKEN, "TEXT:En développement"],
+		[process.env.METRORP_TOKEN, "GMOD:194.147.5.91:20002"],
 		// [process.env.SCPRP_TOKEN, "GMOD:game1.loicmorel.fr:27017"],
 		// [process.env.TEST_TOKEN, "TEXT: "],
 	]),
