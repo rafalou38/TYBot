@@ -23,12 +23,12 @@ export async function checkAbsences(guild) {
 			}
 			await absence.delete();
 		} else {
-			const message = await channel.messages.fetch(absence.messageID);
-			if (message) {
+			try {
+				const message = await channel.messages.fetch(absence.messageID);
 				await message.edit({
 					embeds: [absenceEmbed(absence)],
 				});
-			}
+			} catch {}
 		}
 	}
 }
