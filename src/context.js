@@ -35,6 +35,7 @@ export const config = {
 			ancestorRoleID: "733111531704811542",
 			ancestor2RoleID: "899625427461615626",
 			ancestor3RoleID: "997659368008974336",
+			activeRoleID: "1133739969618399283",
 			adminRoleID: "1060666651030339594",
 			birthdayRoleID: "884409241983664158",
 			baseRoleID: "766021341949329459",

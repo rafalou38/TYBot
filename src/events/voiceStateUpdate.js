@@ -8,18 +8,20 @@ import {
 } from "@discordjs/voice";
 import { config } from "../context.js";
 import { log } from "../utils/prettyLog.js";
+import { userActive } from "../database/utils/activity.js";
 
 function joinResource() {
 	return createAudioResource("medias/waiting_sound.mp3");
 }
 function randomSong() {
-	const options = ["Depeche_Mode_-_Corrupt_Lyrics.mp3",
+	const options = [
+		"Depeche_Mode_-_Corrupt_Lyrics.mp3",
 		"Depeche_Mode_-_Never_Let_Me_Down_Again_-_Lyrics.mp3",
 		"Metallica_-_Enter_Sandman_lyrics.mp3",
 		"Paint_It_Black.mp3",
 		"Personal_Jesus.mp3",
 		"Arctic_Monkeys_-_Do_I_Wanna_Know_Official_Video.mp3",
-		"DiRT_4_Official_Soundtrack__Out_Of_My_System__Youngr.mp3"
+		"DiRT_4_Official_Soundtrack__Out_Of_My_System__Youngr.mp3",
 	];
 	const choice = Math.min(Math.round(Math.random() * options.length), options.length - 1);
 
@@ -46,8 +48,9 @@ const timeouts = new Map();
  */
 export async function handleVoiceStateUpdate(oldState, newState) {
 	const { guild, member } = newState;
-	const { waitingChannelID, waitingPingChannelID, staffRoleID } =
-		config.guilds[guild.id];
+	const { waitingChannelID, waitingPingChannelID, staffRoleID } = config.guilds[guild.id];
+
+	userActive(newState.member);
 
 	if (member.id === guild.client.user.id) return;
 

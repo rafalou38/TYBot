@@ -10,6 +10,7 @@ const memberSchema = new Schema({
 	invites: { type: Number, default: 0 },
 	xp: { type: Number, default: 0 },
 	level: { type: Number, default: 0 },
+	lastActive: Date,
 });
 
 /**@type {mongoose.Model<IMember>} */
