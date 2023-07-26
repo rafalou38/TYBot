@@ -1,7 +1,7 @@
+import { Client } from "discord.js";
 import dotenv from "dotenv";
 dotenv.config(); // load discord token from .env
 
-/** @type {import("../types/context").IConfig} */
 export const config = {
 	prefix: "-",
 	xpIncrement: 2,
@@ -63,8 +63,8 @@ export const config = {
 	},
 };
 
-/**@type {import("../types/context").context} */
 export const context = {
+	client: {} as Client,
 	tickets: new Map(),
 };
 

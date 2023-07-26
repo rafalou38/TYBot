@@ -1,7 +1,7 @@
 import Discord from "discord.js";
-import { Member } from "../database/schemas/Member.js";
-import { calcRequiredXPForLevel } from "../database/utils/xp.js";
-import { parseInput, getMemberFromText } from "../utils/commands.js";
+import { Member } from "../database/schemas/Member";
+import { calcRequiredXPForLevel } from "../database/utils/xp";
+import { parseInput, getMemberFromText } from "../utils/commands";
 
 const ranks = new Map([
 	[1, "🥇"],

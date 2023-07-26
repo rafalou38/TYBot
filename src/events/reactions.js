@@ -1,6 +1,6 @@
 import { GuildMember, Message } from "discord.js";
-import { context } from "../context.js";
-import { log } from "../utils/prettyLog.js";
+import { context } from "../context";
+import { log } from "../utils/prettyLog";
 
 function extractFromEmbed(content) {
 	const regex = /^(.+) = (.+) \(<@&(\d+)>\)$/gm;
@@ -25,11 +25,11 @@ function extractFromEmbed(content) {
 }
 
 /**
- * 
- * @param {Message} message 
- * @param {GuildMember} member 
- * @param {string} emoji 
- * @returns 
+ *
+ * @param {Message} message
+ * @param {GuildMember} member
+ * @param {string} emoji
+ * @returns
  */
 export async function handleReactionAdd(message, member, emoji) {
 	if (message.author.id !== context.client.user.id) return;

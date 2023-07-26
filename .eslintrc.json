@@ -16,7 +16,8 @@
 		"semi": ["error", "always"],
 		"no-empty": "off",
 		"@typescript-eslint/no-unsafe-member-access": "warn",
-		"@typescript-eslint/no-unused-vars": "off"
+		"@typescript-eslint/no-unused-vars": "off",
+		"@typescript-eslint/ban-ts-comment": "off"
 	},
 	"plugins": ["@typescript-eslint"]
 }

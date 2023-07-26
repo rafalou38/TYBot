@@ -1,6 +1,6 @@
 import chalk from "chalk";
 import mongoose from "mongoose";
-import { log } from "../utils/prettyLog.js";
+import { log } from "../utils/prettyLog";
 
 export async function initDB() {
 	return new Promise((resolve, reject) => {

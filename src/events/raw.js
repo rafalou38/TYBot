@@ -1,7 +1,7 @@
 import { TextChannel } from "discord.js";
-import { context } from "../context.js";
-import { log } from "../utils/prettyLog.js";
-import { handleReactionAdd, handleReactionRemove } from "./reactions.js";
+import { context } from "../context";
+import { log } from "../utils/prettyLog";
+import { handleReactionAdd, handleReactionRemove } from "./reactions";
 
 export async function handleRaw(event) {
 	const type = event.t;
@@ -15,7 +15,7 @@ export async function handleRaw(event) {
 	try {
 		var message = await channel?.messages.fetch(data.message_id);
 		var user = await guild?.members.fetch(data.user_id);
-	} catch (error) { }
+	} catch (error) {}
 
 	const emoji = data.emoji.name;
 

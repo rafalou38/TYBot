@@ -1,10 +1,10 @@
 import Discord from "discord.js";
-import { config } from "../context.js";
-import { Member } from "../database/schemas/Member.js";
-import { addXP } from "../database/utils/xp.js";
-import { getChanelById } from "../utils/channels.js";
-import { getInvite } from "../utils/invites.js";
-import { log } from "../utils/prettyLog.js";
+import { config } from "../context";
+import { Member } from "../database/schemas/Member";
+import { addXP } from "../database/utils/xp";
+import { getChanelById } from "../utils/channels";
+import { getInvite } from "../utils/invites";
+import { log } from "../utils/prettyLog";
 
 /** @type {Record<string, Date} */
 const lastMessages = {};

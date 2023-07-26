@@ -1,5 +1,5 @@
 import Discord, { Colors, PermissionFlagsBits } from "discord.js";
-import { config } from "../context.js";
+import { config } from "../context";
 
 /**
  *
@@ -7,7 +7,10 @@ import { config } from "../context.js";
  * @param {Discord.Message} message
  */
 export default async function (client, message) {
-	if (!message.member.permissions.has(PermissionFlagsBits.Administrator) && message.author.id !== config.myID) {
+	if (
+		!message.member.permissions.has(PermissionFlagsBits.Administrator) &&
+		message.author.id !== config.myID
+	) {
 		return message.reply({
 			embeds: [
 				{

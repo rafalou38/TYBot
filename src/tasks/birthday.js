@@ -1,8 +1,8 @@
 import Discord, { Colors } from "discord.js";
-import { config } from "../context.js";
-import { Member } from "../database/schemas/Member.js";
-import { parseInput, getMemberFromText } from "../utils/commands.js";
-import { log } from "../utils/prettyLog.js";
+import { config } from "../context";
+import { Member } from "../database/schemas/Member";
+import { parseInput, getMemberFromText } from "../utils/commands";
+import { log } from "../utils/prettyLog";
 /**
  *
  * @param {Discord.Guild} guild

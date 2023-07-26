@@ -1,8 +1,8 @@
 import Discord from "discord.js";
-import { config, context } from "./context.js";
-import { mcServerInfo } from "./lib/queryApi.js";
-import { gmodServerInfo } from "./lib/queryApi.js";
-import { log } from "./utils/prettyLog.js";
+import { config, context } from "./context";
+import { mcServerInfo } from "./lib/queryApi";
+import { gmodServerInfo } from "./lib/queryApi";
+import { log } from "./utils/prettyLog";
 
 function requestTimeout() {
 	return 1000 * 60;

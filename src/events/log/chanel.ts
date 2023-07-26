@@ -1,14 +1,16 @@
-import Discord, { Colors } from "discord.js";
-import { config } from "../../context.js";
-/**
- *
- * @param {Discord.GuildChannel} channel
- */
-export async function logChannelDelete(channel) {
+import Discord, { Colors, DMChannel, NonThreadGuildBasedChannel, TextChannel } from "discord.js";
+import { config } from "../../context";
+
+
+export async function logChannelDelete(channel: NonThreadGuildBasedChannel | DMChannel) {
+	if (channel.type !== Discord.ChannelType.GuildText) return;
+
 	/** @type {Discord.TextChannel} */
 	const logChannel = await channel.guild.channels.fetch(
 		config.guilds[channel.guild.id].logsChannelID
 	);
+	if (logChannel.type !== Discord.ChannelType.GuildText) return;
+
 
 	logChannel.send({
 		embeds: [
@@ -16,7 +18,7 @@ export async function logChannelDelete(channel) {
 				title: "Salon supprimé",
 				description: `Ancien nom: ${channel.name}`,
 				color: Colors.Red,
-				timestamp: new Date(),
+				timestamp: new Date().toLocaleDateString(),
 			},
 		],
 	});

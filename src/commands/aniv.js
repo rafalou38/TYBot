@@ -1,6 +1,6 @@
 import Discord, { Colors } from "discord.js";
-import { Member } from "../database/schemas/Member.js";
-import { parseInput, getMemberFromText } from "../utils/commands.js";
+import { Member } from "../database/schemas/Member";
+import { parseInput, getMemberFromText } from "../utils/commands";
 
 /**@type {Discord.EmbedField[] | Discord.EmbedFieldData[]} */
 const syntax = [

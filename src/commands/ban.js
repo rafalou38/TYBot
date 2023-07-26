@@ -1,8 +1,8 @@
 import Discord, { ButtonStyle, Colors, ComponentType, PermissionFlagsBits } from "discord.js";
 
-import { Member } from "../database/schemas/Member.js";
-import { parseInput, getMemberFromText } from "../utils/commands.js";
-import { formatDate, timeDiff } from "../utils/time.js";
+import { Member } from "../database/schemas/Member";
+import { parseInput, getMemberFromText } from "../utils/commands";
+import { formatDate, timeDiff } from "../utils/time";
 /**
  *
  * @param {Discord.Client<boolean>} client
@@ -86,7 +86,7 @@ export default async function (client, message) {
 				],
 			});
 		}
-	} catch (e) { }
+	} catch (e) {}
 
 	await target.ban({
 		reason,

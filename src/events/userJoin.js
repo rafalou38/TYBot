@@ -1,10 +1,10 @@
 import Discord, { Colors, TextChannel } from "discord.js";
-import { config, context } from "../context.js";
-import { Member } from "../database/schemas/Member.js";
-import { updateStatus } from "../tasks/updateStatus.js";
-import { getChanelById } from "../utils/channels.js";
-import { getInvite } from "../utils/invites.js";
-import { log } from "../utils/prettyLog.js";
+import { config, context } from "../context";
+import { Member } from "../database/schemas/Member";
+import { updateStatus } from "../tasks/updateStatus";
+import { getChanelById } from "../utils/channels";
+import { getInvite } from "../utils/invites";
+import { log } from "../utils/prettyLog";
 
 /**
  *

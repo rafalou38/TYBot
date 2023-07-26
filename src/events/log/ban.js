@@ -1,5 +1,5 @@
 import { AuditLogEvent, Colors } from "discord.js";
-import { config } from "../../context.js";
+import { config } from "../../context";
 
 /**
  *

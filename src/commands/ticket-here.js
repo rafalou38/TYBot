@@ -1,9 +1,9 @@
 import Discord, { ButtonStyle, ComponentType } from "discord.js";
-import { context } from "../context.js";
-import { Member } from "../database/schemas/Member.js";
-import { addXP, calcRequiredXPForLevel } from "../database/utils/xp.js";
-import { parseInput, getMemberFromText } from "../utils/commands.js";
-import ShowRank from "./xp.js";
+import { context } from "../context";
+import { Member } from "../database/schemas/Member";
+import { addXP, calcRequiredXPForLevel } from "../database/utils/xp";
+import { parseInput, getMemberFromText } from "../utils/commands";
+import ShowRank from "./xp";
 
 /**@type {Discord.EmbedField[] | Discord.EmbedFieldData[]} */
 

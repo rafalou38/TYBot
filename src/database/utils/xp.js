@@ -1,6 +1,6 @@
 import Discord from "discord.js";
-import { config } from "../../context.js";
-import { Member } from "../schemas/Member.js";
+import { config } from "../../context";
+import { Member } from "../schemas/Member";
 
 /**
  *	if the user level's up return new level

@@ -6,9 +6,9 @@ import {
 	joinVoiceChannel,
 	VoiceConnection,
 } from "@discordjs/voice";
-import { config } from "../context.js";
-import { log } from "../utils/prettyLog.js";
-import { userActive } from "../database/utils/activity.js";
+import { config } from "../context";
+import { log } from "../utils/prettyLog";
+import { userActive } from "../database/utils/activity";
 
 function joinResource() {
 	return createAudioResource("medias/waiting_sound.mp3");

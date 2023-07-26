@@ -3,32 +3,31 @@ dotenv.config(); // load discord token from .env
 
 import "./sentry.js";
 
-import Discord, { GatewayIntentBits } from "discord.js";
+import Discord, { GatewayIntentBits, GatewayIntentsString } from "discord.js";
 
-import { commands } from "./commands/index.js";
-import { initDB } from "./database/initialize.js";
-import { userJoin } from "./events/userJoin.js";
-import { userLeave } from "./events/userLeave.js";
-import { config, context } from "./context.js";
-import { log } from "./utils/prettyLog.js";
-import { setup as setupInvites } from "./utils/invites.js";
-import { countXP } from "./events/message.js";
-import { handleInteraction } from "./events/interaction.js";
-import { checkBirthday } from "./tasks/birthday.js";
-import { logJoin } from "./events/log/join.js";
-import { logLeave } from "./events/log/leave.js";
-import { logRoleCreate, logRoleDelete } from "./events/log/role.js";
-import { logChannelCreate, logChannelDelete } from "./events/log/chanel.js";
-import { logGuildBanAdd, logGuildBanRemove } from "./events/log/ban.js";
-import { updateStatus } from "./tasks/updateStatus.js";
-import { checkAncestor } from "./tasks/ancestors.js";
+import { commands } from "./commands/index";
+import { initDB } from "./database/initialize";
+import { userJoin } from "./events/userJoin";
+import { userLeave } from "./events/userLeave";
+import { config, context } from "./context";
+import { log } from "./utils/prettyLog";
+import { setup as setupInvites } from "./utils/invites";
+import { countXP } from "./events/message";
+import { handleInteraction } from "./events/interaction";
+import { checkBirthday } from "./tasks/birthday";
+import { logJoin } from "./events/log/join";
+import { logLeave } from "./events/log/leave";
+import { logRoleCreate, logRoleDelete } from "./events/log/role";
+import { logChannelCreate, logChannelDelete } from "./events/log/chanel";
+import { logGuildBanAdd, logGuildBanRemove } from "./events/log/ban";
+import { updateStatus } from "./tasks/updateStatus";
+import { checkAncestor } from "./tasks/ancestors";
 import "./queryServers.js";
-import { handleRaw } from "./events/raw.js";
-import { handleVoiceStateUpdate } from "./events/voiceStateUpdate.js";
-import { checkAbsences } from "./tasks/abscences.js";
+import { handleRaw } from "./events/raw";
+import { handleVoiceStateUpdate } from "./events/voiceStateUpdate";
+import { checkAbsences } from "./tasks/abscences";
 
-/** @type {Discord.IntentsString[]} */
-const intents = [
+const intents: GatewayIntentBits[] = [
 	GatewayIntentBits.Guilds,
 	GatewayIntentBits.GuildMessages,
 	GatewayIntentBits.MessageContent,
@@ -39,8 +38,10 @@ const intents = [
 	GatewayIntentBits.GuildMessageReactions,
 	GatewayIntentBits.GuildVoiceStates,
 ];
+
 const client = new Discord.Client({
 	intents: intents,
+	// @ts-ignore
 	ws: { intents: intents },
 });
 

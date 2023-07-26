@@ -1,7 +1,7 @@
 /* eslint-disable no-mixed-spaces-and-tabs */
 /* eslint-disable indent */
 import Discord, { AuditLogEvent, AuditLogOptionsType, Colors } from "discord.js";
-import { config } from "../../context.js";
+import { config } from "../../context";
 
 /**
  *

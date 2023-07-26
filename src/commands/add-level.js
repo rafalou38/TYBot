@@ -1,8 +1,8 @@
 import Discord, { Colors, PermissionFlagsBits } from "discord.js";
-import { Member } from "../database/schemas/Member.js";
-import { addLvl, addXP, calcRequiredXPForLevel } from "../database/utils/xp.js";
-import { parseInput, getMemberFromText } from "../utils/commands.js";
-import ShowRank from "./xp.js";
+import { Member } from "../database/schemas/Member";
+import { addLvl, addXP, calcRequiredXPForLevel } from "../database/utils/xp";
+import { parseInput, getMemberFromText } from "../utils/commands";
+import ShowRank from "./xp";
 
 /**@type {Discord.EmbedField[] | Discord.EmbedFieldData[]} */
 const syntax = [

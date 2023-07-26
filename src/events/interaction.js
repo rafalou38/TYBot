@@ -1,8 +1,8 @@
 import chalk from "chalk";
 import Discord from "discord.js";
-import { context } from "../context.js";
-import { log } from "../utils/prettyLog.js";
-import ticket from "../commands/ticket.js";
+import { context } from "../context";
+import { log } from "../utils/prettyLog";
+import ticket from "../commands/ticket";
 /**
  *
  * @param {Discord.Interaction} interaction

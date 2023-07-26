@@ -1,9 +1,9 @@
 import Discord, { Colors, PermissionFlagsBits } from "discord.js";
-import { config } from "../context.js";
-import { Member } from "../database/schemas/Member.js";
-import { addXP, calcRequiredXPForLevel } from "../database/utils/xp.js";
-import { parseInput, getMemberFromText } from "../utils/commands.js";
-import ShowRank from "./xp.js";
+import { config } from "../context";
+import { Member } from "../database/schemas/Member";
+import { addXP, calcRequiredXPForLevel } from "../database/utils/xp";
+import { parseInput, getMemberFromText } from "../utils/commands";
+import ShowRank from "./xp";
 
 /**@type {Discord.EmbedField[] | Discord.EmbedFieldData[]} */
 const syntax = [
@@ -20,7 +20,8 @@ const syntax = [
  */
 export default async function (client, message) {
 	const admin =
-		message.member.permissions.has(PermissionFlagsBits.Administrator) || message.member.id === config.myID;
+		message.member.permissions.has(PermissionFlagsBits.Administrator) ||
+		message.member.id === config.myID;
 	if (!admin)
 		return message.reply({
 			embeds: [

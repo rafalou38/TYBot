@@ -1,10 +1,10 @@
 /* eslint-disable no-mixed-spaces-and-tabs */
 /* eslint-disable indent */
 import Discord, { Colors, TextChannel } from "discord.js";
-import { config, context } from "../context.js";
-import { Member } from "../database/schemas/Member.js";
-import { updateStatus } from "../tasks/updateStatus.js";
-import { getChanelById } from "../utils/channels.js";
+import { config, context } from "../context";
+import { Member } from "../database/schemas/Member";
+import { updateStatus } from "../tasks/updateStatus";
+import { getChanelById } from "../utils/channels";
 
 /**
  *

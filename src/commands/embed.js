@@ -1,5 +1,5 @@
 import Discord, { ButtonStyle, Colors, ComponentType, PermissionFlagsBits } from "discord.js";
-import { config } from "../context.js";
+import { config } from "../context";
 import evalSafe from "safe-eval";
 
 /**
@@ -96,8 +96,8 @@ const embeds = new Map();
  */
 export default async function (client, message) {
 	const admin =
-		message.member.permissions.has(PermissionFlagsBits.Administrator)
-		|| message.member.roles.cache.has(config.guilds[message.guildId].modRoleID);
+		message.member.permissions.has(PermissionFlagsBits.Administrator) ||
+		message.member.roles.cache.has(config.guilds[message.guildId].modRoleID);
 	if (!admin)
 		return message.reply({
 			embeds: [

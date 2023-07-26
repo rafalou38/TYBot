@@ -1,5 +1,5 @@
 import { Client } from "discord.js";
-import { config } from "../context.js";
+import { config } from "../context";
 
 /**
  * @param {Client} client

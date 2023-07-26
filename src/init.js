@@ -1,5 +1,5 @@
 import Discord from "discord.js";
-import { log } from "./utils/prettyLog.js";
+import { log } from "./utils/prettyLog";
 
 /**
  *

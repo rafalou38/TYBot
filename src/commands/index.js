@@ -1,21 +1,21 @@
-import help from "./help.js";
-import invites from "./invites.js";
-import members from "./members.js";
-import xp from "./xp.js";
-import addXp from "./add-xp.js";
-import suggestion from "./suggestion.js";
-import sondage from "./sondage.js";
-import ticketHere from "./ticket-here.js";
-import giveaway from "./giveaway.js";
-import anniv from "./aniv.js";
-import profile from "./profile.js";
-import serveur from "./serveur.js";
-import embed from "./embed.js";
-import ranks from "./ranks.js";
-import addLevel from "./add-level.js";
-import reactRoles from "./react-roles.js";
-import ban from "./ban.js";
-import absence from "./absence.js";
+import help from "./help";
+import invites from "./invites";
+import members from "./members";
+import xp from "./xp";
+import addXp from "./add-xp";
+import suggestion from "./suggestion";
+import sondage from "./sondage";
+import ticketHere from "./ticket-here";
+import giveaway from "./giveaway";
+import anniv from "./aniv";
+import profile from "./profile";
+import serveur from "./serveur";
+import embed from "./embed";
+import ranks from "./ranks";
+import addLevel from "./add-level";
+import reactRoles from "./react-roles";
+import ban from "./ban";
+import absence from "./absence";
 
 export const commands = {
 	help,
@@ -35,5 +35,5 @@ export const commands = {
 	ranks,
 	embed,
 	"react-roles": reactRoles,
-	ban
+	ban,
 };

@@ -6,7 +6,7 @@ import Discord, {
 	PermissionFlagsBits,
 	PermissionOverwrites,
 } from "discord.js";
-import { config, context } from "../context.js";
+import { config, context } from "../context";
 
 /** @type {Map<Snowflake, Date>} */
 const timeouts = new Map();

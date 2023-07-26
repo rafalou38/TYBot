@@ -1,7 +1,7 @@
 import Discord, { ActivityType } from "discord.js";
-import { Member } from "../database/schemas/Member.js";
-import { parseInput, getMemberFromText } from "../utils/commands.js";
-import { formatDate, timeDiff } from "../utils/time.js";
+import { Member } from "../database/schemas/Member";
+import { parseInput, getMemberFromText } from "../utils/commands";
+import { formatDate, timeDiff } from "../utils/time";
 /**
  *
  * @param {Discord.Client<boolean>} client

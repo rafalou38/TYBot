@@ -1,7 +1,7 @@
 import chalk from "chalk";
 import Discord from "discord.js";
-import { context } from "../context.js";
-import { log } from "./prettyLog.js";
+import { context } from "../context";
+import { log } from "./prettyLog";
 
 /**
  *

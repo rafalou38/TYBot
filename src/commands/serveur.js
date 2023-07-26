@@ -1,5 +1,5 @@
 import Discord, { ButtonStyle, ComponentType } from "discord.js";
-import { description } from "../context.js";
+import { description } from "../context";
 
 /**
  *

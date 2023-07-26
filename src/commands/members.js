@@ -1,7 +1,7 @@
 import Discord from "discord.js";
-import { config } from "../context.js";
-import { Member } from "../database/schemas/Member.js";
-import { parseInput, getMemberFromText } from "../utils/commands.js";
+import { config } from "../context";
+import { Member } from "../database/schemas/Member";
+import { parseInput, getMemberFromText } from "../utils/commands";
 
 /**
  *
