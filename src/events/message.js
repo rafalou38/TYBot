@@ -5,6 +5,7 @@ import { addXP } from "../database/utils/xp";
 import { getChanelById } from "../utils/channels";
 import { getInvite } from "../utils/invites";
 import { log } from "../utils/prettyLog";
+import { userActive } from "../database/utils/activity";
 
 /** @type {Record<string, Date} */
 const lastMessages = {};
@@ -14,6 +15,7 @@ const lastMessages = {};
  */
 export async function countXP(message) {
 	if (message.author.bot) return;
+	userActive(message.member);
 
 	const last = lastMessages[message.author.id];
 	const now = new Date();

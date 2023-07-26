@@ -26,6 +26,7 @@ import "./queryServers.js";
 import { handleRaw } from "./events/raw";
 import { handleVoiceStateUpdate } from "./events/voiceStateUpdate";
 import { checkAbsences } from "./tasks/abscences";
+import { checkActivity } from "./tasks/activity";
 
 const intents: GatewayIntentBits[] = [
 	GatewayIntentBits.Guilds,
@@ -52,6 +53,7 @@ client.once("ready", async () => {
 		checkBirthday(guild);
 		checkAbsences(guild);
 		checkAncestor(guild);
+		checkActivity(guild);
 	});
 	updateStatus(client);
 	setInterval(updateStatus.bind(null, client), 1000 * 60 * 60);
@@ -94,6 +96,7 @@ setInterval(async () => {
 		checkBirthday(guild);
 		checkAbsences(guild);
 		checkAncestor(guild);
+		checkActivity(guild);
 	});
 }, 1000 * 60 * 60); // every hour
 
