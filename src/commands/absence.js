@@ -5,6 +5,7 @@ import { addXP, calcRequiredXPForLevel } from "../database/utils/xp.js";
 import { parseInput, getMemberFromText } from "../utils/commands.js";
 import ShowRank from "./xp.js";
 import { Absence } from "../database/schemas/Absence.js";
+import { absenceEmbed } from "../database/utils/embed.js";
 
 /**@type {Discord.EmbedField[] | Discord.EmbedFieldData[]} */
 const syntax = [
@@ -21,8 +22,8 @@ const syntax = [
  */
 export default async function (client, message) {
 	const admin =
-		message.member.permissions.has(PermissionFlagsBits.Administrator)
-		|| message.member.roles.cache.has(config.guilds[message.guildId].staffRoleID);
+		message.member.permissions.has(PermissionFlagsBits.Administrator) ||
+		message.member.roles.cache.has(config.guilds[message.guildId].staffRoleID);
 	if (!admin)
 		return message.reply({
 			embeds: [
@@ -45,39 +46,34 @@ export default async function (client, message) {
 					title: "Erreur",
 					description: "La commande n'est pas valide",
 					fields: syntax,
-					color: Colors.Red
-				}
-			]
+					color: Colors.Red,
+				},
+			],
 		});
 	}
 
 	const dateEnd = new Date();
 	dateEnd.setMonth(parseInt(end.match(/\d\d\/(\d\d)/)[1]) - 1);
 	dateEnd.setDate(parseInt(end.match(/(\d\d)\/\d\d/)[1]));
-
+	const dateStart = new Date();
+	dateStart.setMonth(parseInt(start.match(/\d\d\/(\d\d)/)[1]) - 1);
+	dateStart.setDate(parseInt(start.match(/(\d\d)\/\d\d/)[1]));
 
 	await message.delete();
-	const msgSent = await message.channel.send({
-		embeds: [
-			{
-				title: "Absence",
-				description: `${message.author} sera absent du **${start}** au **${end}**\n`
-					+ "```\n"
-					+ reason
-					+ "\n```\n"
-					+ `**Retour:** <t:${Math.round(dateEnd.getTime() / 1000)}:R>`,
-				thumbnail: {
-					url: message.author.displayAvatarURL()
-				},
-				color: Colors.DarkRed
-			}
-		]
-	});
-
-	Absence.create({
+	const doc = new Absence({
 		guildID: message.guildId,
 		channelID: message.channel.id,
-		messageID: msgSent.id,
-		date: dateEnd
+		messageID: "",
+		userID: message.author.id,
+		thumbnail: message.author.displayAvatarURL(),
+		dateEnd,
+		dateStart,
+		reason,
 	});
+
+	const msgSent = await message.channel.send({
+		embeds: [absenceEmbed(doc)],
+	});
+	doc.messageID = msgSent.id;
+	await doc.save();
 }
