@@ -36,7 +36,7 @@ export async function countXP(message) {
 			config.guilds[message.guildId].levelUpChannelID
 		);
 		await channel.send(
-			`<@${message.author.id}> à monté de niveau:\nil est désormais au niveau **${newLevel}**`
+			`<@${message.author.id}> est monté de niveau:\nil est désormais au niveau **${newLevel}**`
 		);
 	}
 }
