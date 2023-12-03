@@ -50,9 +50,9 @@ client.once("ready", async () => {
 	const guilds = await client.guilds.fetch();
 	guilds.forEach(async (oldGuild) => {
 		const guild = await client.guilds.fetch(oldGuild.id);
-		checkBirthday(guild);
+		// checkBirthday(guild);
 		checkAbsences(guild);
-		checkAncestor(guild);
+		// checkAncestor(guild);
 		checkActivity(guild);
 	});
 	updateStatus(client);
@@ -93,9 +93,9 @@ setInterval(async () => {
 	const guilds = await client.guilds.fetch();
 	guilds.forEach(async (oldGuild) => {
 		const guild = await client.guilds.fetch(oldGuild.id);
-		checkBirthday(guild);
+		// checkBirthday(guild);
 		checkAbsences(guild);
-		checkAncestor(guild);
+		// checkAncestor(guild);
 		checkActivity(guild);
 	});
 }, 1000 * 60 * 60); // every hour
