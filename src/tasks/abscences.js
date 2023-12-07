@@ -11,7 +11,7 @@ import { absenceEmbed } from "../database/utils/embed";
  * @param {Discord.Guild} guild
  */
 export async function checkAbsences(guild) {
-	const absences = await Absence.find({});
+	const absences = await Absence.find({guildID: guild.id});
 	const now = new Date();
 	for (const absence of absences) {
 		const channel = await guild.channels.fetch(absence.channelID);
