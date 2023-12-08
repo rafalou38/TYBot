@@ -12,10 +12,13 @@ export async function checkActivity(guild: Guild) {
 	});
 
 	for (const user of results) {
-		const member = await guild.members.fetch(user.userID);
-		log(member.user.tag + " not active anymore");
+		try {
+			const member = await guild.members.fetch(user.userID);
+			log(member.user.tag + " not active anymore");
 
-		member.roles.remove(config.guilds["655531439571599380"].activeRoleID);
+			member.roles.remove(config.guilds["655531439571599380"].activeRoleID);
+		} catch (error) {
+		}
 		user.lastActive = null;
 		await user.save();
 	}

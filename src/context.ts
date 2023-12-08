@@ -69,7 +69,7 @@ export const config = {
 			xpRolesIDS: {},
 			membersRolesIds: [],
 		},
-		"1025066918509547541": { // TY session RP
+		"1138401606480691301": { // TY session RP
 			levelUpChannelID: "1180530406857130124",
 			userJoinChannelID: "1180530380961484921",
 			sondageChannelID: "1180530396828549241",
@@ -86,7 +86,7 @@ export const config = {
 			xpRolesIDS: {},
 			membersRolesIds: [],
 		},
-		"1138401606480691301": { // last of us
+		"1025066918509547541": { // last of us
 			userJoinChannelID: "1180530077876879372",
 			levelUpChannelID: "1180530104602988636",
 			sondageChannelID: "1180530093102202880",
