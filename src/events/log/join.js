@@ -42,7 +42,7 @@ export async function logJoin(member) {
 				footer: {
 					text: `ID: ${member.id}`,
 				},
-				timestamp: new Date(),
+				timestamp: new Date().toISOString(),
 			},
 		],
 	});

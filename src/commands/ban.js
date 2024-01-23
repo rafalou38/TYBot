@@ -18,7 +18,7 @@ export default async function (client, message) {
 					thumbnail: {
 						url: "https://media.discordapp.net/attachments/938828014861574166/1034387400337653830/attention-303861.png?width=783&height=700",
 					},
-					timestamp: new Date(),
+					timestamp: new Date().toISOString(),
 					author: {
 						name: message.author.username,
 						icon_url: message.author.displayAvatarURL(),

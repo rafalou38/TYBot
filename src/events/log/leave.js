@@ -46,7 +46,7 @@ export async function logLeave(member) {
 				footer: {
 					text: `ID: ${member.id}`,
 				},
-				timestamp: new Date(),
+				timestamp: new Date().toISOString(),
 			},
 		],
 	});

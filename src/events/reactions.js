@@ -32,7 +32,7 @@ function extractFromEmbed(content) {
  * @returns
  */
 export async function handleReactionAdd(message, member, emoji) {
-	if (message.author.id !== context.client.user.id) return;
+	if (message.author.id !== context.client.user.id || message.embeds.length === 0) return;
 
 	const msgContent = message.embeds[0].description || "";
 	const roles = extractFromEmbed(msgContent);
@@ -45,13 +45,17 @@ export async function handleReactionAdd(message, member, emoji) {
 	if (member.roles.resolve(role.id)) {
 		await member.roles.remove(role.id);
 
-		const DM = await member.createDM();
-		await DM.send(`Le role **${role.name}** t'as été retiré`);
+		try {
+			const DM = await member.createDM();
+			await DM.send(`Le role **${role.name}** t'as été retiré`);
+		} catch (error) {}
 	} else {
 		await member.roles.add(role.id);
 
-		const DM = await member.createDM();
-		await DM.send(`Le role **${role.name}** t'as été ajouté`);
+		try {
+			const DM = await member.createDM();
+			await DM.send(`Le role **${role.name}** t'as été ajouté`);
+		} catch (error) {}
 	}
 
 	const react = message.reactions.resolve(emoji);

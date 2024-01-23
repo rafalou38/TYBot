@@ -18,7 +18,7 @@ export async function logChannelDelete(channel: NonThreadGuildBasedChannel | DMC
 				title: "Salon supprimé",
 				description: `Ancien nom: ${channel.name}`,
 				color: Colors.Red,
-				timestamp: new Date().toLocaleDateString(),
+				timestamp: new Date().toISOString(),
 			},
 		],
 	});
@@ -39,7 +39,7 @@ export async function logChannelCreate(channel) {
 				title: "Salon crée",
 				description: `Nouveau salon: ${channel}`,
 				color: Colors.Green,
-				timestamp: new Date(),
+				timestamp: new Date().toISOString(),
 			},
 		],
 	});

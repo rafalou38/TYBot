@@ -41,7 +41,7 @@ export async function logGuildBanAdd(ban) {
 					iconURL: ban.user.avatarURL(),
 					name: ban.user.tag,
 				},
-				timestamp: new Date(),
+				timestamp: new Date().toISOString(),
 			},
 		],
 	};
@@ -84,7 +84,7 @@ export async function logGuildBanRemove(ban) {
 					iconURL: ban.user.avatarURL(),
 					name: ban.user.tag,
 				},
-				timestamp: new Date(),
+				timestamp: new Date().toISOString(),
 			},
 		],
 	});

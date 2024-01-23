@@ -23,7 +23,7 @@ export const config = {
 		"655531439571599380": {
 			userJoinChannelID: "655536203407556669",
 			sondageChannelID: "656841905690116106",
-			levelUpChannelID: "854967377745936384",
+			levelUpChannelID: "1199310544683937822",
 			logsChannelID: "655861612644925500",
 			ticketCategoryID: "655538940459352065",
 			staffRoleID: "663763852680364044",

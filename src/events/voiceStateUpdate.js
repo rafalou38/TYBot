@@ -92,7 +92,7 @@ export async function handleVoiceStateUpdate(oldState, newState) {
 							title: "Utilisateur en attente de support",
 							description: `${member} est en attente dans le salon ${newChannel}`,
 							color: 0x50f450,
-							timestamp: new Date(),
+							timestamp: new Date().toISOString(),
 						},
 					],
 				});

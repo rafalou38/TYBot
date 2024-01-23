@@ -26,7 +26,7 @@ export async function logRoleAdd(member, role) {
 				footer: {
 					text: `ID: ${member.id}`,
 				},
-				timestamp: new Date(),
+				timestamp: new Date().toISOString(),
 			},
 		],
 	});
@@ -56,7 +56,7 @@ export async function logRoleRemove(member, role) {
 				footer: {
 					text: `ID: ${member.id}`,
 				},
-				timestamp: new Date(),
+				timestamp: new Date().toISOString(),
 			},
 		],
 	});
@@ -76,7 +76,7 @@ export async function logRoleCreate(role) {
 				title: "Role crée",
 				description: `Nouveau role: ${role}`,
 				color: Colors.Red,
-				timestamp: new Date(),
+				timestamp: new Date().toISOString(),
 			},
 		],
 	});
@@ -95,7 +95,7 @@ export async function logRoleDelete(role) {
 				title: "Role crée",
 				description: `Role supprimé: @${role.name}`,
 				color: Colors.Red,
-				timestamp: new Date(),
+				timestamp: new Date().toISOString(),
 			},
 		],
 	});
