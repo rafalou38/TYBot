@@ -8,15 +8,13 @@ import { log } from "../utils/prettyLog";
 
 /**
  *
- * @param {Discord.GuildMember} member
+ * @param {} member
  */
 export async function userJoin(member) {
 	const channel = await getChanelById(config.guilds[member.guild.id].userJoinChannelID);
-
 	if (channel.type == TextChannel) return;
 
 	let invite = await getInvite(member);
-
 	if (!invite) {
 		invite = { inviter: context.client.user };
 	}
@@ -44,6 +42,13 @@ export async function userJoin(member) {
 
 	// await member.roles.add(config.guilds[member.guild.id].xpRolesIDS[1]);
 	// await member.roles.add(config.guilds[member.guild.id].baseRoleID);
+	if (config.guilds[member.guild.id].baseRoles) {
+		try {
+			await member?.roles?.add(config.guilds[member.guild.id].baseRoles);
+		} catch (error) {
+			log("Could not add base role to user.", error);
+		}
+	}
 
 	// ADD INVITE TO INVITER
 	let DBInviter = await Member.findOneAndUpdate(

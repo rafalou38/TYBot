@@ -31,6 +31,7 @@ export const config = {
 			communityRoleID: "769569316097622038",
 			activeRoleID: "1133739969618399283",
 			baseRoleID: "766021341949329459",
+			baseRoles: ["678244426941988904","1040926138878410813"],
 			waitingChannelID: "703664514821914674",
 			waitingPingChannelID: "655861612644925500",
 			xpRolesIDS: {
