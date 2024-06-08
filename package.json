@@ -1,7 +1,7 @@
 {
-	"name": "yt-team-bot",
+	"name": "ty-team-bot",
 	"version": "1.0.0",
-	"description": "bot discord de la communauté YT - Team",
+	"description": "bot discord de la communauté TY-STUDIO",
 	"main": "src/index.js",
 	"repository": "none",
 	"author": "rafalou38",
